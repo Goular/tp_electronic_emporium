@@ -1,3 +1,4 @@
+-- 创建商品表
 DROP database if EXISTS php39;
 create database php39;
 use php39;
