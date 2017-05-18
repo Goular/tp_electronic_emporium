@@ -61,8 +61,8 @@ class GoodsModel extends Model
         }
         // 获取当前时间并添加到表单中这样就会插入到数据库中
         $data['addtime'] = date('Y-m-d H:i:s', time());
-        // 我们自己来过滤这个字段
-        //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
+        // 将通过自定义方法将HTML实体转为大小写符号，同时过滤JS脚本等XSS攻击的脚本
+        $data['goods_desc'] = removeXSS($_POST['goods_desc']);
     }
 
 }
