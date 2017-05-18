@@ -10,6 +10,6 @@ return array(
     'DB_PREFIX' => 'p39_',    // 数据库表前缀
     'DB_CHARSET' => 'utf8',      // 数据库编码
     'DB_DEBUG' => TRUE, // 数据库调试模式 开启后可以记录SQL日志
-    'DEFAULT_FILTER' => 'htmlspecialchars,trim', // 默认参数过滤方法 用于I函数...
+    'DEFAULT_FILTER' => 'trim,htmlspecialchars', // 默认参数过滤方法 用于I函数...
     'UMEDITOR_URL' => __ROOT__ . '/Public/Tools/umeditor1.2.3-utf8-php'
 );
