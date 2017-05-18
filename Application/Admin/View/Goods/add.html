@@ -22,7 +22,7 @@
         </p>
     </div>
     <div id="tabbody-div">
-        <form enctype="multipart/form-data" action="__GROUP__/Goods/goodsAdd" method="post">
+        <form enctype="multipart/form-data" action="__SELF__" method="post">
             <table width="90%" id="general-table" align="center">
                 <tr>
                     <td class="label">商品名称：</td>
@@ -33,21 +33,21 @@
                 <tr>
                     <td class="label">本店价格：</td>
                     <td>
-                        <input type="text" name="goods_number" size="8" value=""/>
+                        <input type="text" name="shop_price" size="8" value=""/>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">市场价格：</td>
                     <td>
-                        <input type="text" name="shop_price" value="0" size="20"/>
+                        <input type="text" name="market_price" value="0" size="20"/>
                         <span class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">是否上架：</td>
                     <td>
-                        <input type="radio" name="is_onsale" value="1"/> 是
-                        <input type="radio" name="is_onsale" value="0"/> 否
+                        <input type="radio" name="is_on_sale" value="1"/> 是
+                        <input type="radio" name="is_on_sale" value="0"/> 否
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +59,7 @@
                 <tr>
                     <td class="label">商品描述：</td>
                     <td>
-                        <textarea name="goods_brief" cols="40" rows="3"></textarea>
+                        <textarea name="goods_desc" cols="40" rows="3"></textarea>
                     </td>
                 </tr>
             </table>
