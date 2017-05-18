@@ -13,7 +13,7 @@ class GoodsController extends Controller
     {
         //判断是否提交了表单
         if (IS_POST) {
-            $model = M('goods');
+            $model = D('goods');
             /**
              * CREATE方法：a. 接收数据并保存到模型中 b.根据模型中定义的规则验证表单
              *
@@ -28,12 +28,12 @@ class GoodsController extends Controller
                     $this->success('操作成功!',U('lst')); //U方法为创建URL的访问内容
                     exit();
                 }
-                // 如果走到 这说明上面失败了在这里处理失败的请求
-                // 从模型中取出失败的原因
-                $error = $model->getError();
-                // 由控制器显示错误信息,并在3秒跳回上一个页面
-                $this->error($error);
             }
+            // 如果走到 这说明上面失败了在这里处理失败的请求
+            // 从模型中取出失败的原因
+            $error = $model->getError();
+            // 由控制器显示错误信息,并在3秒跳回上一个页面
+            $this->error($error);
         }
         //显示表单
         $this->display();
