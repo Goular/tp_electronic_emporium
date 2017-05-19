@@ -51,13 +51,6 @@ class GoodsController extends Controller
             'listData' => $data['data'],
             'page' => $data['page']
         ));
-
-
-        //echo "<pre>";
-        //var_dump($data['data']);
-        //echo "</pre>";
-
-        //exit();
         $this->display();
     }
 }

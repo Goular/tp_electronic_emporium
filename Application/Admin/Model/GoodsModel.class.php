@@ -68,7 +68,7 @@ class GoodsModel extends Model
     /**
      * 搜索商品内容，可以实现翻页，搜索和排序的操作
      */
-    public function search($perPage = 15)
+    public function search($perPage = 3)
     {
         /************************* 翻页 **************************/
         //取出总的记录数
