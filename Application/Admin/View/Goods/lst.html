@@ -73,7 +73,7 @@
                 <th>操作</th>
             </tr>
             <?php foreach($listData as $k=>$v):?>
-            <tr>
+            <tr class="tron">
                 <td align="center"><?php echo $v['id'];?></td>
                 <td align="center" class="first-cell"><span><?php echo $v['goods_name'];?></span></td>
                 <td align="center"><img src="/Public/Uploads/<?php echo($v['sm_logo']);?>"/></td>
@@ -123,5 +123,13 @@
 
     $("#fa").datetimepicker();
     $("#ta").datetimepicker();
+
+    <!-- 引入行高亮显示 -->
+    $('.tron').mouseover(function () {
+        $(this).find('td').css('backgroundColor','#DEE7F5');
+    });
+    $('.tron').mouseout(function () {
+        $(this).find('td').css('backgroundColor','#fff');
+    })
 </script>
-<!-- 引入行高亮显示 -->
+
