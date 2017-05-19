@@ -75,6 +75,10 @@ class GoodsModel extends Model
         $count = $this->count();
         //生成翻页类的对象
         $pageObj = new \Think\Page($count, $perPage);
+        $pageObj->setConfig('next','下一页');
+        $pageObj->setConfig('prev','上一页');
+        $pageObj -> setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+
         //生成页面下面显示的上一页，下一页的字符串
         $pageString = $pageObj->show();
         /************************ 取某一页的数据 ****************************/
