@@ -38,9 +38,9 @@
         </p>
         <p>
             添加时间:
-            从<input type="text" name="goods_add_start_time" size="20"
+            从<input id="fa" type="text" name="goods_add_start_time" size="20"
                     value="<?php echo I('get.goods_add_start_time');?>"/>
-            到<input type="text" name="goods_add_end_time" size="20" value="<?php echo I('get.goods_add_end_time');?>"/>
+            到<input id="ta" type="text" name="goods_add_end_time" size="20" value="<?php echo I('get.goods_add_end_time');?>"/>
         </p>
         <p>
             排序方式:
@@ -108,3 +108,20 @@
 </div>
 </body>
 </html>
+
+<!-- 引入时间插件 -->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<link href="<?php echo C('DATETIMEPICKER_URL');?>/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="<?php echo C('DATETIMEPICKER_URL');?>/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo C('DATETIMEPICKER_URL');?>/datepicker-zh_cn.js"></script>
+<link rel="stylesheet" media="all" type="text/css" href="<?php echo C('DATETIMEPICKER_URL');?>/time/jquery-ui-timepicker-addon.min.css" />
+<script type="text/javascript" src="<?php echo C('DATETIMEPICKER_URL');?>/time/jquery-ui-timepicker-addon.min.js"></script>
+<script type="text/javascript" src="<?php echo C('DATETIMEPICKER_URL');?>/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+<script>
+    // 添加时间插件
+    $.timepicker.setDefaults($.timepicker.regional['zh-CN']);  // 设置使用中文
+
+    $("#fa").datetimepicker();
+    $("#ta").datetimepicker();
+</script>
+<!-- 引入行高亮显示 -->
