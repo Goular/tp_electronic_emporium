@@ -15,37 +15,33 @@
     <div style="clear:both"></div>
 </h1>
 <div class="form-div">
-    <form action="" name="searchForm">
+    <form action="__ACTION__" name="searchForm">
         <img src="<?=C('HOME_IMG_URL');?>/icon_search.gif" width="26" height="22" border="0" alt="search"/>
-        <!-- 分类 -->
-        <select name="cat_id">
-            <option value="0">所有分类</option>
-            <foreach name="cat_list" item="val">
-                <option value="<{$val.cat_id}>"><{$val.lev|str_repeat='&nbsp;&nbsp;',###}><{$val.cat_name}></option>
-            </foreach>
-        </select>
-        <!-- 品牌 -->
-        <select name="brand_id">
-            <option value="0">所有品牌</option>
-            <foreach name="brand_list" item="val">
-                <option value="<{$val.brand_id}>"><{$val.brand_name}></option>
-            </foreach>
-        </select>
-        <!-- 推荐 -->
-        <select name="intro_type">
-            <option value="0">全部</option>
-            <option value="is_best">精品</option>
-            <option value="is_new">新品</option>
-            <option value="is_hot">热销</option>
-        </select>
-        <!-- 上架 -->
-        <select name="is_on_sale">
-            <option value=''>全部</option>
-            <option value="1">上架</option>
-            <option value="0">下架</option>
-        </select>
-        <!-- 关键字 -->
-        关键字 <input type="text" name="keyword" size="15"/>
+
+        <!--商品名称-->
+        <p>
+            商品名称:
+            <input type="text" name="goods_name" size="60" value="<?php echo I('get.goods_name');?>"/>
+        </p>
+        <!--价格-->
+        <p>
+            价 格:
+            从<input type="text" name="goods_low_price" size="8" value="<?php echo I('get.goods_low_price');?>"/>
+            到<input type="text" name="goods_high_price" size="8" value="<?php echo I('get.goods_high_price');?>"/>
+        </p>
+        <p>
+            是否上架:
+            <?php $ios=I('get.ios');?>
+            <input type="radio" name="ios" value="" <?php if($ios=='') echo 'checked'?>/>全部
+            <input type="radio" name="ios" value="是" <?php if($ios=='是') echo 'checked'?>/>上架
+            <input type="radio" name="ios" value="否" <?php if($ios=='否') echo 'checked'?>/>下架
+        </p>
+        <p>
+            添加时间:
+            从<input type="text" name="goods_add_start_time" size="20" value="<?php echo I('get.goods_add_start_time');?>"/>
+            到<input type="text" name="goods_add_end_time" size="20" value="<?php echo I('get.goods_add_end_time');?>"/>
+        </p>
+
         <input type="submit" value=" 搜索 " class="button"/>
     </form>
 </div>
