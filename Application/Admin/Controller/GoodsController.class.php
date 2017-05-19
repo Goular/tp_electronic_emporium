@@ -46,8 +46,18 @@ class GoodsController extends Controller
     {
         $model = D('goods');//D方法回去寻找class文件并创建对象
         //返回数据和翻页
-        $listData = $model->search();
-        $this->assign(['listData' => $listData]);
+        $data = $model->search();
+        $this->assign(array(
+            'listData' => $data['data'],
+            'page' => $data['page']
+        ));
+
+
+        //echo "<pre>";
+        //var_dump($data['data']);
+        //echo "</pre>";
+
+        //exit();
         $this->display();
     }
 }
