@@ -24,8 +24,8 @@ class GoodsController extends Controller
             if ($model->create(I('post.'), 1)) {
                 //创建并校验后添加到数据库中
                 // 在add()里又先调用了_before_insert方法,用于添加addTime字段
-                if($model->add()){ //添加成功后，转跳到页面并结束后面的操作
-                    $this->success('操作成功!',U('lst')); //U方法为创建URL的访问内容
+                if ($model->add()) { //添加成功后，转跳到页面并结束后面的操作
+                    $this->success('操作成功!', U('lst')); //U方法为创建URL的访问内容
                     exit();
                 }
             }
@@ -44,6 +44,10 @@ class GoodsController extends Controller
      */
     public function lst()
     {
+        $model = D('goods');//D方法回去寻找class文件并创建对象
+        //返回数据和翻页
+        $listData = $model->search();
+        $this->assign(['listData' => $listData]);
         $this->display();
     }
 }

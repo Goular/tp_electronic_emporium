@@ -65,4 +65,25 @@ class GoodsModel extends Model
         $data['goods_desc'] = removeXSS($_POST['goods_desc']);
     }
 
+    /**
+     * 搜索商品内容，可以实现翻页，搜索和排序的操作
+     */
+    public function search($perPage = 15)
+    {
+        /************************* 翻页 **************************/
+        //取出总的记录数
+        $count = $this->count();
+        //生成翻页类的对象
+        $pageObj = new \Think\Page($count, $perPage);
+        //生成页面下面显示的上一页，下一页的字符串
+        $pageString = $pageObj->show();
+        /************************ 取某一页的数据 ****************************/
+        $data = $this->limit($pageObj->firstRow . ',' . $pageObj->listRows)->select();
+
+        /************************ 返回数据 ****************************/
+        return array(
+            "data" => $data,    //数据
+            "page" => $pageString   //翻页字符串
+        );
+    }
 }
