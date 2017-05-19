@@ -38,10 +38,22 @@
         </p>
         <p>
             添加时间:
-            从<input type="text" name="goods_add_start_time" size="20" value="<?php echo I('get.goods_add_start_time');?>"/>
+            从<input type="text" name="goods_add_start_time" size="20"
+                    value="<?php echo I('get.goods_add_start_time');?>"/>
             到<input type="text" name="goods_add_end_time" size="20" value="<?php echo I('get.goods_add_end_time');?>"/>
         </p>
-
+        <p>
+            排序方式:
+            <?php $odby=I('get.odby','id_desc')?>
+            <input onclick="this.parentNode.parentNode.submit();" type="radio" name="odby"
+                   value="id_desc" <?php if($odby=='id_desc') echo 'checked'?>/>以添加时间降序
+            <input onclick="this.parentNode.parentNode.submit();" type="radio" name="odby"
+                   value="id_asc" <?php if($odby=='id_asc') echo 'checked'?>/>以添加时间升序
+            <input onclick="this.parentNode.parentNode.submit();" type="radio" name="odby"
+                   value="price_desc" <?php if($odby=='price_desc') echo 'checked'?>/>以价格降序
+            <input onclick="this.parentNode.parentNode.submit();" type="radio" name="odby"
+                   value="price_asc" <?php if($odby=='price_asc') echo 'checked'?>/>以价格升序
+        </p>
         <input type="submit" value=" 搜索 " class="button"/>
     </form>
 </div>
