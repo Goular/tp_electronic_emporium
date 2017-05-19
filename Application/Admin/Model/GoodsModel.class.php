@@ -70,74 +70,77 @@ class GoodsModel extends Model
      */
     public function search($perPage = 3)
     {
-        /************************* 搜索 **************************/
-        $where = array();//默认为空的where搜索条件
-        //商品名称
-        $goods_name = I('get.goods_name');
-        if ($goods_name) {
-            $where['goods_name'] = array('like', "%$goods_name%");// WHERE goods_name LIKE '%$gn%'
-        }
-        //价格
-        $goods_low_price = I('get.goods_low_price');//低价格
-        $goods_high_price = I('get.goods_high_price');//高价格
-        if ($goods_low_price && $goods_high_price) {
-            $where['shop_price'] = array('between', array($goods_low_price, $goods_high_price));//WHERE shop_price BETWEEN $fp AND $tp
-        } elseif ($goods_low_price) {
-            $where['shop_price'] = array('egt', $goods_low_price);//WHERE shop_price>=$goods_low_price
-        } elseif ($goods_high_price) {
-            $where['shop_price'] = array('elt', $goods_high_price);//WHERE shop_price>=$goods_high_price
-        }
-        //是否上架
-        $ios = I("get.ios");
-        if ($ios) {
-            $where['is_on_sale'] = array('eq', $ios);// WHERE is_on_sale = $ios
-        }
-        //添加时间
-        $goods_add_start_time = I('get.goods_add_start_time');
-        $goods_add_end_time = I('get.goods_add_end_time');
-        if ($goods_add_start_time && $goods_add_end_time) {
-            $where['addtime'] = array('between', array($goods_add_start_time, $goods_add_end_time));//WHERE shop_price BETWEEN $goods_add_start_time AND $goods_add_end_time
-        } elseif ($goods_add_start_time) {
-            $where['addtime'] = array('egt', $goods_add_start_time);//WHERE shop_price>=$goods_add_start_time
-        } elseif ($goods_add_end_time) {
-            $where['addtime'] = array('elt', $goods_add_end_time);//WHERE shop_price>=$goods_add_end_time
-        }
-        /************************* 翻页 **************************/
+        C('SHOW_PAGE_TRACE',true);
+        /*************** 搜索 ******************/
+        $where = array();  // 空的where条件
+        // 商品名称
+        $gn = I('get.goods_name');
+        if($gn)
+            $where['goods_name'] = array('like', "%$gn%");  // WHERE goods_name LIKE '%$gn%'
+        // 价格
+        $fp = I('get.goods_low_price');
+        $tp = I('get.goods_high_price');
+        if($fp && $tp)
+            $where['shop_price'] = array('between', array($fp, $tp)); // WHERE shop_price BETWEEN $fp AND $tp
+        elseif ($fp)
+            $where['shop_price'] = array('egt', $fp);   // WHERE shop_price >= $fp
+        elseif ($tp)
+            $where['shop_price'] = array('elt', $tp);   // WHERE shop_price <= $fp
+        // 是否上架
+        $ios = I('get.ios');
+        if($ios)
+            $where['is_on_sale'] = array('eq', $ios);  // WHERE is_on_sale = $ios
+        // 添加时间
+        $fa = I('get.goods_add_start_time');
+        $ta = I('get.goods_add_end_time');
+        if($fa && $ta)
+            $where['addtime'] = array('between', array($fa, $ta)); // WHERE shop_price BETWEEN $fp AND $tp
+        elseif ($fa)
+            $where['addtime'] = array('egt', $fa);   // WHERE shop_price >= $fp
+        elseif ($ta)
+            $where['addtime'] = array('elt', $ta);   // WHERE shop_price <= $fp
+
+
+        /*************** 翻页 ****************/
         // 取出总的记录数
-        $count = $this->where($where)->count;
+        $count = $this->where($where)->count();
         // 生成翻页类的对象
         $pageObj = new \Think\Page($count, $perPage);
-        //设置样式
+        // 设置样式
         $pageObj->setConfig('next', '下一页');
         $pageObj->setConfig('prev', '上一页');
         $pageObj->setConfig('theme', '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
-        //生成显示的字符串
-        $pageStr = $pageObj->show();
+
+        // 生成页面下面显示的上一页、下一页的字符串
+        $pageString = $pageObj->show();
 
         /***************** 排序 *****************/
-        $orderBy = 'id';// 默认的排序字段
-        $orderWay = 'desc';// 默认的排序方式
+        $orderby = 'id';      // 默认的排序字段
+        $orderway = 'desc';   // 默认的排序方式
         $odby = I('get.odby');
-        if ($odby) {
-            if ($odby == 'id_asc')
-                $orderWay = 'asc';
+        if($odby)
+        {
+            if($odby == 'id_asc')
+                $orderway = 'asc';
             elseif ($odby == 'price_desc')
-                $orderBy = 'shop_price';
-            elseif ($odby == 'price_asc') {
-                $orderBy = 'shop_price';
-                $orderWay = 'asc';
+                $orderby = 'shop_price';
+            elseif ($odby == 'price_asc')
+            {
+                $orderby = 'shop_price';
+                $orderway = 'asc';
             }
         }
 
-        /***********************取某一页的数据****************************/
-        $data = $this->order("$orderBy $orderWay")
-            ->where($where)//排序
-            ->limit($pageObj->firstRow . ',' . $pageObj->listRows)//搜索
-            ->select();                                                 //翻页
-        /***************************  返回数据   ******************************/
+        /************** 取某一页的数据 ***************/
+        $data = $this->order("$orderby $orderway")                    // 排序
+        ->where($where)                                               // 搜索
+        ->limit($pageObj->firstRow.','.$pageObj->listRows)            // 翻页
+        ->select();
+
+        /************** 返回数据 ******************/
         return array(
-            'data' => $data,
-            'page' => $pageStr
+            'data' => $data,  // 数据
+            'page' => $pageString,  // 翻页字符串
         );
     }
 }
