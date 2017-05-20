@@ -1,4 +1,5 @@
-<!-- ʱ���� -->
+<!--时间选择器-->
+<script type="text/javascript" src="<?php echo C('DATETIMEPICKER_URL');?>/jquery-1.7.2.min.js">
 <link href="__PUBLIC__/datetimepicker/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" charset="utf-8" src="__PUBLIC__/datetimepicker/jquery-ui-1.9.2.custom.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="__PUBLIC__/datetimepicker/datepicker-zh_cn.js"></script>
@@ -13,4 +14,6 @@
 
 
 $.timepicker.setDefaults($.timepicker.regional['zh-CN']);
-$("#st").datepicker({ dateFormat: "yy-mm-dd" });
+$("#st").datepicker();
+$("#st").datepicker({ dateFormat: "yy-mm-dd" });//出现的是年月日的选择器，日期格式可以不填
+$("#st").datetimepicker({ dateFormat: "yy-mm-dd" });//出现的是年月日时分秒的选择器,日期格式可以不填
