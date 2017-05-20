@@ -40,6 +40,14 @@ class GoodsController extends Controller
     }
 
     /**
+     * 商品修改
+     */
+    public function edit()
+    {
+        $this->display();
+    }
+
+    /**
      * 商品列表 由于php自带list方法用于数组读取，所以不能使用list()
      */
     public function lst()
