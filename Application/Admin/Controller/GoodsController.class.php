@@ -44,6 +44,31 @@ class GoodsController extends Controller
      */
     public function edit()
     {
+        $id = I('get.id');  // 要修改的商品的ID
+        $model = D('goods');
+        if(IS_POST)
+        {
+            if($model->create(I('post.'), 2))
+            {
+                if(FALSE !== $model->save())  // save()的返回值是，如果失败返回false,如果成功返回受影响的条数【如果修改后和修改前相同就会返回0】
+                {
+                    $this->success('操作成功！', U('lst'));
+                    exit;
+                }
+            }
+            $error = $model->getError();
+            $this->error($error);
+        }
+        // 根据ID取出要修改的商品的原信息
+        $data = $model->find($id);
+        $this->assign('data', $data);
+
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '修改商品',
+            '_page_btn_name' => '商品列表',
+            '_page_btn_link' => U('lst'),
+        ));
         $this->display();
     }
 
