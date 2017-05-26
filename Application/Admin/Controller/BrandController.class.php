@@ -16,7 +16,13 @@ class BrandController extends Controller
      */
     public function add()
     {
-       $this->display();
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '品牌添加',
+            '_page_btn_name' => '品牌列表',
+            '_page_btn_link' => U('lst'),
+        ));
+        $this->display();
     }
 
     /**
@@ -24,15 +30,40 @@ class BrandController extends Controller
      */
     public function edit()
     {
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '品牌编辑',
+            '_page_btn_name' => '品牌列表',
+            '_page_btn_link' => U('lst'),
+        ));
         $this->display();
     }
 
 
     /**
-     * 删除品牌资料
+     * 品牌资料列表
+     */
+    public function lst()
+    {
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '品牌列表',
+            '_page_btn_name' => '品牌添加',
+            '_page_btn_link' => U('lst'),
+        ));
+        $this->display();
+    }
+
+    /**
+     * 删除指定品牌
      */
     public function delete()
     {
-        $this->display();
+        $model = D('brand');
+        if (FALSE !== $model->delete(I('get.id'))) {
+            $this->success('删除成功!', U('lst'));
+        } else {
+            $this->error('删除失败！原因：' . $model->getError(), U('lst'));
+        }
     }
 }
