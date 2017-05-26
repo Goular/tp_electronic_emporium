@@ -46,11 +46,9 @@ class GoodsController extends Controller
     {
         $id = I('get.id');  // 要修改的商品的ID
         $model = D('goods');
-        if(IS_POST)
-        {
-            if($model->create(I('post.'), 2))
-            {
-                if(FALSE !== $model->save())  // save()的返回值是，如果失败返回false,如果成功返回受影响的条数【如果修改后和修改前相同就会返回0】
+        if (IS_POST) {
+            if ($model->create(I('post.'), 2)) {
+                if (FALSE !== $model->save())  // save()的返回值是，如果失败返回false,如果成功返回受影响的条数【如果修改后和修改前相同就会返回0】
                 {
                     $this->success('操作成功！', U('lst'));
                     exit;
@@ -85,5 +83,17 @@ class GoodsController extends Controller
             'page' => $data['page']
         ));
         $this->display();
+    }
+
+    /**
+     * 删除商品的内容
+     */
+    public function delete()
+    {
+        $model = D('goods');
+        if(FALSE !== $model->delete(I('get.id')))
+            $this->success('删除成功！', U('lst'));
+        else
+            $this->error('删除失败！原因：'.$model->getError());
     }
 }
