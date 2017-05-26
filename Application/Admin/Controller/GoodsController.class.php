@@ -82,6 +82,12 @@ class GoodsController extends Controller
             'listData' => $data['data'],
             'page' => $data['page']
         ));
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '商品列表',
+            '_page_btn_name' => '商品添加',
+            '_page_btn_link' => U('add'),
+        ));
         $this->display();
     }
 
