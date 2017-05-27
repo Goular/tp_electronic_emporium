@@ -3,67 +3,82 @@ namespace Admin\Controller;
 
 use Think\Controller;
 
-/**
- * 品牌类的控制器
- * Class BrandController
- * @package Admin\Controller
- */
 class BrandController extends Controller
 {
-
-    /**
-     * 添加品牌资料
-     */
     public function add()
     {
-        // 设置页面信息
+        if (IS_POST) {
+            $model = D('Brand');
+            if ($model->create(I('post.'), 1)) {
+                if ($id = $model->add()) {
+                    $this->success('添加成功！', U('lst?p=' . I('get.p')));
+                    exit;
+                }
+            }
+            $this->error($model->getError());
+        }
+
+        // 设置页面中的信息
         $this->assign(array(
-            '_page_title' => '品牌添加',
+            '_page_title' => '添加品牌',
             '_page_btn_name' => '品牌列表',
             '_page_btn_link' => U('lst'),
         ));
         $this->display();
     }
 
-    /**
-     * 修改品牌资料
-     */
     public function edit()
     {
-        // 设置页面信息
+        $id = I('get.id');
+        if (IS_POST) {
+            $model = D('Brand');
+            if ($model->create(I('post.'), 2)) {
+                if ($model->save() !== FALSE) {
+                    $this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
+                    exit;
+                }
+            }
+            $this->error($model->getError());
+        }
+        $model = M('Brand');
+        $data = $model->find($id);
+        $this->assign('data', $data);
+
+        // 设置页面中的信息
         $this->assign(array(
-            '_page_title' => '品牌编辑',
+            '_page_title' => '修改品牌',
             '_page_btn_name' => '品牌列表',
             '_page_btn_link' => U('lst'),
         ));
         $this->display();
     }
 
-
-    /**
-     * 品牌资料列表
-     */
-    public function lst()
-    {
-        // 设置页面信息
-        $this->assign(array(
-            '_page_title' => '品牌列表',
-            '_page_btn_name' => '品牌添加',
-            '_page_btn_link' => U('lst'),
-        ));
-        $this->display();
-    }
-
-    /**
-     * 删除指定品牌
-     */
     public function delete()
     {
-        $model = D('brand');
-        if (FALSE !== $model->delete(I('get.id'))) {
-            $this->success('删除成功!', U('lst'));
+        $model = D('Brand');
+        if ($model->delete(I('get.id', 0)) !== FALSE) {
+            $this->success('删除成功！', U('lst', array('p' => I('get.p', 1))));
+            exit;
         } else {
-            $this->error('删除失败！原因：' . $model->getError(), U('lst'));
+            $this->error($model->getError());
         }
+    }
+
+    public function lst()
+    {
+        $model = D('Brand');
+        $data = $model->search();
+        $this->assign(array(
+            'data' => $data['data'],
+            'page' => $data['page'],
+        ));
+
+        // 设置页面中的信息
+        $this->assign(array(
+            '_page_title' => '品牌列表',
+            '_page_btn_name' => '添加品牌',
+            '_page_btn_link' => U('add'),
+        ));
+        $this->display();
     }
 }
