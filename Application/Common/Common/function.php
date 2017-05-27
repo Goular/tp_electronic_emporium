@@ -28,8 +28,7 @@ function removeXSS($data)
 function deleteImage($image = array())
 {
     $savePath = C('IMAGE_CONFIG');
-    foreach ($image as $v)
-    {
+    foreach ($image as $v) {
         unlink($savePath['rootPath'] . $v);
     }
 }
@@ -93,4 +92,17 @@ function uploadOne($imgName, $dirName, $thumb = array())
             return $ret;
         }
     }
+}
+
+/**
+ * 展示相关的图片
+ */
+function showImage($url, $width = '', $height = '')
+{
+    $ic = C('IMAGE_CONFIG');
+    if ($width)
+        $width = "width='$width'";
+    if ($height)
+        $height = "height='$height'";
+    echo "<img $width $height src='{$ic['viewPath']}$url'/>";
 }
