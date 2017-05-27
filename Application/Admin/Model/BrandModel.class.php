@@ -1,50 +1,77 @@
 <?php
 namespace Admin\Model;
 
-use Think\Image;
 use Think\Model;
 
-class GoodsModel extends Model
+class BrandModel extends Model
 {
-    // 添加时调用create方法允许接收的字段
-    protected $insertFields = '';
-    // 修改时调用create方法允许接收的字段
-    protected $updateFields = 'id,';
-
-    //定义验证规则
+    protected $insertFields = array('brand_name', 'site_url');
+    protected $updateFields = array('id', 'brand_name', 'site_url');
     protected $_validate = array(
-        array('goods_name', 'require', '商品名称不能为空！', 1),
-        array('market_price', 'currency', '市场价格必须是货币类型！', 1),
-        array('shop_price', 'currency', '本店价格必须是货币类型！', 1),
+        array('brand_name', 'require', '品牌名称不能为空！', 1, 'regex', 3),
+        array('brand_name', '1,30', '品牌名称的值最长不能超过 30 个字符！', 1, 'length', 3),
+        array('site_url', '1,150', '官方网址的值最长不能超过 150 个字符！', 2, 'length', 3),
     );
 
-    // 这个方法在添加之前会自动被调用 --》 钩子方法
-    // 第一个参数：表单中即将要插入到数据库中的数据->数组
-    // &按引用传递：函数内部要修改函数外部传进来的变量必须按钮引用传递，除非传递的是一个对象,因为对象默认是按引用传递的
-    protected function _before_insert(&$data, $options)
+    public function search($pageSize = 20)
     {
-
+        /**************************************** 搜索 ****************************************/
+        $where = array();
+        if ($brand_name = I('get.brand_name'))
+            $where['brand_name'] = array('like', "%$brand_name%");
+        /************************************* 翻页 ****************************************/
+        $count = $this->alias('a')->where($where)->count();
+        $page = new \Think\Page($count, $pageSize);
+        // 配置翻页的样式
+        $page->setConfig('prev', '上一页');
+        $page->setConfig('next', '下一页');
+        $data['page'] = $page->show();
+        /************************************** 取数据 ******************************************/
+        $data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow . ',' . $page->listRows)->select();
+        return $data;
     }
 
-    // 这个方法在更新操作之前会自动被调用 --》 钩子方法
-    protected function _before_update(&$data, $options)
+    // 添加前
+    protected function _before_insert(&$data, $option)
     {
-
+        if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
+            $ret = uploadOne('logo', 'Brand', array());
+            if ($ret['ok'] == 1) {
+                $data['logo'] = $ret['images'][0];
+            } else {
+                $this->error = $ret['error'];
+                return FALSE;
+            }
+        }
     }
 
-    //这个方法在删除操作之前会自动被调用 --》 钩子方法
-    protected function _before_delete($options)
+    // 修改前
+    protected function _before_update(&$data, $option)
     {
+        if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
+            $ret = uploadOne('logo', 'Brand', array());
+            if ($ret['ok'] == 1) {
+                $data['logo'] = $ret['images'][0];
+            } else {
+                $this->error = $ret['error'];
+                return FALSE;
+            }
+            deleteImage(array(
+                I('post.old_logo'),
 
+            ));
+        }
     }
 
-
-    /**
-     * 搜索商品内容，可以实现翻页，搜索和排序的操作
-     */
-    public function search($perPage = 3)
+    // 删除前
+    protected function _before_delete($option)
     {
-        C('SHOW_PAGE_TRACE', true);
-
+        if (is_array($option['where']['id'])) {
+            $this->error = '不支持批量删除';
+            return FALSE;
+        }
+        $images = $this->field('logo')->find($option['where']['id']);
+        deleteImage($images);
     }
+    /************************************ 其他方法 ********************************************/
 }
