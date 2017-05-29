@@ -2,7 +2,21 @@
 <div class="form-div">
     <form action="__ACTION__" name="searchForm">
         <img src="<?=C('HOME_IMG_URL');?>/icon_search.gif" width="26" height="22" border="0" alt="search"/>
-
+        <p>
+            所在品牌：
+            <select name="brand_id">
+                <option value="">请选择</option>
+                <?php foreach($brandData as $key => $value):?>
+                <option value="<?php echo $value['id'];?>"
+                    <?php if($value['id'] == I('get.brand_id')):?>
+                        selected="selected"
+                    <?php endif;?>
+                >
+                    <?php echo $value['brand_name'];?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </p>
         <!--商品名称-->
         <p>
             商品名称:
@@ -64,9 +78,9 @@
                 <td align="center"><?php echo $v['id'];?></td>
                 <td align="center">
                     <?php foreach($brandData as $key => $value):?>
-                        <?php if($value['id']==$v['brand_id']): ?>
-                            <?php echo $value['brand_name'];?>
-                        <?php endif;?>
+                    <?php if($value['id']==$v['brand_id']): ?>
+                    <?php echo $value['brand_name'];?>
+                    <?php endif;?>
                     <?php endforeach;?>
                 </td>
                 <td align="center" class="first-cell"><span><?php echo $v['goods_name'];?></span></td>

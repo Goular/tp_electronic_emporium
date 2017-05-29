@@ -95,6 +95,10 @@ class GoodsModel extends Model
         $gn = I('get.goods_name');
         if ($gn)
             $where['a.goods_name'] = array('like', "%$gn%");  // WHERE goods_name LIKE '%$gn%'
+        //商品品牌
+        $brand_id = I('get.brand_id');
+        if ($brand_id)
+            $where['brand_id'] = array('eq', $brand_id);
         // 价格
         $fp = I('get.goods_low_price');
         $tp = I('get.goods_high_price');
@@ -152,7 +156,7 @@ class GoodsModel extends Model
         //left join b p39_brand
         //on a.brand_id = b.id
         $data = $this->order("$orderby $orderway")// 排序
-            ->field('a.* , b.brand_name')
+        ->field('a.* , b.brand_name')
             ->alias('a')
             ->join('left join __BRAND__ b ON a.brand_id = b.id')//添加join
             ->where($where)// 搜索
