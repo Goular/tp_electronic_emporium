@@ -12,14 +12,7 @@
                 <tr>
                     <td class="label">所在品牌：</td>
                     <td>
-                        <select name="brand_id">
-                            <option value="">请选择</option>
-                            <?php foreach($brandData as $key => $value):?>
-                            <option value="<?php echo $value['id'];?>">
-                                <?php echo $value['brand_name'];?>
-                            </option>
-                            <?php endforeach;?>
-                        </select>
+                        <?php buildSelect('brand','brand_id','id','brand_name');?>
                     </td>
                 </tr>
                 <tr>
