@@ -25,7 +25,8 @@
             添加时间:
             从<input id="fa" type="text" name="goods_add_start_time" size="20"
                     value="<?php echo I('get.goods_add_start_time');?>"/>
-            到<input id="ta" type="text" name="goods_add_end_time" size="20" value="<?php echo I('get.goods_add_end_time');?>"/>
+            到<input id="ta" type="text" name="goods_add_end_time" size="20"
+                    value="<?php echo I('get.goods_add_end_time');?>"/>
         </p>
         <p>
             排序方式:
@@ -49,6 +50,7 @@
         <table cellpadding="3" cellspacing="1">
             <tr>
                 <th>编号</th>
+                <th>品牌</th>
                 <th>商品名称</th>
                 <th>logo</th>
                 <th>市场价格</th>
@@ -60,6 +62,13 @@
             <?php foreach($listData as $k=>$v):?>
             <tr class="tron">
                 <td align="center"><?php echo $v['id'];?></td>
+                <td align="center">
+                    <?php foreach($brandData as $key => $value):?>
+                        <?php if($value['id']==$v['brand_id']): ?>
+                            <?php echo $value['brand_name'];?>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </td>
                 <td align="center" class="first-cell"><span><?php echo $v['goods_name'];?></span></td>
                 <td align="center"><img src="/Public/Uploads/<?php echo($v['sm_logo']);?>"/></td>
                 <td align="center"><?php echo $v['market_price']; ?></td>
@@ -89,12 +98,16 @@
 
 <!-- 引入时间插件 -->
 <script type="text/javascript" src="<?php echo C('DATETIMEPICKER_URL');?>/jquery-1.7.2.min.js"></script>
-<link href="<?php echo C('DATETIMEPICKER_URL');?>/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" charset="utf-8" src="<?php echo C('DATETIMEPICKER_URL');?>/jquery-ui-1.9.2.custom.min.js"></script>
+<link href="<?php echo C('DATETIMEPICKER_URL');?>/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" charset="utf-8"
+        src="<?php echo C('DATETIMEPICKER_URL');?>/jquery-ui-1.9.2.custom.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="<?php echo C('DATETIMEPICKER_URL');?>/datepicker-zh_cn.js"></script>
-<link rel="stylesheet" media="all" type="text/css" href="<?php echo C('DATETIMEPICKER_URL');?>/time/jquery-ui-timepicker-addon.min.css" />
-<script type="text/javascript" src="<?php echo C('DATETIMEPICKER_URL');?>/time/jquery-ui-timepicker-addon.min.js"></script>
-<script type="text/javascript" src="<?php echo C('DATETIMEPICKER_URL');?>/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+<link rel="stylesheet" media="all" type="text/css"
+      href="<?php echo C('DATETIMEPICKER_URL');?>/time/jquery-ui-timepicker-addon.min.css"/>
+<script type="text/javascript"
+        src="<?php echo C('DATETIMEPICKER_URL');?>/time/jquery-ui-timepicker-addon.min.js"></script>
+<script type="text/javascript"
+        src="<?php echo C('DATETIMEPICKER_URL');?>/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
 <script>
     // 添加时间插件
     $.timepicker.setDefaults($.timepicker.regional['zh-CN']);  // 设置使用中文
@@ -104,10 +117,10 @@
 
     <!-- 引入行高亮显示 -->
     $('.tron').mouseover(function () {
-        $(this).find('td').css('backgroundColor','#DEE7F5');
+        $(this).find('td').css('backgroundColor', '#DEE7F5');
     });
     $('.tron').mouseout(function () {
-        $(this).find('td').css('backgroundColor','#fff');
+        $(this).find('td').css('backgroundColor', '#fff');
     })
 </script>
 

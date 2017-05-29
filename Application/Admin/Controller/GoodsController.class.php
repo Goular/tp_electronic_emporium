@@ -104,8 +104,15 @@ class GoodsController extends Controller
             'listData' => $data['data'],
             'page' => $data['page']
         ));
+
+        //获取所有的品牌
+        $brandModel = D('brand');
+        //获取品牌数据
+        $brandData = $brandModel->select();
+
         // 设置页面信息
         $this->assign(array(
+            'brandData'=>$brandData,
             '_page_title' => '商品列表',
             '_page_btn_name' => '商品添加',
             '_page_btn_link' => U('add'),
