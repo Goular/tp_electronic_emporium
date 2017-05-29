@@ -25,8 +25,7 @@ class GoodsModel extends Model
     {
         /**************** 处理LOGO *******************/
         // 判断有没有选择图片
-        if($_FILES['logo']['error'] == 0)
-        {
+        if ($_FILES['logo']['error'] == 0) {
             $ret = uploadOne('logo', 'Goods', array(
                 array(700, 700),
                 array(350, 350),
@@ -51,8 +50,7 @@ class GoodsModel extends Model
         $id = $options['where']['id'];  // 要修改的商品的ID
         /**************** 处理LOGO *******************/
         // 判断有没有选择图片
-        if($_FILES['logo']['error'] == 0)
-        {
+        if ($_FILES['logo']['error'] == 0) {
             $ret = uploadOne('logo', 'Goods', array(
                 array(700, 700),
                 array(350, 350),
@@ -86,6 +84,7 @@ class GoodsModel extends Model
 
     /**
      * 搜索商品内容，可以实现翻页，搜索和排序的操作
+     * __WORK__和 __CARD__在最终解析的时候会转换为 think_work和 think_card。
      */
     public function search($perPage = 3)
     {
@@ -95,29 +94,29 @@ class GoodsModel extends Model
         // 商品名称
         $gn = I('get.goods_name');
         if ($gn)
-            $where['goods_name'] = array('like', "%$gn%");  // WHERE goods_name LIKE '%$gn%'
+            $where['a.goods_name'] = array('like', "%$gn%");  // WHERE goods_name LIKE '%$gn%'
         // 价格
         $fp = I('get.goods_low_price');
         $tp = I('get.goods_high_price');
         if ($fp && $tp)
-            $where['shop_price'] = array('between', array($fp, $tp)); // WHERE shop_price BETWEEN $fp AND $tp
+            $where['a.shop_price'] = array('between', array($fp, $tp)); // WHERE shop_price BETWEEN $fp AND $tp
         elseif ($fp)
-            $where['shop_price'] = array('egt', $fp);   // WHERE shop_price >= $fp
+            $where['a.shop_price'] = array('egt', $fp);   // WHERE shop_price >= $fp
         elseif ($tp)
-            $where['shop_price'] = array('elt', $tp);   // WHERE shop_price <= $fp
+            $where['a.shop_price'] = array('elt', $tp);   // WHERE shop_price <= $fp
         // 是否上架
         $ios = I('get.ios');
         if ($ios)
-            $where['is_on_sale'] = array('eq', $ios);  // WHERE is_on_sale = $ios
+            $where['a.is_on_sale'] = array('eq', $ios);  // WHERE is_on_sale = $ios
         // 添加时间
         $fa = I('get.goods_add_start_time');
         $ta = I('get.goods_add_end_time');
         if ($fa && $ta)
-            $where['addtime'] = array('between', array($fa, $ta)); // WHERE shop_price BETWEEN $fp AND $tp
+            $where['a.addtime'] = array('between', array($fa, $ta)); // WHERE shop_price BETWEEN $fp AND $tp
         elseif ($fa)
-            $where['addtime'] = array('egt', $fa);   // WHERE shop_price >= $fp
+            $where['a.addtime'] = array('egt', $fa);   // WHERE shop_price >= $fp
         elseif ($ta)
-            $where['addtime'] = array('elt', $ta);   // WHERE shop_price <= $fp
+            $where['a.addtime'] = array('elt', $ta);   // WHERE shop_price <= $fp
 
 
         /*************** 翻页 ****************/
@@ -134,7 +133,7 @@ class GoodsModel extends Model
         $pageString = $pageObj->show();
 
         /***************** 排序 *****************/
-        $orderby = 'id';      // 默认的排序字段
+        $orderby = 'a.id';      // 默认的排序字段
         $orderway = 'desc';   // 默认的排序方式
         $odby = I('get.odby');
         if ($odby) {
@@ -149,10 +148,16 @@ class GoodsModel extends Model
         }
 
         /************** 取某一页的数据 ***************/
+        //select a.* , b.brand_name from p39_goods a
+        //left join b p39_brand
+        //on a.brand_id = b.id
         $data = $this->order("$orderby $orderway")// 排序
-        ->where($where)// 搜索
-        ->limit($pageObj->firstRow . ',' . $pageObj->listRows)// 翻页
-        ->select();
+            ->field('a.* , b.brand_name')
+            ->alias('a')
+            ->join('left join __BRAND__ b ON a.brand_id = b.id')//添加join
+            ->where($where)// 搜索
+            ->limit($pageObj->firstRow . ',' . $pageObj->listRows)// 翻页
+            ->select();
 
         /************** 返回数据 ******************/
         return array(
