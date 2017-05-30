@@ -127,3 +127,14 @@ function buildSelect($tableName, $selectName, $valueFieldName, $textFieldName, $
     $select .= '</select>';
     echo $select;
 }
+
+/**
+ * 格式化显示var_dump()
+ */
+function formatVarDump($obj)
+{
+    echo "<pre>";
+    var_dump($obj);
+    echo "</pre>";
+    exit();
+}

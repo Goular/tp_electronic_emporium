@@ -85,9 +85,13 @@ class GoodsController extends Controller
         //获取品牌数据
         $brandData = $brandModel->select();
 
+        //获取会员级别
+        $mLModel = D('member_level');
+        $memberLevelData = $mLModel->select();
 
         // 设置页面信息
         $this->assign(array(
+            'mlData' => $memberLevelData,
             'brandData' => $brandData,
             '_page_title' => '修改商品',
             '_page_btn_name' => '商品列表',
