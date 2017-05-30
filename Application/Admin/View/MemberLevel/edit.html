@@ -5,22 +5,22 @@
         <input type="hidden" name="old_logo" value="<?php echo $data['logo']; ?>"/>
         <table cellspacing="1" cellpadding="3" width="100%">
             <tr>
-                <td class="label">品牌名称：</td>
+                <td class="label">级别名称：</td>
                 <td>
-                    <input type="text" name="brand_name" value="<?php echo $data['brand_name']; ?>"/>
+                    <input type="text" name="level_name" value="<?php echo $data['level_name'];?>"/>
                 </td>
             </tr>
             <tr>
-                <td class="label">官方网址：</td>
+                <td class="label">积分下限：</td>
                 <td>
-                    <input type="text" name="site_url" value="<?php echo $data['site_url']; ?>"/>
+                    <input type="text" name="jifen_bottom" value="<?php echo $data['jifen_bottom'];?>"/>
                 </td>
             </tr>
             <tr>
-                <td class="label">品牌Logo：</td>
+                <td class="label">积分上限：</td>
                 <td>
-                    <input type="file" name="logo"/><br/>
-                    <?php showImage($data['logo'], 100); ?>                </td>
+                    <input type="text" name="jifen_top" value="<?php echo $data['jifen_top'];?>"/>
+                </td>
             </tr>
             <tr>
                 <td colspan="99" align="center">

@@ -34,7 +34,7 @@ class MemberLevelController extends Controller
             $model = D('MemberLevel');
             if ($model->create(I('post.'), 2)) {
                 if ($model->save() !== FALSE) {
-                    $this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
+                    $this->success('修改成功！', U('lst'));
                     exit;
                 }
             }
