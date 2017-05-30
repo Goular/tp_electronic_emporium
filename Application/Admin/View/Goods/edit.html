@@ -47,7 +47,14 @@
                     <td class="label">会员价格：</td>
                     <td>
                         <?php foreach($mlData as $k => $v):?>
-                        <?php echo $v['level_name']?>:&nbsp;¥&nbsp;<input type="text" name="member_price[<?php echo $v['id'];?>]" size="8"/>元<br/>
+                        <?php echo $v['level_name']?>:&nbsp;¥&nbsp;<input type="text"
+                                                                          name="member_price[<?php echo $v['id'];?>]"
+                        <?php foreach($mpData as $k2 => $v2):?>
+                        <?php if($v2['level_id'] == $v['id']):?>
+                        <?php echo "value='".$v2['price']."'";?>
+                        <?php endif;?>
+                        <?php endforeach;?>
+                        size="8"/>元<br/>
                         <?php endforeach;?>
                     </td>
                 </tr>

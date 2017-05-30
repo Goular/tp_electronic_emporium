@@ -89,8 +89,13 @@ class GoodsController extends Controller
         $mLModel = D('member_level');
         $memberLevelData = $mLModel->select();
 
+        //获取会员价格
+        $mpModel = D('member_price');
+        $memberPriceData = $mpModel->goodsIdPrices($id);
+
         // 设置页面信息
         $this->assign(array(
+            'mpData' => $memberPriceData,
             'mlData' => $memberLevelData,
             'brandData' => $brandData,
             '_page_title' => '修改商品',

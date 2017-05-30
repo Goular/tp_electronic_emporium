@@ -169,4 +169,27 @@ class GoodsModel extends Model
             'page' => $pageString,  // 翻页字符串
         );
     }
+
+    /**
+     * 插入之后内容操作
+     * @param $data
+     * @param $options
+     */
+    protected function _after_insert($data, $options)
+    {
+        $mp = I('post.member_price');
+        $mpModel = D('member_price');
+        foreach ($mp as $k => $v) {
+            $_v = (float)$v;
+            if ($_v > 0) {
+                $mpModel->add(array(
+                    'price' => $_v,
+                    'level_id' => $k,
+                    'goods_id' => $data['id']
+                ));
+            }
+        }
+    }
+
+
 }
