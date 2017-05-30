@@ -41,10 +41,14 @@ class GoodsController extends Controller
         //获取品牌数据
         $brandData = $brandModel->select();
 
+        //获取会员级别
+        $mLModel = D('member_level');
+        $memberLevelData = $mLModel->select();
 
         // 设置页面信息
         $this->assign(array(
-            'brandData'=>$brandData,
+            'mlData' => $memberLevelData,
+            'brandData' => $brandData,
             '_page_title' => '修改添加',
             '_page_btn_name' => '商品列表',
             '_page_btn_link' => U('lst'),
@@ -84,7 +88,7 @@ class GoodsController extends Controller
 
         // 设置页面信息
         $this->assign(array(
-            'brandData'=>$brandData,
+            'brandData' => $brandData,
             '_page_title' => '修改商品',
             '_page_btn_name' => '商品列表',
             '_page_btn_link' => U('lst'),
@@ -112,7 +116,7 @@ class GoodsController extends Controller
 
         // 设置页面信息
         $this->assign(array(
-            'brandData'=>$brandData,
+            'brandData' => $brandData,
             '_page_title' => '商品列表',
             '_page_btn_name' => '商品添加',
             '_page_btn_link' => U('add'),
@@ -126,9 +130,9 @@ class GoodsController extends Controller
     public function delete()
     {
         $model = D('goods');
-        if(FALSE !== $model->delete(I('get.id')))
+        if (FALSE !== $model->delete(I('get.id')))
             $this->success('删除成功！', U('lst'));
         else
-            $this->error('删除失败！原因：'.$model->getError());
+            $this->error('删除失败！原因：' . $model->getError());
     }
 }
