@@ -46,16 +46,16 @@
                         <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="label">会员价格：</td>
-                    <td>
-                        <?php foreach($mlData as $k => $v):?>
-                        <?php echo $v['level_name']?>:&nbsp;¥&nbsp;<input type="text"
-                                                                          name="member_price[<?php echo $v['id'];?>]"
-                                                                          size="8"/>元<br/>
-                        <?php endforeach;?>
-                    </td>
-                </tr>
+                <!--<tr>-->
+                <!--<td class="label">会员价格：</td>-->
+                <!--<td>-->
+                <!--<?php foreach($mlData as $k => $v):?>-->
+                <!--<?php echo $v['level_name']?>:&nbsp;¥&nbsp;<input type="text"-->
+                <!--name="member_price[<?php echo $v['id'];?>]"-->
+                <!--size="8"/>元<br/>-->
+                <!--<?php endforeach;?>-->
+                <!--</td>-->
+                <!--</tr>-->
                 <tr>
                     <td class="label">是否上架：</td>
                     <td>
@@ -76,8 +76,7 @@
             <table width="90%" id="detail-table" style="display: none;">
                 <tbody>
                 <tr>
-                    <td class="label">商品描述：</td>
-                    <td>
+                    <td class="label">
                         <textarea id="goods_desc" name="goods_desc" cols="40" rows="3"></textarea>
                     </td>
                 </tr>
@@ -86,7 +85,17 @@
 
             <!-- 会员价格 -->
             <table width="90%" id="mix-table" style="display: none;" align="center">
-                <tbody></tbody>
+                <tbody>
+                <tr>
+                    <td align="center" width="200">
+                        <?php foreach($mlData as $k => $v):?>
+                        <?php echo $v['level_name']?>:&nbsp;¥&nbsp;<input type="text"
+                                                                          name="member_price[<?php echo $v['id'];?>]"
+                                                                          size="8"/>元<br/>
+                        <?php endforeach;?>
+                    </td>
+                </tr>
+                </tbody>
             </table>
 
             <!-- 商品属性 -->
