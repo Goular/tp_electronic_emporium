@@ -138,3 +138,24 @@ function formatVarDump($obj)
     echo "</pre>";
     exit();
 }
+
+/**
+ * 让多文件上传过来的数组从原来的分开归集种类，变为向单一上传文件的数组
+ */
+function formatUploadFiles($arrayName)
+{
+    $arrFiles = $_FILES[$arrayName];
+    $fileNum = count($arrFiles);
+    if ($fileNum == 1) {
+        $files = $arrFiles;
+    } else {
+        for ($i = 0; $i < $fileNum; $i++) {
+            $files[$i]['name'] = $arrFiles['name'][$i];
+            $files[$i]['type'] = $arrFiles['type'][$i];
+            $files[$i]['tmp_name'] = $arrFiles['tmp_name'][$i];
+            $files[$i]['error'] = $arrFiles['error'][$i];
+            $files[$i]['size'] = $arrFiles['size'][$i];
+        }
+    }
+    return $files;
+}

@@ -90,6 +90,36 @@ class GoodsModel extends Model
                 ));
             }
         }
+
+        /****************************** 添加商品图片集 ******************************/
+        $gpModel = M('goods_pic');
+        //删除原来的指定商品ID的所有图片
+        $gpModel->where(array("goods_id" => array('eq', $data['id'])))->delete();
+        //上传新的内容
+
+        $arrFiles = formatUploadFiles('goods_pics');
+
+        if (isset($arrFiles) && count($arrFiles) > 0) {
+            echo "11222";
+            foreach ($arrFiles as $k => $v) {
+                if ($v['error'] == 0) {
+                    $ret = uploadOne($v, 'Goods', array(
+                        array(650, 650),
+                        array(350, 350),
+                        array(50, 50)
+                    ));
+                    if ($ret['ok'] == 1) {
+                        $gpModel->add(array(
+                            'pic' => $ret['images'][0],
+                            'big_pic' => $ret['images'][1],
+                            'mid_pic' => $ret['images'][2],
+                            'sm_pic' => $ret['images'][3],
+                            'goods_id' => $data['id']
+                        ));
+                    }
+                }
+            }
+        }
     }
 
     protected function _before_delete($options)
