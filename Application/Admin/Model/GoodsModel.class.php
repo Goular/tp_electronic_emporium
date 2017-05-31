@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Model;
 
+use Think\Cache\Driver\Db;
 use Think\Image;
 use Think\Model;
 
@@ -79,6 +80,10 @@ class GoodsModel extends Model
         // 先查询出原来图片的路径
         $oldLogo = $this->field('logo,mbig_logo,big_logo,mid_logo,sm_logo')->find($id);
         deleteImage($oldLogo);
+
+        /*********************** 删除会员价格 **************************/
+        $mpModel = D('member_price');
+        $mpModel->where(array('goods_id' => array('eq', $id)))->delete();
     }
 
 
