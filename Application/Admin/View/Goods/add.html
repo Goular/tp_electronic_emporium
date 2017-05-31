@@ -106,6 +106,20 @@
                         <input type="file" name="logo" size="60"/>
                     </td>
                 </tr>
+                <tr>
+                    <td class="label">商品展示图片：</td>
+                    <td>
+                        <ul id="ul_add_pic" style="list-style: none;">
+                            <li><input type="file" name="goods_pics[]"/></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">操作:</td>
+                    <td>
+                        <input id="btn_add_pic" type="button" value="添加一张"/>
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
@@ -214,5 +228,11 @@
     var um = UM.getEditor('goods_desc', {
         initialFrameWidth: "100%",//初始化编辑器宽度,默认500
         initialFrameHeight: 500  //初始化编辑器高度,默认500
+    });
+</script>
+<script>
+    $('#btn_add_pic').click(function () {
+        var file = '<li><input type="file" name="goods_pics[]"/></li>';
+        $('#ul_add_pic').append(file);
     });
 </script>

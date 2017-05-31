@@ -95,6 +95,52 @@ function uploadOne($imgName, $dirName, $thumb = array())
 }
 
 /**
+ * 上传一个图片文件到指定的地方
+ * @param $imgFileInfo 图片文件的信息
+ * @param $dirName
+ * @param array $thumb
+ * @return array
+ */
+function uploadImageFile($imgFileInfo, $dirName, $thumb = array())
+{
+    $imgName = $imgFileInfo['name'];
+    // 上传LOGO
+    if (isset($imgFileInfo) && $imgFileInfo['error'] == 0) {
+        $ic = C('IMAGE_CONFIG');
+        $upload = new \Think\Upload(array(
+            'rootPath' => $ic['rootPath'],
+            'maxSize' => $ic['maxSize'],
+            'exts' => $ic['exts'],
+        ));// 实例化上传类
+        $upload->savePath = $dirName . '/'; // 图片二级目录的名称
+        // 上传文件
+        // 上传时指定一个要上传的图片的名称，否则会把表单中所有的图片都处理，之后再想其他图片时就再找不到图片了
+        $info = $upload->upload(array($imgName => $imgFileInfo));
+        if (!$info) {
+            return array(
+                'ok' => 0,
+                'error' => $upload->getError(),
+            );
+        } else {
+            $ret['ok'] = 1;
+            $ret['images'][0] = $logoName = $info[$imgName]['savepath'] . $info[$imgName]['savename'];
+            // 判断是否生成缩略图
+            if ($thumb) {
+                $image = new \Think\Image();
+                // 循环生成缩略图
+                foreach ($thumb as $k => $v) {
+                    $ret['images'][$k + 1] = $info[$imgName]['savepath'] . 'thumb_' . $k . '_' . $info[$imgName]['savename'];
+                    // 打开要处理的图片
+                    $image->open($ic['rootPath'] . $logoName);
+                    $image->thumb($v[0], $v[1])->save($ic['rootPath'] . $ret['images'][$k + 1]);
+                }
+            }
+            return $ret;
+        }
+    }
+}
+
+/**
  * 展示相关的图片
  */
 function showImage($url, $width = '', $height = '')

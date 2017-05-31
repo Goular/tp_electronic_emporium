@@ -93,17 +93,14 @@ class GoodsModel extends Model
 
         /****************************** 添加商品图片集 ******************************/
         $gpModel = M('goods_pic');
-        //删除原来的指定商品ID的所有图片
-        $gpModel->where(array("goods_id" => array('eq', $data['id'])))->delete();
-        //上传新的内容
-
+        //上传新的数组内容
         $arrFiles = formatUploadFiles('goods_pics');
-
         if (isset($arrFiles) && count($arrFiles) > 0) {
-            echo "11222";
+            //删除原来的指定商品ID的所有图片
+            $gpModel->where(array("goods_id" => array('eq', $id)))->delete();
             foreach ($arrFiles as $k => $v) {
                 if ($v['error'] == 0) {
-                    $ret = uploadOne($v, 'Goods', array(
+                    $ret = uploadImageFile($v, 'Goods', array(
                         array(650, 650),
                         array(350, 350),
                         array(50, 50)
@@ -114,7 +111,7 @@ class GoodsModel extends Model
                             'big_pic' => $ret['images'][1],
                             'mid_pic' => $ret['images'][2],
                             'sm_pic' => $ret['images'][3],
-                            'goods_id' => $data['id']
+                            'goods_id' => $id
                         ));
                     }
                 }
@@ -241,6 +238,33 @@ class GoodsModel extends Model
                     'level_id' => $k,
                     'goods_id' => $data['id']
                 ));
+            }
+        }
+
+        /****************************** 添加商品图片集 ******************************/
+        $gpModel = M('goods_pic');
+        //上传新的数组内容
+        $arrFiles = formatUploadFiles('goods_pics');
+        if (isset($arrFiles) && count($arrFiles) > 0) {
+            //删除原来的指定商品ID的所有图片
+            $gpModel->where(array("goods_id" => array('eq', $data['id'])))->delete();
+            foreach ($arrFiles as $k => $v) {
+                if ($v['error'] == 0) {
+                    $ret = uploadImageFile($v, 'Goods', array(
+                        array(650, 650),
+                        array(350, 350),
+                        array(50, 50)
+                    ));
+                    if ($ret['ok'] == 1) {
+                        $gpModel->add(array(
+                            'pic' => $ret['images'][0],
+                            'big_pic' => $ret['images'][1],
+                            'mid_pic' => $ret['images'][2],
+                            'sm_pic' => $ret['images'][3],
+                            'goods_id' => $data['id']
+                        ));
+                    }
+                }
             }
         }
     }
