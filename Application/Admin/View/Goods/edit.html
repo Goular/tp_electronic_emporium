@@ -118,6 +118,22 @@
                 <tr>
                     <td class="label">商品展示图片：</td>
                     <td>
+                        <ul style="list-style: none">
+                            <?php foreach($gpData as $k => $v):?>
+                            <li style="margin-right: 10px;margin-top:10px; width: 60px;">
+                                <img style="float: left;" src="/Public/Uploads/<?php echo $v['sm_pic']?>" sizes="60"/>
+                                <button class="btn_del_pic" style="float: left;align:center;"
+                                      gid-value="<?php echo $v['id'];?>">删除
+                                </button>
+                            </li>
+                            <div style="clear: both;"></div>
+                            <?php endforeach;?>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">添加商品展示图片：</td>
+                    <td>
                         <ul id="ul_add_pic" style="list-style: none;">
                             <li><input type="file" name="goods_pics[]"/></li>
                         </ul>
@@ -243,5 +259,18 @@
     $('#btn_add_pic').click(function () {
         var file = '<li><input type="file" name="goods_pics[]"/></li>';
         $('#ul_add_pic').append(file);
+    });
+    $('.btn_del_pic').click(event,function () {
+        var li = $(this).parent();
+        var pid = $(this).attr('gid-value');
+        alert(pid);
+        $.ajax({
+            type: "GET",
+            url: '<?php echo U("deleteImg","",FALSE)?>' + "/picid/" + pid,
+            success: function (data) {
+                li.remove();
+            }
+        });
+        event.preventDefault();
     });
 </script>

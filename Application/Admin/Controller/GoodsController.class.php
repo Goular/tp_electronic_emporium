@@ -93,8 +93,13 @@ class GoodsController extends Controller
         $mpModel = D('member_price');
         $memberPriceData = $mpModel->goodsIdPrices($id);
 
+        //获取商品图片
+        $gpModel = D('goods_pic');
+        $goodsPicData = $gpModel->where(array("goods_id" => array('eq', $id)))->select();
+
         // 设置页面信息
         $this->assign(array(
+            'gpData' => $goodsPicData,
             'mpData' => $memberPriceData,
             'mlData' => $memberLevelData,
             'brandData' => $brandData,
@@ -143,5 +148,20 @@ class GoodsController extends Controller
             $this->success('删除成功！', U('lst'));
         else
             $this->error('删除失败！原因：' . $model->getError());
+    }
+
+    /**
+     * 删除指定商品的指定图片
+     */
+    public function deleteImg()
+    {
+        $id = I('get.picid');
+        $gpModel = D('goods_pic');
+        $ret = $gpModel->where(array('id' => array("eq", $id)))->delete();
+        if ($ret) {
+            echo "删除成功!";
+        } else {
+            echo "删除失败!";
+        }
     }
 }
