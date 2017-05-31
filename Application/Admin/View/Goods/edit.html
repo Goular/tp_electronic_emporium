@@ -69,8 +69,8 @@
             <table width="90%" id="detail-table" style="display: none;">
                 <tbody>
                 <tr>
-                    <td class="label">
-                        <textarea id="goods_desc" name="goods_desc" cols="40" rows="3"></textarea>
+                    <td align="center">
+                        <textarea id="goods_desc" name="goods_desc"><?php echo $data['goods_desc']; ?></textarea>
                     </td>
                 </tr>
                 </tbody>
@@ -84,7 +84,12 @@
                         <?php foreach($mlData as $k => $v):?>
                         <?php echo $v['level_name']?>:&nbsp;¥&nbsp;<input type="text"
                                                                           name="member_price[<?php echo $v['id'];?>]"
-                                                                          size="8"/>元<br/>
+                        <?php foreach($mpData as $k2 => $v2):?>
+                        <?php if($v2['level_id'] == $v['id']):?>
+                        <?php echo "value='".$v2['price']."'";?>
+                        <?php endif;?>
+                        <?php endforeach;?>
+                        size="8"/>元<br/>
                         <?php endforeach;?>
                     </td>
                 </tr>
