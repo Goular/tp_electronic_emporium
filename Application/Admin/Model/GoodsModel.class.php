@@ -71,6 +71,25 @@ class GoodsModel extends Model
 
         // 我们自己来过滤这个字段
         $data['goods_desc'] = removeXSS($_POST['goods_desc']);
+
+
+        /********************处理商品在各种会员级别定出的价格********************/
+        $mp = I('post.member_price');
+        $mpModel = D('member_price');
+        //先删除原来的价格
+        $mpModel->where(array(
+            'goods_id' => array('eq', $id)
+        ))->delete();
+        foreach ($mp as $key => $value) {
+            $_v = (float)$value;
+            if ($_v > 0) {
+                $mpModel->add(array(
+                    'price' => $_v,
+                    'level_id' => $key,
+                    'goods_id' => $id
+                ));
+            }
+        }
     }
 
     protected function _before_delete($options)
@@ -181,6 +200,27 @@ class GoodsModel extends Model
      * @param $options
      */
     protected function _after_insert($data, $options)
+    {
+        $mp = I('post.member_price');
+        $mpModel = D('member_price');
+        foreach ($mp as $k => $v) {
+            $_v = (float)$v;
+            if ($_v > 0) {
+                $mpModel->add(array(
+                    'price' => $_v,
+                    'level_id' => $k,
+                    'goods_id' => $data['id']
+                ));
+            }
+        }
+    }
+
+    /**
+     * 修改之后的操作
+     * @param $data
+     * @param $options
+     */
+    protected function _after_update($data, $options)
     {
         $mp = I('post.member_price');
         $mpModel = D('member_price');

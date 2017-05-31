@@ -14,7 +14,8 @@
 
     <!-- tab body -->
     <div id="tabbody-div">
-        <form enctype="multipart/form-data" action="__ROOT__/admin/goods/add" method="post" name="theForm">
+        <form enctype="multipart/form-data" action="__SELF__" method="post" name="theForm">
+            <input type="hidden" name="id" value="<?php echo $data['id']?>"/>
             <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 
             <!-- 通用信息 -->
@@ -58,8 +59,10 @@
                 <tr>
                     <td class="label">是否上架：</td>
                     <td>
-                        <input type="radio" name="is_on_sale" value="是"/> 是
-                        <input type="radio" name="is_on_sale" value="否"/> 否
+                        <input type="radio" value="是"
+                               name="is_on_sale" <?php if($data['is_on_sale']=='是') echo "checked";?>/>是
+                        <input type="radio" value="否"
+                               name="is_on_sale" <?php if($data['is_on_sale']=='否') echo "checked";?>/>否
                     </td>
                 </tr>
                 </tbody>
