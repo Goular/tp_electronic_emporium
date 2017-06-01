@@ -153,7 +153,7 @@ class GoodsController extends Controller
     /**
      * 删除指定商品的指定图片
      */
-    public function deleteImg()
+    public function ajaxDelPic()
     {
         $id = I('get.picid');
         $gpModel = D('goods_pic');

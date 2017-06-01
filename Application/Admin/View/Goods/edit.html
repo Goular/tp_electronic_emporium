@@ -266,7 +266,7 @@
         alert(pid);
         $.ajax({
             type: "GET",
-            url: '<?php echo U("deleteImg","",FALSE)?>' + "/picid/" + pid,
+            url: '<?php echo U("ajaxDelPic","",FALSE)?>' + "/picid/" + pid,
             success: function (data) {
                 li.remove();
             }
