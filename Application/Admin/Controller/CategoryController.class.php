@@ -11,8 +11,8 @@ class CategoryController extends Controller
      */
     public function add()
     {
+        $model = D('Category');
         if (IS_POST) {
-            $model = D('Category');
             if ($model->create(I('post.'), Model::MODEL_INSERT)) {
                 if ($model->add()) {
                     $this->success('添加商品分类成功!', U('lst'));
@@ -21,8 +21,13 @@ class CategoryController extends Controller
             }
             $this->error($model->getError());
         }
+
+        //获取当前所有的分类
+        $catDatas = $model->getChildren();
+
         // 设置页面信息
         $this->assign(array(
+            'catData' => $catDatas,
             '_page_title' => '分类添加',
             '_page_btn_name' => '分类列表',
             '_page_btn_link' => U('lst'),

@@ -2,10 +2,21 @@
 <div class="main-div">
     <form action="__SELF__" method="post" name="theForm" enctype="multipart/form-data">
         <table cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td class="label">商品分类名称:</td>
+                <td>
+                    <select>
+                        <option value="0">顶级分类</option>
+                        <?php foreach($catData as $key => $value):?>
+                        <option value="<?php echo $value['id']?>"><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
+                        <?php endforeach;?>
+                    </select>
+                </td>
+            </tr>
             <tr align="center">
                 <td class="label">商品分类名称:</td>
                 <td align="left">
-                    <input  type='text' name='cat_name' maxlength="20" value='' size='27'/> <font color="red">*</font>
+                    <input type='text' name='cat_name' maxlength="20" value='' size='27'/> <font color="red">*</font>
                 </td>
             </tr>
         </table>
