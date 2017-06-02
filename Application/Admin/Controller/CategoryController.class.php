@@ -54,12 +54,16 @@ class CategoryController extends Controller
         //获取全部分类的资料
         $catDatas = $model->getChildren();
 
+        //获取相关分类ID的所有子类分类
+        $catChildrenData = $model->getChildrenOnlyNumber($id);
+
         //获取指定ID的分类的内容(一个内容即可)
         $catObj = $model->where(array('id' => array('eq', $id)))->find();
 
         // 设置页面信息
         $this->assign(array(
             'catObj' => $catObj,
+            'catChildrenData' => $catChildrenData,
             'catData' => $catDatas,
             '_page_title' => '分类修改',
             '_page_btn_name' => '分类列表',

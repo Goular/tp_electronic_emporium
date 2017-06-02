@@ -1,18 +1,27 @@
 <layout name="Layout/layout"/>
 <div class="main-div">
     <form action="__SELF__" method="post" name="theForm" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $catObj['id'];?>">
         <table cellpadding="0" cellspacing="0" width="100%">
             <tr>
                 <td class="label">商品分类名称:</td>
                 <td>
+                    <!--这个位置需要注意的是，自己下属的子分类和自己是不能显示的，不然就会出现死循环，自己闭环，然后没有形成分类的树状形式,会内存溢出-->
                     <select name="parent_id">
-                        <option value="0" <?php if($catObj['parent_id']==0) echo 'selected="selected"'?>>顶级分类</option>
-                        <?php foreach($catData as $key => $value):?>
-                            <?php if($catObj['id']!=$value['id']):?>
-                                <option value="<?php echo $value['id']?>" <?php if($catObj['parent_id']==$value['id']) echo 'selected="selected"'?>>
-                                    <?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?>
-                                </option>
-                            <?php endif;?>
+                        <option value="0">顶级分类</option><!--这个可以不做IF判定，原因是这是第一个必定会显示出来，在没有任何被选择的情况下 -->
+                        <?php
+                            foreach($catData as $key => $value):
+                                if($catObj['id']==$value['id']||in_array($value['id'],$catChildrenData)) //防止自己绑定自己，或者是当前的下级绑定父节点是你，你的父节点是你的下级，这样会造成脱离顶级树状根节点的问题，这样就会死循环，找不到相关的分类内容
+                                    continue;
+                                if($catObj['parent_id']==$value['id'])
+                                    $selected = "selected=\'selected\'\;";
+                                else
+                                    $selected = '';
+                        ?>
+                        <option value="<?php echo $value['id']?>"
+                        <?php echo $selected;?>>
+                        <?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?>
+                        </option>
                         <?php endforeach;?>
                     </select>
                 </td>
