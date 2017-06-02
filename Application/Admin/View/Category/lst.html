@@ -1,22 +1,20 @@
 <layout name="Layout/layout"/>
-<form method="post" action="__SELF__" name="listForm">
-    <div class="list-div" id="listDiv">
-        <table width="100%" cellspacing="1" cellpadding="3" id="list-table">
-            <tr>
-                <th>分类名称</th>
-                <th>操作</th>
-            </tr>
-            <?php foreach($data as $key => $value):?>
-            <tr class="tron" align="center">
-                <td align="left" class="first-cell">
-                    <?php echo str_repeat('-',8*$value['level']).$value['cat_name']?>
-                </td>
-                <td width="30%" align="center">
-                    <a href="<?php echo U('edit',array('id'=>$value['id']))?>" title="编辑" onclick="">编辑</a> |
-                    <a href="<?php echo U('delete',array('id'=>$value['id']))?>" title="移除" onclick="">移除</a>
-                </td>
-            </tr>
-            <?php endforeach;?>
-        </table>
-    </div>
-</form>
+<div class="list-div" id="listDiv">
+    <table width="100%" cellspacing="1" cellpadding="3" id="list-table">
+        <tr>
+            <th>分类名称</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($data as $key => $value):?>
+        <tr class="tron" align="center">
+            <td align="left" class="first-cell">
+                <?php echo str_repeat('-',8*$value['level']).$value['cat_name']?>
+            </td>
+            <td width="30%" align="center">
+                <a href="<?php echo U('edit',array('id'=>$value['id']))?>" title="编辑" onclick="">编辑</a> |
+                <a href="<?php echo U('delete',array('id'=>$value['id']))?>" title="移除" onclick="">移除</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+    </table>
+</div>

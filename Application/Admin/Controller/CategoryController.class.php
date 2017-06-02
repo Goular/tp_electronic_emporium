@@ -56,6 +56,10 @@ class CategoryController extends Controller
      */
     public function delete()
     {
-
+        $cgModel = D('Category');
+        if (FALSE !== $cgModel->delete(I('get.id')))
+            $this->success('删除成功', U('lst'));
+        else
+            $this->error('删除成功!原因:' . $cgModel->getError());
     }
 }

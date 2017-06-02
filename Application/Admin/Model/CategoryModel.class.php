@@ -28,6 +28,17 @@ class CategoryModel extends Model
     }
 
     /**
+     *  仅仅返回以为数组的子类分类ID
+     */
+    public function getChildrenOnlyNumber($catId = 0)
+    {
+        //取出所有的分类
+        $data = $this->select();
+        //递归同时遍历所有的分类，并从中挑选指定ID的后代分类ID
+        return $this->__getChildrenOnlyNumber($data, $catId);
+    }
+
+    /**
      * 根据指定的分类ID搜索其所有的子类ID
      * 以二维数组(树状)的形式进行展示
      */
@@ -60,6 +71,25 @@ class CategoryModel extends Model
     }
 
     /**
+     * 递归算法，规矩全部的商品分类，返回一维的分类的排序信息，即父类子类会以同一纬度进行有序展示
+     * @param $catId
+     * @param $data
+     * @return array
+     */
+    private function __getChildrenOnlyNumber($data, $catId = 0)
+    {
+        //定义函数静态变量(这个静态区域仅限于函数范围内)
+        static $_ret = array();//static创建的函数变量创建一次
+        foreach ($data as $key => $value) {
+            if ($catId == $value['parent_id']) {
+                $_ret[] = $value['id'];
+                $this->__getChildren($data, $value['id']);
+            }
+        }
+        return $_ret;
+    }
+
+    /**
      * 递归算法，规矩全部的商品分类，返回二维的分类的排序信息，即树状形式有序展示
      * @param $catId
      * @param $data
@@ -80,5 +110,19 @@ class CategoryModel extends Model
             }
         }
         return $_ret;
+    }
+
+    /**
+     * 钩子方法(删除前执行)
+     */
+    protected function _before_delete($options)
+    {
+        //找到所有商品分类中所有子类的ID
+        $children = $this->getChildrenOnlyNumber($options['where']['id']);
+        if ($children) {
+            $children = implode(",", $children);
+            $model = M('Category');//不能使用D函数，不然又去调用当前类就会死循环，而M方法，仅仅会创建数据表的内容
+            $model->delete($children);
+        }
     }
 }
