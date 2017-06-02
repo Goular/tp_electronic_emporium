@@ -1,5 +1,5 @@
 <?php
-namespace Home\Model;
+namespace Admin\Model;
 
 use Think\Model;
 
@@ -36,7 +36,7 @@ class CategoryModel extends Model
         //循环所有的分类寻找子类
         foreach ($data as $key => $value) {
             if ($value['parent_id'] == $catId) {
-                $_ret[] = $value['id'];
+                $_ret[] = $value['cat_name'];
                 $this->_getChildren($data, $value['id']);
             }
         }

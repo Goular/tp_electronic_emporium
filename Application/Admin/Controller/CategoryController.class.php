@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 
 use Think\Controller;
 
@@ -10,7 +10,9 @@ class CategoryController extends Controller
      */
     public function lst()
     {
-
+        $cgModel = D('Category');
+        $ret = $cgModel->getChildren(0);
+        formatVarDump($ret);
     }
 
     /**
