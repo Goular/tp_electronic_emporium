@@ -17,27 +17,30 @@ class CategoryModel extends Model
 
     /**
      * 根据指定的分类ID搜索其所有的子类ID
+     * 以一维数组的形式进行展示
      */
     public function getChildren($catId)
     {
         //取出所有的分类
         $data = $this->select();
         //递归同时遍历所有的分类，并从中挑选指定ID的后代分类ID
-        return $this->_getChildren($data, $catId, TRUE);
+        return $this->__getChildren($catId, $data);
     }
 
     /**
-     * 利用递归的方法，从数据中寻找子类
+     * 递归算法，规矩全部的商品分类，返回一维的分类的排序信息，即父类子类会以同一纬度进行有序展示
+     * @param $catId
+     * @param $data
+     * @return array
      */
-    private function _getChildren($data, $catId, $isClear = FALSE)
+    private function __getChildren($catId, $data)
     {
-        static $_ret = array();
-        if ($isClear) $_ret = array();
-        //循环所有的分类寻找子类
+        //定义函数静态变量(这个静态区域仅限于函数范围内)
+        static $_ret = array();//static创建的函数变量创建一次
         foreach ($data as $key => $value) {
-            if ($value['parent_id'] == $catId) {
+            if ($catId == $value['parent_id']) {
                 $_ret[] = $value['cat_name'];
-                $this->_getChildren($data, $value['id']);
+                $this->__getChildren($value['id'], $data);
             }
         }
         return $_ret;
