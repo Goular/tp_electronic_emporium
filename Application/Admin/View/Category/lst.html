@@ -12,7 +12,7 @@
             </td>
             <td width="30%" align="center">
                 <a href="<?php echo U('edit',array('id'=>$value['id']))?>" title="编辑" onclick="">编辑</a> |
-                <a href="<?php echo U('delete',array('id'=>$value['id']))?>" title="移除" onclick="">移除</a>
+                <a href="<?php echo U('delete',array('id'=>$value['id']))?>" title="移除" onclick="return window.confirm('确定要移除分类吗?');">移除</a>
             </td>
         </tr>
         <?php endforeach;?>
