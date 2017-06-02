@@ -40,8 +40,27 @@ class CategoryController extends Controller
      */
     public function edit()
     {
+        $id = I('get.id');
+        $model = D('Category');
+        if (IS_POST) {
+            if ($model->create(I('p.'), 2)) {
+                if ($model->save()) {
+                    $this->success('修改成功!');
+                }
+            }
+            $this->error($model->getError());
+        }
+
+        //获取全部分类的资料
+        $catDatas = $model->getChildren();
+
+        //获取指定ID的分类的内容(一个内容即可)
+        $catObj = $model->where(array('id' => array('eq', $id)))->find();
+
         // 设置页面信息
         $this->assign(array(
+            'catObj' => $catObj,
+            'catData' => $catDatas,
             '_page_title' => '分类修改',
             '_page_btn_name' => '分类列表',
             '_page_btn_link' => U('lst'),
