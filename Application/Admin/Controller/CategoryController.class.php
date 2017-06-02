@@ -11,7 +11,8 @@ class CategoryController extends Controller
     public function lst()
     {
         $cgModel = D('Category');
-        $ret = $cgModel->getChildren(0);
+        //$ret = $cgModel->getChildren();
+        $ret = $cgModel->getTrees();
         formatVarDump($ret);
     }
 
