@@ -11,9 +11,11 @@ use Think\Model;
 class CategoryModel extends Model
 {
     //添加插入和更新的的校验内容
-//    protected $insertFields = array();
-//    protected $updateFields = array();
-//    protected $_validate = array();
+    protected $insertFields = array("cat_name", "parent_id");
+    protected $updateFields = array("id", "cat_name", "parent_id");
+    protected $_validate = array(
+        array("cat_name", "require", "商品分类名称必须填写", 1, "regex", self::MODEL_BOTH)
+    );
 
     /**
      * 根据指定的分类ID搜索其所有的子类ID
