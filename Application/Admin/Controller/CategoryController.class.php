@@ -10,10 +10,17 @@ class CategoryController extends Controller
      */
     public function lst()
     {
+        //获取排序好的队列
         $cgModel = D('Category');
-        //$ret = $cgModel->getChildren();
-        $ret = $cgModel->getTrees();
-        formatVarDump($ret);
+        $ret = $cgModel->getChildren();
+        // 设置页面信息
+        $this->assign(array(
+            'data' => $ret,
+            '_page_title' => '分类列表',
+            '_page_btn_name' => '添加分类',
+            '_page_btn_link' => U('add'),
+        ));
+        $this->display();
     }
 
     /**
@@ -21,7 +28,13 @@ class CategoryController extends Controller
      */
     public function add()
     {
-
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '分类添加',
+            '_page_btn_name' => '分类列表',
+            '_page_btn_link' => U('lst'),
+        ));
+        $this->display();
     }
 
     /**
@@ -29,7 +42,13 @@ class CategoryController extends Controller
      */
     public function edit()
     {
-
+        // 设置页面信息
+        $this->assign(array(
+            '_page_title' => '分类修改',
+            '_page_btn_name' => '分类列表',
+            '_page_btn_link' => U('lst'),
+        ));
+        $this->display();
     }
 
     /**
