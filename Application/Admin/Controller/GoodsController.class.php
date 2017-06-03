@@ -45,8 +45,13 @@ class GoodsController extends Controller
         $mLModel = D('member_level');
         $memberLevelData = $mLModel->select();
 
+        //获取商品分类
+        $cgModel = D('Category');
+        $catDatas = $cgModel->getChildren();
+
         // 设置页面信息
         $this->assign(array(
+            'catDatas' => $catDatas,
             'mlData' => $memberLevelData,
             'brandData' => $brandData,
             '_page_title' => '修改添加',
@@ -97,8 +102,14 @@ class GoodsController extends Controller
         $gpModel = D('goods_pic');
         $goodsPicData = $gpModel->where(array("goods_id" => array('eq', $id)))->select();
 
+        //获取商品分类
+        $cgModel = D('Category');
+        $catDatas = $cgModel->getChildren();
+
+
         // 设置页面信息
         $this->assign(array(
+            'catDatas' => $catDatas,
             'gpData' => $goodsPicData,
             'mpData' => $memberPriceData,
             'mlData' => $memberLevelData,

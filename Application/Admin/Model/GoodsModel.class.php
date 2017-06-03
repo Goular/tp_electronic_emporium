@@ -8,15 +8,17 @@ use Think\Model;
 class GoodsModel extends Model
 {
     // 添加时调用create方法允许接收的字段
-    protected $insertFields = 'goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id';
+    protected $insertFields = 'goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id,cat_id';
     // 修改时调用create方法允许接收的字段
-    protected $updateFields = 'id,goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id';
+    protected $updateFields = 'id,goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id,cat_id';
 
     //定义验证规则
     protected $_validate = array(
         array('goods_name', 'require', '商品名称不能为空！', 1),
         array('market_price', 'currency', '市场价格必须是货币类型！', 1),
         array('shop_price', 'currency', '本店价格必须是货币类型！', 1),
+        array('cat_id','require','必须选择主分类!',1),
+        array('brand_id','require','必须选择商品品牌!',1),
     );
 
     // 这个方法在添加之前会自动被调用 --》 钩子方法

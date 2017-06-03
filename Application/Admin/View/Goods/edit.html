@@ -22,6 +22,25 @@
             <table width="90%" id="general-table" align="center" style="display: table;">
                 <tbody>
                 <tr>
+                    <td class="label">商品分类:</td>
+                    <td>
+                        <!--添加商品的分类-->
+                        <select name="cat_id">
+                            <option value="">请选择分类</option>
+                            <?php foreach($catDatas as $key => $value):?>
+                            <option value="<?php echo $value['id'];?>"
+                            <?php
+                                    if($data['cat_id'] == $value['id'])
+                                        echo "selected = 'selected'";
+                                    else
+                                        echo "";
+                                ?>
+                            ><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td class="label">所在品牌：</td>
                     <td>
                         <?php buildSelect('brand','brand_id','id','brand_name',$data['brand_id']);?>
@@ -123,7 +142,7 @@
                             <li style="margin-right: 10px;margin-top:10px; width: 60px;">
                                 <img style="float: left;" src="/Public/Uploads/<?php echo $v['sm_pic']?>" sizes="60"/>
                                 <button class="btn_del_pic" style="float: left;align:center;"
-                                      gid-value="<?php echo $v['id'];?>">删除
+                                        gid-value="<?php echo $v['id'];?>">删除
                                 </button>
                             </li>
                             <div style="clear: both;"></div>
@@ -260,7 +279,7 @@
         var file = '<li><input type="file" name="goods_pics[]"/></li>';
         $('#ul_add_pic').append(file);
     });
-    $('.btn_del_pic').click(event,function () {
+    $('.btn_del_pic').click(event, function () {
         var li = $(this).parent();
         var pid = $(this).attr('gid-value');
         alert(pid);
