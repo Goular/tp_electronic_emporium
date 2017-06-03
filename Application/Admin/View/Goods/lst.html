@@ -19,7 +19,7 @@
                                     else
                                         echo "";
                                 ?>
-                ><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
+                ><?php echo str_repeat('-',8).$value['cat_name'].str_repeat('-',8);?></option>
                 <?php endforeach;?>
             </select>
         </p>
