@@ -1,9 +1,9 @@
 <layout name="Layout/layout"/>
 
 <style>
-.clear{
-    clear: both;
-}
+    .clear {
+        clear: both;
+    }
 </style>
 
 <div class="tab-div">
@@ -27,10 +27,10 @@
             <table width="90%" id="general-table" align="center" style="display: table;">
                 <tbody>
                 <tr>
-                    <td class="label">商品主分类: </td>
+                    <td class="label">商品主分类:</td>
                     <td>
                         <!--添加商品的分类-->
-                        <select name="cat_id">
+                        <select id="select_main_cat" name="cat_id">
                             <option value="">请选择主分类</option>
                             <?php foreach($catDatas as $key => $value):?>
                             <option value="<?php echo $value['id'];?>"><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
@@ -39,13 +39,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label">拓展分类: </td>
+                    <td class="label">拓展分类:</td>
                     <td>
                         <div style="width: 160px;">
                             <button id="btn_add_category" style="float: left;">添加一个拓展分类</button>
                             <ul id="ul_category" style="padding-left:0px;list-style: none; float: left;">
                                 <li>
-                                    <select  name="ext_cat_id[]">
+                                    <select name="ext_cat_id[]">
                                         <option value="">请选择拓展分类</option>
                                         <?php foreach($catDatas as $key => $value):?>
                                         <option value="<?php echo $value['id'];?>"><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
@@ -275,5 +275,17 @@
     $('#btn_add_category').click(function (event) {
         $('#ul_category').append($('#ul_category').find('li').eq(0).clone());
         event.preventDefault();
+    });
+    $('#select_main_cat').change(function () {
+        var catId = $(this).val();//获取主分类ID
+        $.ajax({
+            type: 'GET',
+            url: '<?php echo U("category/ajaxGetCats","",FALSE)?>/catid/' + catId,
+            success: function (data) {
+                console.dir(data);
+            },
+            dataType: "json"
+        });
+
     });
 </script>
