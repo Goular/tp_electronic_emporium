@@ -44,14 +44,14 @@
                         <div style="width: 160px;">
                             <button id="btn_add_category" style="float: left;">添加一个拓展分类</button>
                             <ul id="ul_category" style="padding-left:0px;list-style: none; float: left;">
-                                <li>
-                                    <select name="ext_cat_id[]">
-                                        <option value="">请选择拓展分类</option>
-                                        <?php foreach($catDatas as $key => $value):?>
-                                        <option value="<?php echo $value['id'];?>"><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </li>
+                                <!--<li>-->
+                                <!--<select name="ext_cat_id[]">-->
+                                <!--<option value="">请选择拓展分类</option>-->
+                                <!--<?php foreach($catDatas as $key => $value):?>-->
+                                <!--<option value="<?php echo $value['id'];?>"><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>-->
+                                <!--<?php endforeach;?>-->
+                                <!--</select>-->
+                                <!--</li>-->
                             </ul>
                         </div>
                         <div class="clear"></div>
@@ -273,7 +273,10 @@
         $('#ul_add_pic').append(file);
     });
     $('#btn_add_category').click(function (event) {
-        $('#ul_category').append($('#ul_category').find('li').eq(0).clone());
+        //$('#ul_category').append($('#ul_category').find('li').eq(0).clone());
+        if (window.catDatas != null) {
+            $('#ul_category').append(createSelect(window.catDatas));
+        }
         event.preventDefault();
     });
     $('#select_main_cat').change(function () {
@@ -282,10 +285,29 @@
             type: 'GET',
             url: '<?php echo U("category/ajaxGetCats","",FALSE)?>/catid/' + catId,
             success: function (data) {
-                console.dir(data);
+                window.catDatas = null;
+                $('#ul_category').empty();
+                window.catDatas = data;
+                $('#ul_category').append(createSelect(data));
             },
             dataType: "json"
         });
-
     });
+    //获取最新的子分类内容
+    catDatas = null;
+    //创建select标签
+    function createSelect(data) {
+        var _ret = "";
+        if (data != null && data.length > 0) {
+            _ret = "<li>";
+            _ret += "<select name='ext_cat_id[]'>";
+            _ret += "<option>请选择拓展分类</option>";
+            for (var i = 0; i < data.length; i++) {
+                _ret += "<option value='" + data[i].id + "'>" + new Array(8).join("*") + data[i].cat_name + new Array(8).join("*") + "</option>";
+            }
+            _ret += "</select>";
+            _ret += "</li>";
+        }
+        return _ret;
+    }
 </script>
