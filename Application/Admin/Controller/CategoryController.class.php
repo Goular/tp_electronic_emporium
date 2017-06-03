@@ -101,4 +101,16 @@ class CategoryController extends Controller
         else
             $this->error('删除成功!原因:' . $cgModel->getError());
     }
+
+    /**
+     * 返回指定分类id的后代分类
+     */
+    public function ajaxGetCats()
+    {
+        $id = I('get.catid');//获取选中分类的一级ID
+        $model = D('Category');
+        $_ret = $model->getChildren($id);
+        $data['data'] = $_ret;
+        $this->ajaxReturn($_ret, 'json');
+    }
 }
