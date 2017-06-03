@@ -148,6 +148,10 @@ class GoodsModel extends Model
         $gn = I('get.goods_name');
         if ($gn)
             $where['a.goods_name'] = array('like', "%$gn%");  // WHERE goods_name LIKE '%$gn%'
+        //商品分类
+        $cat_id = I('get.cat_id');
+        if ($cat_id)
+            $where['cat_id'] = array('eq', $cat_id);
         //商品品牌
         $brand_id = I('get.brand_id');
         if ($brand_id)

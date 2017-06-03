@@ -21,11 +21,11 @@
             <table width="90%" id="general-table" align="center" style="display: table;">
                 <tbody>
                 <tr>
-                    <td class="label">商品分类: </td>
+                    <td class="label">商品主分类: </td>
                     <td>
                         <!--添加商品的分类-->
                         <select name="cat_id">
-                            <option value="">请选择分类</option>
+                            <option value="">请选择主分类</option>
                             <?php foreach($catDatas as $key => $value):?>
                             <option value="<?php echo $value['id'];?>"><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
                             <?php endforeach;?>

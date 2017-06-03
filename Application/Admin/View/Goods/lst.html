@@ -6,6 +6,23 @@
             所在品牌：
             <?php buildSelect('brand','brand_id','id','brand_name',I('get.brand_id'));?>
         </p>
+        <p>
+            所在分类：
+            <!--添加商品的分类-->
+            <select name="cat_id">
+                <option value="">请选择主分类</option>
+                <?php foreach($catDatas as $key => $value):?>
+                <option value="<?php echo $value['id'];?>"
+                <?php
+                                    if(I('get.cat_id') == $value['id'])
+                                        echo "selected = 'selected'";
+                                    else
+                                        echo "";
+                                ?>
+                ><?php echo str_repeat('-',8*$value['level']).$value['cat_name'];?></option>
+                <?php endforeach;?>
+            </select>
+        </p>
         <!--商品名称-->
         <p>
             商品名称:

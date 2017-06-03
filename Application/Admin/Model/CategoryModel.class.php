@@ -53,6 +53,18 @@ class CategoryModel extends Model
     }
 
     /**
+     * 获取指定分类ID的子节点，非后台节点
+     * @param $catId
+     */
+    public function getFirstLevelChildren($catId)
+    {
+        //取出所有的分类
+        $data = $this->select();
+        //递归同时遍历所有的分类，并从中挑选指定ID的后代分类ID
+        return $this->__getFirstLevelChildren($data, $catId);
+    }
+
+    /**
      * 递归算法，规矩全部的商品分类，返回一维的分类的排序信息，即父类子类会以同一纬度进行有序展示
      * @param $catId
      * @param $data
@@ -109,6 +121,22 @@ class CategoryModel extends Model
                 $obj['level'] = $level;
                 $obj['children'] = $this->__getTree($data, $value['id'], $level + 1);
                 $_ret[] = $obj;
+            }
+        }
+        return $_ret;
+    }
+
+    /**
+     * 根据商品分类ID，获取当前的子节点
+     * @param $data
+     * @param $catId
+     */
+    private function __getFirstLevelChildren($data, $catId)
+    {
+        $_ret = array();
+        foreach ($data as $key => $value) {
+            if ($catId == $value['parent_id']) {
+                $_ret[] = $value;
             }
         }
         return $_ret;

@@ -47,7 +47,7 @@ class GoodsController extends Controller
 
         //获取商品分类
         $cgModel = D('Category');
-        $catDatas = $cgModel->getChildren();
+        $catDatas = $cgModel->getFirstLevelChildren(0);
 
         // 设置页面信息
         $this->assign(array(
@@ -104,7 +104,7 @@ class GoodsController extends Controller
 
         //获取商品分类
         $cgModel = D('Category');
-        $catDatas = $cgModel->getChildren();
+        $catDatas = $cgModel->getFirstLevelChildren(0);
 
 
         // 设置页面信息
@@ -139,8 +139,13 @@ class GoodsController extends Controller
         //获取品牌数据
         $brandData = $brandModel->select();
 
+        //获取商品分类
+        $cgModel = D('Category');
+        $catDatas = $cgModel->getFirstLevelChildren(0);
+
         // 设置页面信息
         $this->assign(array(
+            'catDatas' => $catDatas,
             'brandData' => $brandData,
             '_page_title' => '商品列表',
             '_page_btn_name' => '商品添加',
