@@ -213,9 +213,10 @@ class GoodsModel extends Model
         //left join b p39_brand
         //on a.brand_id = b.id
         $data = $this->order("$orderby $orderway")// 排序
-        ->field('a.* , b.brand_name')
+        ->field('a.* , b.brand_name,c.cat_name')
             ->alias('a')
             ->join('left join __BRAND__ b ON a.brand_id = b.id')//添加join
+            ->join('left join __CATEGORY__ c ON a.cat_id = c.id')//添加join
             ->where($where)// 搜索
             ->limit($pageObj->firstRow . ',' . $pageObj->listRows)// 翻页
             ->select();
