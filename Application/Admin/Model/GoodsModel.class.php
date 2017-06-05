@@ -330,5 +330,39 @@ class GoodsModel extends Model
         }
     }
 
+    /**
+     * 取出一个分类下所有商品的ID [即考虑主分类也考虑拓展分类]
+     */
+    public function getGoodsIdByCatId($catId)
+    {
+        //先取出所有分类的ID
+        $catModel = D('category');
+        $children = $catModel->getChildrenOnlyNumber($catId);
+        //将当前选中的分类添加到$children中
+        $children[] = $catId;
+        /*************** 取出主分类或者扩展分类在这些分类中的商品 ****************/
 
+        $gcModel = D("goods_cat");
+
+        // 取出拓展分类下的商品ID [select id from p39_goods_cat where cat_id in (......)]
+        $goodsIdsCAT = $this->field("id")->where(array("cat_id" => array("in", $children)))->select();
+
+        // 取出拓展分类下的商品ID [select id from p39_goods_cat where cat_id in (......)]
+        $goodsIdsExtCAT = $gcModel->distinct(true)->field("goods_id id")->where(array("cat_id" => array("in", $children)))->select();
+
+        // 把主分类的ID和扩展分类下的商品ID合并成一个二维数组【两个都不为空时合并，否则取出不为空的数组】
+        if ($goodsIdsCAT && $goodsIdsExtCAT)
+            $goodsIdsByCAT = array_merge($goodsIdsCAT, $goodsIdsExtCAT);
+        else
+            $goodsIdsByCAT = $goodsIdsExtCAT;
+
+        // 二维转一维并去重
+        $ids = array();
+        foreach ($goodsIdsByCAT as $key => $value) {
+            if (!in_array($value['id'], $ids)) {
+                $ids[] = $value['id'];
+            }
+        }
+        return $ids;
+    }
 }
