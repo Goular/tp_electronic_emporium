@@ -56,6 +56,7 @@
                                     ><?php echo str_repeat('*',8*$value2['level']).$value2['cat_name'];?></option>
                                     <?php endforeach;?>
                                     </select>
+                                    <button onclick="$(this).parent().remove();return false">删除拓展分类</button>
                                     </li>
                                 <?php endforeach;?>
                                 <!--<li>-->
@@ -345,6 +346,12 @@
             dataType: "json"
         });
     });
+
+    $('#btn_del_ext_cat').click(function (event) {
+        $(this).parent().remove();
+        event.preventDefault();
+    });
+
     //获取最新的子分类内容
     catDatas = <?php if($catGoodsDataJson){echo $catGoodsDataJson;}else {echo 'null';}?>;
     //创建select标签
@@ -358,6 +365,7 @@
                 _ret += "<option value='" + data[i].id + "'>" + new Array(8).join("*") + data[i].cat_name + new Array(8).join("*") + "</option>";
             }
             _ret += "</select>";
+            _ret+="<button onclick='$(this).parent().remove();return false'>删除拓展分类</button>";
             _ret += "</li>";
         }
         return _ret;
