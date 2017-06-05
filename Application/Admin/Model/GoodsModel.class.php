@@ -132,6 +132,10 @@ class GoodsModel extends Model
         /*********************** 删除会员价格 **************************/
         $mpModel = D('member_price');
         $mpModel->where(array('goods_id' => array('eq', $id)))->delete();
+
+        /*********************** 删除拓展分类 **************************/
+        $gcModel = D('goods_cat');
+        $gcModel->where(array("goods_id" => array('eq', $id)))->delete();
     }
 
 
@@ -153,7 +157,7 @@ class GoodsModel extends Model
         if ($cat_id) {
             //先查询出这个分类Id下所有的商品ID
             $gids = $this->getGoodsIdByCatId($cat_id);
-            $gids = implode(',',$gids);
+            $gids = implode(',', $gids);
             $where['a.id'] = array('in', $gids);
         }
         //商品品牌
