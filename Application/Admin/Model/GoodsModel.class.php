@@ -289,7 +289,7 @@ class GoodsModel extends Model
         /***************** 添加商品的拓展属性 ********************/
         $gcModel = M('goods_cat');
         $gcData = I('post.ext_cat_id');
-        $gcData = distinctArrayNumber($gcData);
+        $gcData = array_unique($gcData);
         if ($gcData) {
             foreach ($gcData as $key => $value) {
                 $arr[] = array();
@@ -309,6 +309,8 @@ class GoodsModel extends Model
      */
     protected function _after_update($data, $options)
     {
+        $goodsId = $data['id'];
+
         $mp = I('post.member_price');
         $mpModel = D('member_price');
         foreach ($mp as $k => $v) {
@@ -324,12 +326,13 @@ class GoodsModel extends Model
 
         /***************** 添加商品的拓展属性 ********************/
         $gcModel = M('goods_cat');
+        $gcModel->where(array('goods_id' => array('eq', $goodsId)))->delete();
         $gcData = I('post.ext_cat_id');
-        $gcData = distinctArrayNumber($gcData);
+        $gcData = array_unique($gcData);
         if ($gcData) {
             foreach ($gcData as $key => $value) {
                 $arr[] = array();
-                $arr['goods_id'] = $data['id'];
+                $arr['goods_id'] = $goodsId;
                 $arr['cat_id'] = $value;
                 if ($gcModel->create($arr)) {
                     $gcModel->add();
