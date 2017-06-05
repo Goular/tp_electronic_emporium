@@ -150,8 +150,12 @@ class GoodsModel extends Model
             $where['a.goods_name'] = array('like', "%$gn%");  // WHERE goods_name LIKE '%$gn%'
         //商品分类
         $cat_id = I('get.cat_id');
-        if ($cat_id)
-            $where['cat_id'] = array('eq', $cat_id);
+        if ($cat_id) {
+            //先查询出这个分类Id下所有的商品ID
+            $gids = $this->getGoodsIdByCatId($cat_id);
+            $gids = implode(',',$gids);
+            $where['a.id'] = array('in', $gids);
+        }
         //商品品牌
         $brand_id = I('get.brand_id');
         if ($brand_id)
@@ -182,7 +186,7 @@ class GoodsModel extends Model
 
         /*************** 翻页 ****************/
         // 取出总的记录数
-        $count = $this->where($where)->count();
+        $count = $this->alias('a')->where($where)->count();
         // 生成翻页类的对象
         $pageObj = new \Think\Page($count, $perPage);
         // 设置样式
