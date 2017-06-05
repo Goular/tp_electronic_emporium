@@ -278,6 +278,7 @@ class GoodsModel extends Model
         /***************** 添加商品的拓展属性 ********************/
         $gcModel = M('goods_cat');
         $gcData = I('post.ext_cat_id');
+        $gcData = distinctArrayNumber($gcData);
         if ($gcData) {
             foreach ($gcData as $key => $value) {
                 $arr[] = array();
@@ -307,6 +308,21 @@ class GoodsModel extends Model
                     'level_id' => $k,
                     'goods_id' => $data['id']
                 ));
+            }
+        }
+
+        /***************** 添加商品的拓展属性 ********************/
+        $gcModel = M('goods_cat');
+        $gcData = I('post.ext_cat_id');
+        $gcData = distinctArrayNumber($gcData);
+        if ($gcData) {
+            foreach ($gcData as $key => $value) {
+                $arr[] = array();
+                $arr['goods_id'] = $data['id'];
+                $arr['cat_id'] = $value;
+                if ($gcModel->create($arr)) {
+                    $gcModel->add();
+                }
             }
         }
     }

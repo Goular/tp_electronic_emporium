@@ -205,3 +205,16 @@ function formatUploadFiles($arrayName)
     }
     return $files;
 }
+
+/**
+ * 对数组中的重复元素进行剔除
+ */
+function distinctArrayNumber($arr)
+{
+    $tmp = array();
+    foreach ($arr as $key => $value) {
+        $bool = in_array($value, $tmp);
+        if (!$bool) $tmp[] = $value;
+    }
+    return $tmp;
+}

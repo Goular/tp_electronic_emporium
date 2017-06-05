@@ -106,9 +106,19 @@ class GoodsController extends Controller
         $cgModel = D('Category');
         $catDatas = $cgModel->getFirstLevelChildren(0);
 
+        //获取商品拓展分类
+        $cat_id = $data['cat_id'];
+        if ($cat_id) {
+            $tmp = $cgModel->getChildren($cat_id);//获取商品拓展分类
+            if (isset($tmp))
+                $catGoodsData = json_encode($tmp);
+            else
+                $catGoodsData = null;
+        }
 
         // 设置页面信息
         $this->assign(array(
+            'catGoodsData' => $catGoodsData,//商品拓展属性
             'catDatas' => $catDatas,
             'gpData' => $goodsPicData,
             'mpData' => $memberPriceData,
