@@ -213,12 +213,15 @@ class GoodsModel extends Model
         //left join b p39_brand
         //on a.brand_id = b.id
         $data = $this->order("$orderby $orderway")// 排序
-        ->field('a.* , b.brand_name,c.cat_name')
-            ->alias('a')
+        ->field("a.* , b.brand_name,c.cat_name, group_concat(e.cat_name separator '<br/>') ext_cat_name")//separator '<br/>' 默认分隔符为","
+        ->alias('a')
             ->join('left join __BRAND__ b ON a.brand_id = b.id')//添加join
             ->join('left join __CATEGORY__ c ON a.cat_id = c.id')//添加join
+            ->join('left join __GOODS_CAT__ d ON d.goods_id = a.id')//添加join
+            ->join('left join __CATEGORY__ e ON d.cat_id = e.id')//添加join
             ->where($where)// 搜索
             ->limit($pageObj->firstRow . ',' . $pageObj->listRows)// 翻页
+            ->group('a.id')
             ->select();
 
         /************** 返回数据 ******************/
