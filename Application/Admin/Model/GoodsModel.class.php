@@ -292,11 +292,13 @@ class GoodsModel extends Model
         $gcData = array_unique($gcData);
         if ($gcData) {
             foreach ($gcData as $key => $value) {
-                $arr[] = array();
-                $arr['goods_id'] = $data['id'];
-                $arr['cat_id'] = $value;
-                if ($gcModel->create($arr)) {
-                    $gcModel->add();
+                if ($value != 0) { //由于默认的选项会自动上传为0，所以自动将剔除0再去插入
+                    $arr[] = array();
+                    $arr['goods_id'] = $data['id'];
+                    $arr['cat_id'] = $value;
+                    if ($gcModel->create($arr)) {
+                        $gcModel->add();
+                    }
                 }
             }
         }
@@ -331,11 +333,13 @@ class GoodsModel extends Model
         $gcData = array_unique($gcData);
         if ($gcData) {
             foreach ($gcData as $key => $value) {
-                $arr[] = array();
-                $arr['goods_id'] = $goodsId;
-                $arr['cat_id'] = $value;
-                if ($gcModel->create($arr)) {
-                    $gcModel->add();
+                if ($value != 0) {//由于默认的选项会自动上传为0，所以自动将剔除0再去插入
+                    $arr[] = array();
+                    $arr['goods_id'] = $goodsId;
+                    $arr['cat_id'] = $value;
+                    if ($gcModel->create($arr)) {
+                        $gcModel->add();
+                    }
                 }
             }
         }
