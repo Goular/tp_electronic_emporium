@@ -46,6 +46,7 @@
                         <div style="width: 160px;">
                             <button id="btn_add_category" style="float: left;">添加一个拓展分类</button>
                             <ul id="ul_category" style="padding-left:0px;list-style: none; float: left;">
+
                                 <!--<li>-->
                                 <!--<select name="ext_cat_id[]">-->
                                 <!--<option value="">请选择拓展分类</option>-->
@@ -334,7 +335,7 @@
         });
     });
     //获取最新的子分类内容
-    catDatas = <?php if($catGoodsData){echo $catGoodsData;}else {echo 'null';}?>;
+    catDatas = <?php if($catGoodsDataJson){echo $catGoodsDataJson;}else {echo 'null';}?>;
     //创建select标签
     function createSelect(data) {
         var _ret = "";
