@@ -17,8 +17,8 @@ class GoodsModel extends Model
         array('goods_name', 'require', '商品名称不能为空！', 1),
         array('market_price', 'currency', '市场价格必须是货币类型！', 1),
         array('shop_price', 'currency', '本店价格必须是货币类型！', 1),
-        array('cat_id','require','必须选择主分类!',1),
-        array('brand_id','require','必须选择商品品牌!',1),
+        array('cat_id', 'require', '必须选择主分类!', 1),
+        array('brand_id', 'require', '必须选择商品品牌!', 1),
     );
 
     // 这个方法在添加之前会自动被调用 --》 钩子方法
@@ -271,6 +271,20 @@ class GoodsModel extends Model
                             'goods_id' => $data['id']
                         ));
                     }
+                }
+            }
+        }
+
+        /***************** 添加商品的拓展属性 ********************/
+        $gcModel = M('goods_cat');
+        $gcData = I('post.ext_cat_id');
+        if ($gcData) {
+            foreach ($gcData as $key => $value) {
+                $arr[] = array();
+                $arr['goods_id'] = $data['id'];
+                $arr['cat_id'] = $value;
+                if ($gcModel->create($arr)) {
+                    $gcModel->add();
                 }
             }
         }
