@@ -46,7 +46,18 @@
                         <div style="width: 160px;">
                             <button id="btn_add_category" style="float: left;">添加一个拓展分类</button>
                             <ul id="ul_category" style="padding-left:0px;list-style: none; float: left;">
-
+                                <?php foreach($extCatDatasByGoodsId as $key1 => $value1):?>
+                                    <li>
+                                    <select name="ext_cat_id[]">
+                                    <option value="">请选择拓展分类</option>
+                                    <?php foreach($catGoodsData as $key2 => $value2):?>
+                                    <option value="<?php echo $value2['id'];?>"
+                                    <?php if($value1['cat_id']==$value2['id']) echo "selected='selected'";?>
+                                    ><?php echo str_repeat('*',8*$value2['level']).$value2['cat_name'];?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                    </li>
+                                <?php endforeach;?>
                                 <!--<li>-->
                                 <!--<select name="ext_cat_id[]">-->
                                 <!--<option value="">请选择拓展分类</option>-->
