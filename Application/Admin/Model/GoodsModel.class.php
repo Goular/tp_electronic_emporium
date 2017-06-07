@@ -145,7 +145,6 @@ class GoodsModel extends Model
      */
     public function search($perPage = 3)
     {
-        C('SHOW_PAGE_TRACE', true);
         /*************** 搜索 ******************/
         $where = array();  // 空的where条件
         // 商品名称
