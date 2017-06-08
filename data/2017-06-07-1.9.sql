@@ -43,3 +43,7 @@ create table p39_goods_number
 	goods_attr_id varchar(150) not null comment '商品属性表的ID,如果有多个，就用程序拼成字符串存到这个字段中',
 	key goods_id(goods_id)
 )engine=InnoDB default charset=utf8 comment '库存量';
+
+--为商品添加类型的外键ID
+ALTER TABLE p39_goods add COLUMN type_id mediumint unsigned not null DEFAULT 0 comment '类型ID';
+ALTER TABLE p39_goods add INDEX type_id(type_id);

@@ -39,7 +39,8 @@ class TypeModel extends Model
      */
     protected function _before_delete($options)
     {
-
+        //$id = $options['where']['id'];
+        //$model = D('');
     }
 
     /**
@@ -48,20 +49,17 @@ class TypeModel extends Model
      */
     public function search($pageSize = 3)
     {
-        /*************** 搜索 ****************/
+        /**************************************** 搜索 ****************************************/
         $where = array();
-
-        /*************** 翻页 ****************/
-        // 取出总的记录数
+        /************************************* 翻页 ****************************************/
         $count = $this->alias('a')->where($where)->count();
-        // 生成翻页类的对象
-        $pageObj = new \Think\Page($count, $perPage);
-        // 设置样式
-        $pageObj->setConfig('next', '下一页');
-        $pageObj->setConfig('prev', '上一页');
-        $pageObj->setConfig('theme', '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
-
-        // 生成页面下面显示的上一页、下一页的字符串
-        $pageString = $pageObj->show();
+        $page = new \Think\Page($count, $pageSize);
+        // 配置翻页的样式
+        $page->setConfig('prev', '上一页');
+        $page->setConfig('next', '下一页');
+        $data['page'] = $page->show();
+        /************************************** 取数据 ******************************************/
+        $data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow . ',' . $page->listRows)->select();
+        return $data;
     }
 }
