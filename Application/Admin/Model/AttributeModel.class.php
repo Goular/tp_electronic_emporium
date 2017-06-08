@@ -43,8 +43,7 @@ class AttributeModel extends Model
      */
     protected function _before_delete($options)
     {
-        //$id = $options['where']['id'];
-        //$model = D('');
+
     }
 
     /**
