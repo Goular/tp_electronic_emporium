@@ -3,6 +3,12 @@
     <form name="main_form" method="POST" action="__SELF__" enctype="multipart/form-data">
         <table cellspacing="1" cellpadding="3" width="100%">
             <tr>
+                <td class="label">所属类型：</td>
+                <td>
+                    <?php buildSelect('Type', 'type_id', 'id', 'type_name', I('get.type_id')); ?>
+                </td>
+            </tr>
+            <tr>
                 <td class="label">属性名称：</td>
                 <td>
                     <input type="text" name="attr_name" value=""/>
@@ -13,12 +19,6 @@
                 <td>
                     <input type="radio" name="attr_type" value="唯一" checked="checked"/>唯一
                     <input type="radio" name="attr_type" value="可选"/>可选
-                </td>
-            </tr>
-            <tr>
-                <td class="label">所属类型：</td>
-                <td>
-                    <?php buildSelect('Type', 'type_id', 'id', 'type_name', I('get.type_id')); ?>
                 </td>
             </tr>
             <tr>

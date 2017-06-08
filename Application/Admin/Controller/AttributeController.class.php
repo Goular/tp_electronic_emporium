@@ -13,7 +13,7 @@ class AttributeController extends Controller
         if (IS_POST) {
             if ($model->create(I('post.'), 1)) {
                 if ($model->add()) {
-                    $this->success('添加成功!', 'lst');
+                    $this->success('添加成功!', U('lst', array('type_id' => I('get.type_id'))));
                     exit;
                 }
             }
@@ -23,7 +23,7 @@ class AttributeController extends Controller
         $this->assign(array(
             '_page_title' => '类型添加',
             '_page_btn_name' => '类型列表',
-            '_page_btn_link' => U('lst'),
+            '_page_btn_link' => U('lst', array('type_id' => I('get.type_id'))),
         ));
         $this->display();
     }
@@ -80,7 +80,7 @@ class AttributeController extends Controller
         $this->assign(array(
             '_page_title' => '类型列表',
             '_page_btn_name' => '添加类型',
-            '_page_btn_link' => U('add'),
+            '_page_btn_link' => U('add', array('type_id' => I('get.type_id'))),
         ));
         $this->display();
     }
