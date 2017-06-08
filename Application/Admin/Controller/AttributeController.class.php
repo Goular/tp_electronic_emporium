@@ -36,7 +36,7 @@ class AttributeController extends Controller
         if (IS_POST) {
             if ($model->create(I('post.'), 2)) {
                 if ($model->save() !== FALSE) {
-                    $this->success('修改成功!', U('lst'));
+                    $this->success('修改成功!', U('lst', array('type_id' => I('get.type_id'))));
                     exit;
                 }
             }
@@ -51,7 +51,7 @@ class AttributeController extends Controller
             'data' => $data,
             '_page_title' => '类型编辑',
             '_page_btn_name' => '类型列表',
-            '_page_btn_link' => U('lst'),
+            '_page_btn_link' => U('lst', array('type_id' => I('get.type_id'))),
         ));
         $this->display();
     }
@@ -61,7 +61,7 @@ class AttributeController extends Controller
     {
         $model = D('attribute');
         if ($model->delete(I('get.id')) !== FALSE)
-            $this->success('删除成功！', U('lst'));
+            $this->success('删除成功！', U('lst', array('type_id' => I('get.type_id'))));
         else
             $this->error('删除失败！原因：' . $model->getError());
     }
