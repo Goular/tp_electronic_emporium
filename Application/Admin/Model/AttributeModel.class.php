@@ -24,7 +24,8 @@ class AttributeModel extends Model
      */
     protected function _before_insert(&$data, $options)
     {
-
+        // 把中文 逗号换成英文的
+        $data['attr_option_values'] = str_replace('，', ',', $data['attr_option_values']);
     }
 
     /**
@@ -34,7 +35,6 @@ class AttributeModel extends Model
      */
     protected function _before_update(&$data, $options)
     {
-
     }
 
     /**
@@ -43,7 +43,10 @@ class AttributeModel extends Model
      */
     protected function _before_delete($options)
     {
-
+        if (is_array($options['where']['id'])) {
+            $this->error = '不支持批量删除';
+            return FALSE;
+        }
     }
 
     /**
