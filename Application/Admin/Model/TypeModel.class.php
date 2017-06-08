@@ -39,8 +39,9 @@ class TypeModel extends Model
      */
     protected function _before_delete($options)
     {
-        //$id = $options['where']['id'];
-        //$model = D('');
+        $id = $options['where']['id'];//分类ID
+        $model = D('attribute');//获取模型类
+        $model->where(array("type_id" => array('eq' => $id)))->delete();
     }
 
     /**
