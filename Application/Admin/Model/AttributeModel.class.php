@@ -72,7 +72,10 @@ class AttributeModel extends Model
         $page->setConfig('next', '下一页');
         $data['page'] = $page->show();
         /************************************** 取数据 ******************************************/
-        $data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow . ',' . $page->listRows)->select();
+        $data['data'] = $this->field('a.*,b.type_name')->alias('a')->where($where)
+            ->group('a.id')->limit($page->firstRow . ',' . $page->listRows)
+            ->join('left join __TYPE__ b on b.id = a.type_id')
+            ->select();
         return $data;
     }
 }
