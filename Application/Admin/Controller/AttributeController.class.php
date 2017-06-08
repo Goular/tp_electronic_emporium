@@ -84,4 +84,14 @@ class AttributeController extends Controller
         ));
         $this->display();
     }
+
+    //属性列表查询
+    public function ajaxGetAttr()
+    {
+        $typeId = I('get.type_id');
+        // 根据ID从硬盘上数据删除中删除图片
+        $attrModel = D('Attribute');
+        $attrData = $attrModel->where(array('type_id' => array('eq', $typeId)))->select();
+        echo json_encode($attrData);
+    }
 }
