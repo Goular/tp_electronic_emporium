@@ -153,11 +153,11 @@
             <!-- 商品属性 -->
             <table width="90%" id="properties-table" style="display: none;" align="center">
                 <tbody>
-                <tr><td>
+                <tr><td align="center">
                     商品类型：<?php buildSelect('Type', 'type_id', 'id', 'type_name', $data['type_id']); ?>
                 </td></tr>
                 <tr>
-                    <td><ul id="attr_list">
+                    <td align="center"><ul style="list-style: none;" id="attr_list">
                         <!-- 循环所有原属性值 -->
                         <?php
             		        $attrId = array();  // 所有出现过的属性ID
