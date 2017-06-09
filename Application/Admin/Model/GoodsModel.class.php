@@ -8,9 +8,9 @@ use Think\Model;
 class GoodsModel extends Model
 {
     // 添加时调用create方法允许接收的字段
-    protected $insertFields = 'goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id,cat_id';
+    protected $insertFields = 'goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id,cat_id,type_id';
     // 修改时调用create方法允许接收的字段
-    protected $updateFields = 'id,goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id,cat_id';
+    protected $updateFields = 'id,goods_name,market_price,shop_price,is_on_sale,goods_desc,brand_id,cat_id,type_id';
 
     //定义验证规则
     protected $_validate = array(
@@ -299,6 +299,21 @@ class GoodsModel extends Model
                         $gcModel->add();
                     }
                 }
+            }
+        }
+
+        /***************** 添加商品的分类属性操作 ***********************/
+        $attrValue = I('post.attr_value');//获取分类属性数组
+        $gaModel = D('goods_attr');
+        foreach ($attrValue as $key => $value) {
+            //属性值数组去重
+            $arr = array_unique($value);
+            foreach ($value as $key2 => $value2) {
+                $gaModel->add(array(
+                    'goods_id' => $data['id'],
+                    'attr_id' => $key,
+                    'attr_value' => $value2,
+                ));
             }
         }
     }
