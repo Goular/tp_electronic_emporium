@@ -119,6 +119,34 @@ class GoodsModel extends Model
                 }
             }
         }
+
+        /****************************** 修改商品属性的修改 ******************************/
+        /************ 修改商品属性 *****************/
+        $gaid = I('post.goods_attr_id');
+        $attrValue = I('post.attr_value');
+        $gaModel = D('goods_attr');
+        $_i = 0;  // 循环次数
+        foreach ($attrValue as $k => $v) {
+            foreach ($v as $k1 => $v1) {
+                // 这个replace into可以实现同样的功能
+                // replace into ：如果记录存在就修改，记录不存在就添加。以主键字段来判断一条记录是否存在
+                //$gaModel->execute('REPLACE INTO p39_goods_attr VALUES("'.$gaid[$_i].'","'.$v1.'","'.$k.'","'.$id.'")');
+                // 找这个属性值是否有id
+
+                if ($gaid[$_i] == '')
+                    $gaModel->add(array(
+                        'goods_id' => $id,
+                        'attr_id' => $k,
+                        'attr_value' => $v1,
+                    ));
+                else
+                    $gaModel->where(array(
+                        'id' => array('eq', $gaid[$_i]),
+                    ))->setField('attr_value', $v1);
+
+                $_i++;
+            }
+        }
     }
 
     protected function _before_delete($options)
