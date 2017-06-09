@@ -120,9 +120,17 @@ class GoodsController extends Controller
         $gcModel = D('goods_cat');
         $extCatDatasByGoodsId = $gcModel->where(array('goods_id' => array('eq', $id)))->select();
 
+        //根据分类，获取商品属性
+        $gaModel = D('goods_attr');
+        $gaData = $gaModel->alias('a')
+            ->field('a.*,b.attr_name,b.attr_type')
+            ->join('LEFT JOIN __ATTRIBUTE__ b ON a.attr_id = b.id')
+            ->where(array('a.goods_id' => array('eq', $id)))
+            ->select();
         // 设置页面信息
         $this->assign(array(
-            'catGoodsData'=>$tmp,
+            'gaData' => $gaData,
+            'catGoodsData' => $tmp,
             'extCatDatasByGoodsId' => $extCatDatasByGoodsId,
             'catGoodsDataJson' => $catGoodsDataJson,//商品拓展属性
             'catDatas' => $catDatas,
