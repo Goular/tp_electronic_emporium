@@ -14,7 +14,7 @@ class GoodsAttrController extends Controller
         $gaModel = D('goods_attr');
         $gaModel->delete($gaid);
         // 删除相关库存量数据
-        $gnModel = D('goods_number');
+        $gnModel = D('goods_number'); //商品库存量
         $gnModel->where(array('goods_id' => array('EXP', "=$goodsId or AND FIND_IN_SET($gaid, attr_list)"),
         ))->delete();
     }
