@@ -503,7 +503,7 @@
                 {
                     $.ajax({
                         type : "GET",
-                        url : "<?php echo U('ajaxDelAttr?goods_id='.$data['id'], '', FALSE); ?>/gaid/"+gaid,
+                        url : "<?php echo U('goodsAttr/ajaxDelAttr?goods_id='.$data['id'], '', FALSE); ?>/gaid/"+gaid,
                         success : function(data)
                         {
                             // 再把页面中的记录删除
