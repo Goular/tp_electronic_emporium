@@ -168,6 +168,10 @@ class GoodsModel extends Model
         /*********************** 删除商品的属性 **************************/
         $gaModel = D('goods_attr');
         $gaModel->where(array('goods_id' => array('eq', $id)))->delete();
+
+        /*********************** 删除库存的属性 **************************/
+        $gaModel = D('goods_number');
+        $gaModel->where(array('goods_id' => array('eq', $id)))->delete();
     }
 
 
