@@ -13,8 +13,7 @@ class GoodsNumberController extends Controller
         $gnModel = D('goods_number');
 
         // 处理表单
-        if(IS_POST)
-        {
+        if (IS_POST) {
             // 先删除原库存
             $gnModel->where(array(
                 'goods_id' => array('eq', $id),
@@ -25,15 +24,13 @@ class GoodsNumberController extends Controller
             // 先计算商品属性ID和库存量的比例
             $gaidCount = count($gaid);
             $gnCount = count($gn);
-            $rate = $gaidCount/$gnCount;
+            $rate = $gaidCount / $gnCount;
             // 循环库存量
             $_i = 0;  // 取第几个商品属性ID
-            foreach ($gn as $k => $v)
-            {
+            foreach ($gn as $k => $v) {
                 $_goodsAttrId = array();  // 把下面取出来的ID放这里
                 // 后来从商品属性ID数组中取出 $rate 个，循环一次取一个
-                for($i=0; $i<$rate; $i++)
-                {
+                for ($i = 0; $i < $rate; $i++) {
                     $_goodsAttrId[] = $gaid[$_i];
                     $_i++;
                 }
@@ -47,7 +44,7 @@ class GoodsNumberController extends Controller
                     'goods_number' => $v,
                 ));
             }
-            $this->success('设置成功！', U('goods_number?id='.I('get.id')));
+            $this->success('设置成功！', U('goods_number?id=' . I('get.id')));
             exit;
         }
 
@@ -62,8 +59,7 @@ class GoodsNumberController extends Controller
             ))->select();
         // 处理这个二维数组：转化成三维：把属性相同的放到一起
         $_gaData = array();
-        foreach ($gaData as $k => $v)
-        {
+        foreach ($gaData as $k => $v) {
             $_gaData[$v['attr_name']][] = $v;
         }
 
