@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS p39_privilege(
   id mediumint unsigned not null auto_increment comment 'Id',
   pri_name varchar(30) not null DEFAULT '' comment '权限名称',
   module_name varchar(30) not null DEFAULT '' comment '模块名称',
-  contolller_name varchar(30) not null DEFAULT '' comment '控制器名称',
+  controller_name varchar(30) not null DEFAULT '' comment '控制器名称',
   action_name varchar(30) not null DEFAULT '' comment '方法名称',
   parent_id mediumint unsigned not null DEFAULT 0 comment '上级权限Id',
   PRIMARY KEY(id)

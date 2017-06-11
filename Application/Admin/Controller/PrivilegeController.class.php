@@ -34,6 +34,25 @@ class PrivilegeController extends Controller
 
     public function edit()
     {
+        $id = I('get.id');
+        $model = D('privilege');
+        if (IS_POST) {
+            if ($model->create(I('post.'), 2)) {
+                if ($model->save()) {
+                    $this->success('修改成功!', U('lst'));
+                    exit;
+                }
+            }
+            $this->error($model->getError());
+        }
+        $parentData = $model->getChildren();
+        $data = $model->where(array('id' => array('eq', $id)))->find();
+
+        $this->assign(array(
+            'data' => $data,
+            'parentData' => $parentData
+        ));
+
         // 设置页面中的信息
         $this->assign(array(
             '_page_title' => '权限编辑',
@@ -45,6 +64,12 @@ class PrivilegeController extends Controller
 
     public function lst()
     {
+        $model = D('privilege');
+        $parentData = $model->getChildren();
+        $this->assign(array(
+            'data' => $parentData
+        ));
+
         // 设置页面中的信息
         $this->assign(array(
             '_page_title' => '权限列表',
