@@ -12,7 +12,7 @@ class LoginController extends Controller
             $model = D('Admin');
             //接收表单并且验证表单[这里就进行了验证码操作]
             if ($model->validate($model->_login_validate)->create()) {
-                if ($model->login) {
+                if ($model->login()) {
                     $this->success('登录成功!', U('Index/index'));
                     exit();
                 }
