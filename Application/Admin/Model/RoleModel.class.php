@@ -42,7 +42,7 @@ class RoleModel extends Model
         $data['page'] = $page->show();
         /************************************** 取数据 ******************************************/
         $data['data'] = $this->alias('a')
-            ->field('a.*,GROUP_CONTACT(c.pri_name) pri_name')
+            ->field('a.*,group_concat(c.pri_name) pri_name')
             ->join('LEFT JOIN __ROLE_PRI__ b ON a.id = b.role_id ')
             ->join('LEFT JOIN __PRIVILEGE__ c ON b.pri_id = c.id ')
             ->where($where)

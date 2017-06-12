@@ -49,14 +49,25 @@ class RoleController extends Controller
             $error = $model->getError();
             $this->error($error);
         }
+        $model = M('Role');
+        $data = $model->find($id);
+        $this->assign('data', $data);
 
-        //获取指定ID的资料
-        $data = $model->where(array('id' => array("eq", $id)))->find();
+        // 取出所有的权限
+        $priModel = D('privilege');
+        $priData = $priModel->getChildren();
+        // 取出当前角色已经拥有 的权限ID
+        $rpModel = D('role_pri');
+        $rpData = $rpModel->field('GROUP_CONCAT(pri_id) pri_id')->where(array(
+            'role_id' => array('eq', $id),
+        ))->find();
 
+        // 设置页面中的信息
         $this->assign(array(
-            'data' => $data,
-            '_page_title' => '类型编辑',
-            '_page_btn_name' => '类型列表',
+            'rpData' => $rpData['pri_id'],
+            'priData' => $priData,
+            '_page_title' => '修改角色',
+            '_page_btn_name' => '角色列表',
             '_page_btn_link' => U('lst'),
         ));
         $this->display();
@@ -76,11 +87,11 @@ class RoleController extends Controller
     public function lst()
     {
         $model = D('role');
-
-
-
+        $data = $model->search();
         // 设置页面中的信息
         $this->assign(array(
+            'data' => $data['data'],
+            'page' => $data['page'],
             '_page_title' => '类型列表',
             '_page_btn_name' => '添加类型',
             '_page_btn_link' => U('add'),
