@@ -4,7 +4,7 @@ namespace Admin\Controller;
 use Think\Controller;
 
 //商品属性控制器
-class GoodsAttrController extends Controller
+class GoodsAttrController extends BaseController
 {
     //处理删除属性
     public function ajaxDelAttr()

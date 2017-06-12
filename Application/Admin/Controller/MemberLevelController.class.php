@@ -3,7 +3,7 @@ namespace Admin\Controller;
 
 use Think\Controller;
 
-class MemberLevelController extends Controller
+class MemberLevelController extends BaseController
 {
     public function add()
     {

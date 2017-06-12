@@ -4,7 +4,7 @@ namespace Admin\Controller;
 use Think\Controller;
 
 //商品属性控制器
-class AttributeController extends Controller
+class AttributeController extends BaseController
 {
     //商品属性添加
     public function add()

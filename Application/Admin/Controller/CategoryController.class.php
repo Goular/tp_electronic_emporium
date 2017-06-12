@@ -4,7 +4,7 @@ namespace Admin\Controller;
 use Think\Controller;
 use Think\Model;
 
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     /**
      * 添加商品分类

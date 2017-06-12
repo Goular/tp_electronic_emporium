@@ -4,7 +4,7 @@ namespace Admin\Controller;
 
 use Think\Controller;
 
-class GoodsController extends Controller
+class GoodsController extends BaseController
 {
     /**
      * 添加商品,显示并添加处理

@@ -3,7 +3,7 @@ namespace Admin\Controller;
 
 use Think\Controller;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
     //登录的Action
     public function login()

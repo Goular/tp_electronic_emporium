@@ -3,7 +3,7 @@ namespace Admin\Controller;
 
 use Think\Controller;
 
-class TypeController extends Controller
+class TypeController extends BaseController
 {
     //商品分类添加
     public function add()

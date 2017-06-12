@@ -4,7 +4,7 @@ namespace Admin\Controller;
 use Think\Controller;
 
 //商品库存量控制器
-class GoodsNumberController extends Controller
+class GoodsNumberController extends BaseController
 {
     public function lst()
     {

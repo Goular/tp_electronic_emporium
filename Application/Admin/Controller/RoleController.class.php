@@ -4,7 +4,7 @@ namespace Admin\Controller;
 use Think\Controller;
 
 //角色控制器
-class RoleController extends Controller
+class RoleController extends BaseController
 {
     //商品分类添加
     public function add()
