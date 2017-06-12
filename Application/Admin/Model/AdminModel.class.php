@@ -70,36 +70,35 @@ class AdminModel extends Model
         $arModel->where(array(
             'admin_id' => $option['where']['id'],
         ))->delete();
-        foreach ($roleId as $v)
-        {
+        foreach ($roleId as $v) {
             $arModel->add(array(
                 'admin_id' => $option['where']['id'],
                 'role_id' => $v,
             ));
         }
 
-        if($data['password'])
+        if ($data['password'])
             $data['password'] = md5($data['password']);
         else
             unset($data['password']);   // 从表单中删除这个字段就不会修改这个字段了！！
     }
+
     protected function _after_insert($data, $option)
     {
         $roleId = I('post.role_id');
         $arModel = D('admin_role');
-        foreach ($roleId as $v)
-        {
+        foreach ($roleId as $v) {
             $arModel->add(array(
                 'admin_id' => $data['id'],
                 'role_id' => $v,
             ));
         }
     }
+
     // 删除前
     protected function _before_delete($option)
     {
-        if($option['where']['id'] == 1)
-        {
+        if ($option['where']['id'] == 1) {
             $this->error = '超级管理员无法删除！';
             return FALSE;
         }
@@ -109,5 +108,33 @@ class AdminModel extends Model
         ))->delete();
     }
 
+    //登录操作
+    public function login()
+    {
+        //从模型中获取用户名和密码
+        $username = $this->username;
+        $password = $this->password;
+        // 先查询这个用户名是否存在
+        $user = $this->where(array('username' => array('eq', $username)))->find();
+        if ($user) {
+            if ($user['password'] == md5($password)) {
+                // 登录成功存session
+                session('id', $user['id']);
+                session('username', $user['username']);
+                return TRUE;
+            } else {
+                $this->error = '密码不正确!';
+                return FALSE;
+            }
+        } else {
+            $this->error = '用户名不存在!';
+            return FALSE;
+        }
+    }
 
+    //登出操作
+    public function logout()
+    {
+        session(null);//清空session
+    }
 }
