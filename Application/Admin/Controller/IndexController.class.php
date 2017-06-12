@@ -20,6 +20,11 @@ class IndexController extends BaseController
 
     public function menu()
     {
+        $priModel = D('privilege');
+        $ownerShipAccessActions = $priModel->ownerShipAccessMenu();
+        $this->assign(array(
+            'menu' => $ownerShipAccessActions
+        ));
         $this->display();
     }
 

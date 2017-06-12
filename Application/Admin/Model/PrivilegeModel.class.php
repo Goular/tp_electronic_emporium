@@ -169,4 +169,43 @@ class PrivilegeModel extends Model
             ))->count();
         return ($has > 0);
     }
+
+    /**
+     * 获取当前管理员所拥有的前两级的权限
+     *
+     */
+    public function ownerShipAccessMenu()
+    {
+        /*************** 先取出当前管理员所拥有的所有的权限 ****************/
+        $adminId = session('id');
+        if ($adminId == 1) { //万能的管理员
+            $priModel = D('Privilege');
+            $priData = $priModel->select();
+        } else {
+            // 取出当前管理员所在角色 所拥有的权限
+            // DISTINCT这样是由于一个用户可以拥有多个的角色，角色间的权限可能是重复的，这样我们需要使用DISTINCT来进行处理重复的内容
+            $arModel = D('admin_role');
+            $priData = $arModel->alias('a')
+                ->field('DISTINCT c.id,c.pri_name,c.module_name,c.controller_name,c.action_name,c.parent_id')
+                ->join('LEFT JOIN __ROLE_PRI__ b ON a.role_id=b.role_id 
+			        LEFT JOIN __PRIVILEGE__ c ON b.pri_id=c.id')
+                ->where(array(
+                    'a.admin_id' => array('eq', $adminId),
+                ))->select();
+        }
+        /*************** 从所有的权限中挑出前两级的 **********************/
+        $btns = array();  // 前两级权限
+        foreach ($priData as $k => $v) {
+            if ($v['parent_id'] == 0) {
+                // 再找这个顶的子级
+                foreach ($priData as $k1 => $v1) {
+                    if ($v1['parent_id'] == $v['id']) {
+                        $v['children'][] = $v1;
+                    }
+                }
+                $btns[] = $v;
+            }
+        }
+        return $btns;
+    }
 }
