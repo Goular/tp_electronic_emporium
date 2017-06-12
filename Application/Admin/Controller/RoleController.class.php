@@ -9,7 +9,7 @@ class RoleController extends Controller
     //商品分类添加
     public function add()
     {
-        $model = D('type');
+        $model = D('role');
         if (IS_POST) {
             if ($model->create(I('post.'), 1)) {
                 if ($model->add()) {
@@ -20,9 +20,15 @@ class RoleController extends Controller
             $error = $model->getError();
             $this->error($error);
         }
+        //获取所有的权限
+        $priModel = D('privilege');
+        $priData = $priModel->getChildren();
+
         $this->assign(array(
-            '_page_title' => '类型添加',
-            '_page_btn_name' => '类型列表',
+            'priData' => $priData,
+
+            '_page_title' => '角色添加',
+            '_page_btn_name' => '角色列表',
             '_page_btn_link' => U('lst'),
         ));
         $this->display();
@@ -32,7 +38,7 @@ class RoleController extends Controller
     public function edit()
     {
         $id = I('get.id');
-        $model = D('type');
+        $model = D('role');
         if (IS_POST) {
             if ($model->create(I('post.'), 2)) {
                 if ($model->save() !== FALSE) {
@@ -59,7 +65,7 @@ class RoleController extends Controller
     //分类删除
     public function delete()
     {
-        $model = D('type');
+        $model = D('role');
         if ($model->delete(I('get.id')) !== FALSE)
             $this->success('删除成功！', U('lst'));
         else
@@ -69,13 +75,7 @@ class RoleController extends Controller
     //商品列表
     public function lst()
     {
-        $model = D('Type');
-        $data = $model->search();
-        $this->assign(array(
-            'data' => $data['data'],
-            'page' => $data['page'],
-        ));
-
+        $model = D('role');
         // 设置页面中的信息
         $this->assign(array(
             '_page_title' => '类型列表',
