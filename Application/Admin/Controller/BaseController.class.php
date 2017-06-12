@@ -13,6 +13,12 @@ class BaseController extends Controller
         if (!session('id')) {
             $this->error('必须先登录!', U('Login/login'));
         }
+        //所有管理员都可以进入后台的首页
+        if (CONTROLLER_NAME == 'Index')
+            return TRUE;
+        $priModel = D('Privilege');
+        if (!$priModel->chkPri())
+            $this->error('无权访问！');
     }
 
 }
