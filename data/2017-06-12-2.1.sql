@@ -64,6 +64,33 @@ VALUES
 INSERT INTO `p39_privilege`
 (`pri_name`,`module_name`,`controller_name`,`action_name`,`parent_id`)
 VALUES
-('商品添加','Admin','Goods','add',4),
-('商品修改','Admin','Goods','edit',4),
-('商品删除','Admin','Goods','delete',4);
+('属性列表','Admin','Attribute','lst',7);
+
+
+--五级权限
+INSERT INTO `p39_privilege`
+(`pri_name`,`module_name`,`controller_name`,`action_name`,`parent_id`)
+VALUES
+('属性添加','Admin','Attribute','add',36),
+('属性修改','Admin','Attribute','edit',36),
+('属性删除','Admin','Attribute','delete',36);
+
+INSERT INTO `p39_privilege`
+(`pri_name`,`module_name`,`controller_name`,`action_name`,`parent_id`)
+VALUES
+('Ajax获取分类','Admin','Category','ajaxGetCats',19);
+
+INSERT INTO `p39_privilege`
+(`pri_name`,`module_name`,`controller_name`,`action_name`,`parent_id`)
+VALUES
+('Ajax删除商品属性','Admin','GoodsAttr','ajaxDelAttr',13);
+
+INSERT INTO `p39_privilege`
+(`pri_name`,`module_name`,`controller_name`,`action_name`,`parent_id`)
+VALUES
+('Ajax删除商品图片','Admin','Goods','ajaxDelPic',13);
+
+INSERT INTO `p39_privilege`
+(`pri_name`,`module_name`,`controller_name`,`action_name`,`parent_id`)
+VALUES
+('商品库存量列表','Admin','GoodsNumber','lst',13);
