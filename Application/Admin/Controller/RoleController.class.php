@@ -76,6 +76,9 @@ class RoleController extends Controller
     public function lst()
     {
         $model = D('role');
+
+
+
         // 设置页面中的信息
         $this->assign(array(
             '_page_title' => '类型列表',
