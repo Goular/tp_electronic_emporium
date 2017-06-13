@@ -73,4 +73,87 @@ class PHPExcelController extends Controller
         $savePath = __DIR__ . '/mysql.xls';
         $objWriter->save($savePath);
     }
+
+    /**
+     * PHPExcel输出到浏览器内容
+     * 在PHPExcel文件夹中含有
+     * 01simple-download-xls.php 和
+     * 01simple-download-xlsx.php
+     * 来处理输出到EXCEL的内容
+     */
+    public function execBroswer()
+    {
+        //加载自动加载的对象
+        require_once './vendor/autoload.php';
+        $goodsModel = D('goods');
+        $data = $goodsModel->select();
+        //formatVarDump($data);
+        //相当在桌面新建一个Excel
+        $objPHPExcel = new \PHPExcel();
+        for ($i = 1; $i <= 3; $i++) {
+            if ($i > 1) {
+                //创建新的内置表
+                $objPHPExcel->createSheet();
+            }
+            //新建sheet并设定为当前文件为活动sheet
+            $objPHPExcel->setActiveSheetIndex($i - 1);
+            //获取当前活动sheet
+            $objSheet = $objPHPExcel->getActiveSheet();
+            $objSheet->setTitle("班级{$i}的表格");
+            $objSheet->setCellValue('A1', '商品名称')->setCellValue('B1', '市场价格')->setCellValue('C1', '本店价格');
+            $row = 2;//设定数据显示的首行，不然会错误，或者是覆盖
+            foreach ($data as $key => $value) {
+                $objSheet->setCellValue("A" . $row, $value['goods_name'])->setCellValue("B" . $row, $value['market_price'])->setCellValue('C' . $row, $value['show_price']);
+                $row++;
+            }
+        }
+        $type = 'Excel5';
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, $type);
+        $this->broswer_export('62332.xls', $type);
+
+        $type = 'Excel2007';
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, $type);
+        $this->broswer_export('62339.xlsx', $type);
+
+        $objWriter->save("php://output");
+    }
+
+    //输出Excel到浏览器需要的内容
+    public function broswer_export($fileName, $type = 'Excel5')
+    {
+        //告诉浏览器即将输出的文件的类型
+        if ($type == 'Excel5') {
+            header('Content-Type: application/vnd.ms-excel');
+        } else if ($type == 'Excel2007') {
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        }
+        //告诉浏览器即将输出文件的名称
+        header('Content-Disposition: attachment;filename="' . $fileName . '"');
+        //禁止缓存
+        header('Cache-Control: max-age=0');
+    }
+
+    /**
+     * 根据下标获得单元格所在的位置
+     */
+    function getCells($index)
+    {
+        $array = range('A', 'Z');
+        return $array[$index];
+    }
+
+    /**
+     * 获取边框样式代码
+     */
+    function getBorderStyle($color)
+    {
+        return array(
+            'borders' => array(
+                'outline' => array(
+                    'style' => \PHPExcel_Style_Border::BORDER_THICK,
+                    'color' => array('rgb' => $color)
+                )
+            )
+        );
+    }
 }
