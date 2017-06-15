@@ -134,7 +134,7 @@ class PHPExcelController extends Controller
     }
 
     /**
-     * 使用ExcelPHP输出个性化内容，同时添加样式，背景色等内容
+     * 使用ExcelPHP输出个性化内容，同时添加样式，背景色，边框等内容
      */
     public function export_style()
     {
@@ -213,5 +213,174 @@ class PHPExcelController extends Controller
                 )
             )
         );
+    }
+
+    /**
+     * 使用PHPExcel添加图片和标注
+     */
+    public function exportImgsTags()
+    {
+        require_once './vendor/autoload.php';
+        //实例化PHPExcel类，等同于在桌面上新建的一个Excel表格
+        $objPHPExcel = new \PHPExcel();
+        //获取当前活动的sheet的操作对象
+        $objSheet = $objPHPExcel->getActiveSheet();
+
+        /**********插入图片代码开始**********/
+        //获得一个图片的操作对象
+        $objDrawing = new \PHPExcel_Worksheet_Drawing();
+        //加载图片路径
+        $objDrawing->setPath("G:/1789.jpg");
+        //设置图片插入位置的左上角坐标
+        $objDrawing->setCoordinates('F6');
+        //设置插入图片的大小
+        $objDrawing->setWidth(500);
+        $objDrawing->setHeight(100);
+        $objDrawing->setOffsetX(20)->setOffsetY(40);//设定单元格内偏移量
+        $objDrawing->setWorksheet($objSheet);
+        /**代码结束**/
+
+        /************* 添加丰富的文字块 ***********/
+        $objRichText = new \PHPExcel_RichText();
+        //添加普通的文字 不能操作样式
+        $objRichText->createText('裕申电子');
+        //生成可以添加样式的文字块
+        $objStyleFont = $objRichText->createTextRun("是国内最大的IT技能免费培训平台");
+        //加一些样式
+        $objStyleFont->getFont()->setSize(16)->setBold(true)->setColor(new \PHPExcel_Style_Color(\PHPExcel_Style_Color::COLOR_GREEN));
+        $objRichText->createText('资料各种的丰富');
+        $objSheet->getCell('C4')->setValue($objRichText);
+        /************* 代码结束 ****************/
+
+        /***************** 添加批注 ******************/
+        //合并单元格
+        $objSheet->mergeCells('F4:N4');
+        //添加批注
+        $objSheet->getComment('F4')->getText()->createTextRun("\r\n慕课网\n\n时尚时尚最时尚");
+        /*******************代码结束*********************/
+
+
+        /************************添加超链接代码*************************/
+        //添加文字
+        $objSheet->setCellValue('I3', '慕课网');
+        //添加样式
+        $objSheet->getStyle("I3")->getFont()->setSize(16)->setBold(true)->setUnderline(true)->setColor(new \PHPExcel_Style_Color(\PHPExcel_Style_Color::COLOR_BLUE));
+        $objSheet->getCell('I3')->getHyperlink()->setUrl("http://www.baidu.com");
+
+        /*************************代码结束********************************/
+
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');//生成excel文件
+        //$objWriter->save($dir."/export_1.xls");//保存文件
+        $this->broswer_export('browser_excel03.xlsx');
+        $objWriter->save("php://output");
+    }
+
+
+    /**
+     * 添加图表到PHPExcel中
+     */
+
+    public function exportChart()
+    {
+        require_once './vendor/autoload.php';
+        //实例化PHPExcel类，等同于在桌面上新建的一个Excel表格
+        $objPHPExcel = new \PHPExcel();
+        //获取当前活动的sheet的操作对象
+        $objSheet = $objPHPExcel->getActiveSheet();
+
+
+        /**本节课程代码编写开始**/
+        $array = array(
+            array("", "一班", "二班", "三班"),
+            array("不及格", 20, 30, 40),
+            array("良好", 30, 50, 55),
+            array("优秀", 15, 17, 20)
+        );//准备数据
+        $objSheet->fromArray($array);//直接加载数组填充进单元格内
+        //开始图表代码编写
+        $labels = array(
+            new \PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$B$1', null, 1),//一班
+            new \PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$C$1', null, 1),//二班
+            new \PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$D$1', null, 1),//三班
+        );//先取得绘制图表的标签
+        $xLabels = array(
+            new \PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$A$2:$A$4', null, 3)//取得图表X轴的刻度
+        );
+        $datas = array(
+            new \PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$B$2:$B$4', null, 3),//取一班的数据
+            new \PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$C$2:$C$4', null, 3),//取二班的数据
+            new \PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$D$2:$D$4', null, 3)//取三班的数据
+        );//取得绘图所需的数据
+
+        $series = array(
+            new \PHPExcel_Chart_DataSeries(
+                \PHPExcel_Chart_DataSeries::TYPE_LINECHART,
+                \PHPExcel_Chart_DataSeries::GROUPING_STANDARD,
+                range(0, count($labels) - 1),
+                $labels,
+                $xLabels,
+                $datas
+            )
+        );//根据取得的东西做出一个图表的框架
+        $layout = new \PHPExcel_Chart_Layout();
+        $layout->setShowVal(true);
+        $areas = new \PHPExcel_Chart_PlotArea($layout, $series);
+        $legend = new \PHPExcel_Chart_Legend(\PHPExcel_Chart_Legend::POSITION_RIGHT, $layout, false);
+        $title = new \PHPExcel_Chart_Title("高一学生成绩分布");
+        $ytitle = new \PHPExcel_Chart_Title("value(人数)");
+        $chart = new \PHPExcel_Chart(
+            'line_chart',
+            $title,
+            $legend,
+            $areas,
+            true,
+            false,
+            null,
+            $ytitle
+        );//生成一个图标
+        $chart->setTopLeftPosition("A7")->setBottomRightPosition("K25");//给定图表所在表格中的位置
+
+        $objSheet->addChart($chart);//将chart添加到表格中
+
+
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');//生成excel文件
+        //$objWriter->save($dir."/export_1.xls");//保存文件
+        $this->broswer_export('browser_excel031.xlsx', 'Excel2007');
+        $objWriter->save("php://output");
+    }
+
+
+    /**
+     * 读取Excel文件
+     */
+    public function readExcel()
+    {
+        require_once './vendor/autoload.php';
+        //实例化PHPExcel类，等同于在桌面上新建的一个Excel表格
+        $dir=dirname(__FILE__);//找到当前脚本所在路径
+        $filename=$dir."/export_1.xls";
+        $fileType=PHPExcel_IOFactory::identify($filename);//自动获取文件的类型提供给phpexcel用
+        $objReader=PHPExcel_IOFactory::createReader($fileType);//获取文件读取操作对象
+        $sheetName=array("2年级","3年级");
+        $objReader->setLoadSheetsOnly($sheetName);//只加载指定的sheet
+        $objPHPExcel=$objReader->load($filename);//加载文件
+        /**$sheetCount=$objPHPExcel->getSheetCount();//获取excel文件里有多少个sheet
+        for($i=0;$i<$sheetCount;$i++){
+        $data=$objPHPExcel->getSheet($i)->toArray();//读取每个sheet里的数据 全部放入到数组中
+        print_r($data);
+        }**/
+        foreach($objPHPExcel->getWorksheetIterator() as $sheet){//循环取sheet
+            foreach($sheet->getRowIterator() as $row){//逐行处理
+                if($row->getRowIndex()<2){
+                    continue;
+                }
+                foreach($row->getCellIterator() as $cell){//逐列读取
+                    $data=$cell->getValue();//获取单元格数据
+                    echo $data." ";
+                }
+                echo '<br/>';
+            }
+            echo '<br/>';
+        }
     }
 }
