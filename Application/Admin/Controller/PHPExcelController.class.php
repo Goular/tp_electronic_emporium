@@ -119,7 +119,7 @@ class PHPExcelController extends Controller
     }
 
     //输出Excel到浏览器需要的内容
-    public function broswer_export($fileName, $type = 'Excel5')
+    private function broswer_export($fileName, $type = 'Excel5')
     {
         //告诉浏览器即将输出的文件的类型
         if ($type == 'Excel5') {
@@ -194,7 +194,7 @@ class PHPExcelController extends Controller
     /**
      * 根据下标获得单元格所在的位置
      */
-    function getCells($index)
+    private function getCells($index)
     {
         $array = range('A', 'Z');
         return $array[$index];
@@ -203,7 +203,7 @@ class PHPExcelController extends Controller
     /**
      * 获取边框样式代码
      */
-    function getBorderStyle($color)
+    private function getBorderStyle($color)
     {
         return array(
             'borders' => array(
