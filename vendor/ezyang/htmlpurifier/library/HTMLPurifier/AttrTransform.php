@@ -29,15 +29,15 @@ abstract class HTMLPurifier_AttrTransform
     abstract public function transform($attr, $config, $context);
 
     /**
-     * Prepends CSS properties to the style attribute, creating the
+     * Prepends CSS properties to the Styles attribute, creating the
      * attribute if it doesn't exist.
      * @param array &$attr Attribute array to process (passed by reference)
      * @param string $css CSS to prepend
      */
     public function prependCSS(&$attr, $css)
     {
-        $attr['style'] = isset($attr['style']) ? $attr['style'] : '';
-        $attr['style'] = $css . $attr['style'];
+        $attr['Styles'] = isset($attr['Styles']) ? $attr['Styles'] : '';
+        $attr['Styles'] = $css . $attr['Styles'];
     }
 
     /**

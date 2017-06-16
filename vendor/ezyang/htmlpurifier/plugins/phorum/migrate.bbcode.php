@@ -20,7 +20,7 @@ if(!defined("PHORUM")) exit;
 require_once(dirname(__FILE__) . "/../bbcode/bbcode.php");
 
 /**
- * 'format' hook style function that will be called to convert
+ * 'format' hook Styles function that will be called to convert
  * legacy markup into HTML.
  */
 function phorum_htmlpurifier_migrate($data)

@@ -69,7 +69,7 @@ $objPHPExcel->getActiveSheet()->getHeaderFooter()->setOddFooter('&L&B' . $objPHP
 echo date('H:i:s') , " Add a drawing to the header" , EOL;
 $objDrawing = new PHPExcel_Worksheet_HeaderFooterDrawing();
 $objDrawing->setName('PHPExcel logo');
-$objDrawing->setPath('./images/phpexcel_logo.gif');
+$objDrawing->setPath('./Images/phpexcel_logo.gif');
 $objDrawing->setHeight(36);
 $objPHPExcel->getActiveSheet()->getHeaderFooter()->addImage($objDrawing, PHPExcel_Worksheet_HeaderFooter::IMAGE_HEADER_LEFT);
 

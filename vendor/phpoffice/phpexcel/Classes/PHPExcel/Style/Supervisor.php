@@ -75,7 +75,7 @@ abstract class PHPExcel_Style_Supervisor
 	}
 
 	/**
-	 * Is this a supervisor or a cell style component?
+	 * Is this a supervisor or a cell Styles component?
 	 *
 	 * @return boolean
 	 */

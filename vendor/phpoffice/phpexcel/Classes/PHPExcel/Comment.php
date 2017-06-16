@@ -50,21 +50,21 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     private $_text;
 
     /**
-     * Comment width (CSS style, i.e. XXpx or YYpt)
+     * Comment width (CSS Styles, i.e. XXpx or YYpt)
      *
      * @var string
      */
     private $_width = '96pt';
 
     /**
-     * Left margin (CSS style, i.e. XXpx or YYpt)
+     * Left margin (CSS Styles, i.e. XXpx or YYpt)
      *
      * @var string
      */
     private $_marginLeft = '59.25pt';
 
     /**
-     * Top margin (CSS style, i.e. XXpx or YYpt)
+     * Top margin (CSS Styles, i.e. XXpx or YYpt)
      *
      * @var string
      */
@@ -78,7 +78,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     private $_visible = false;
 
     /**
-     * Comment height (CSS style, i.e. XXpx or YYpt)
+     * Comment height (CSS Styles, i.e. XXpx or YYpt)
      *
      * @var string
      */
@@ -153,7 +153,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Get comment width (CSS style, i.e. XXpx or YYpt)
+     * Get comment width (CSS Styles, i.e. XXpx or YYpt)
      *
      * @return string
      */
@@ -162,7 +162,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Set comment width (CSS style, i.e. XXpx or YYpt)
+     * Set comment width (CSS Styles, i.e. XXpx or YYpt)
      *
      * @param string $value
      * @return PHPExcel_Comment
@@ -173,7 +173,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Get comment height (CSS style, i.e. XXpx or YYpt)
+     * Get comment height (CSS Styles, i.e. XXpx or YYpt)
      *
      * @return string
      */
@@ -182,7 +182,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Set comment height (CSS style, i.e. XXpx or YYpt)
+     * Set comment height (CSS Styles, i.e. XXpx or YYpt)
      *
      * @param string $value
      * @return PHPExcel_Comment
@@ -193,7 +193,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Get left margin (CSS style, i.e. XXpx or YYpt)
+     * Get left margin (CSS Styles, i.e. XXpx or YYpt)
      *
      * @return string
      */
@@ -202,7 +202,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Set left margin (CSS style, i.e. XXpx or YYpt)
+     * Set left margin (CSS Styles, i.e. XXpx or YYpt)
      *
      * @param string $value
      * @return PHPExcel_Comment
@@ -213,7 +213,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Get top margin (CSS style, i.e. XXpx or YYpt)
+     * Get top margin (CSS Styles, i.e. XXpx or YYpt)
      *
      * @return string
      */
@@ -222,7 +222,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Set top margin (CSS style, i.e. XXpx or YYpt)
+     * Set top margin (CSS Styles, i.e. XXpx or YYpt)
      *
      * @param string $value
      * @return PHPExcel_Comment

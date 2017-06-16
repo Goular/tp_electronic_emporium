@@ -93,7 +93,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
                 ),
             ),
         ), //	Blue underlined
-        'hr' => array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THIN,
+        'hr' => array('borders' => array('bottom' => array('Styles' => PHPExcel_Style_Border::BORDER_THIN,
                     'color' => array(\PHPExcel_Style_Color::COLOR_BLACK,
                     ),
                 ),
@@ -395,8 +395,8 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
 
                         $this->_flushCell($sheet, $column, $row, $cellContent);
 
-//                        if (isset($attributeArray['style']) && !empty($attributeArray['style'])) {
-//                            $styleAry = $this->getPhpExcelStyleArray($attributeArray['style']);
+//                        if (isset($attributeArray['Styles']) && !empty($attributeArray['Styles'])) {
+//                            $styleAry = $this->getPhpExcelStyleArray($attributeArray['Styles']);
 //
 //                            if (!empty($styleAry)) {
 //                                $sheet->getStyle($column . $row)->applyFromArray($styleAry);

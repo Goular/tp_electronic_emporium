@@ -352,8 +352,8 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 		$excel = new PHPExcel;
 		$excel->removeSheetByIndex(0);
 		if (!$this->_readDataOnly) {
-			$excel->removeCellStyleXfByIndex(0); // remove the default style
-			$excel->removeCellXfByIndex(0); // remove the default style
+			$excel->removeCellStyleXfByIndex(0); // remove the default Styles
+			$excel->removeCellXfByIndex(0); // remove the default Styles
 		}
 
         $zipClass = PHPExcel_Settings::getZipClass();
@@ -546,7 +546,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 							);
 							$styles[] = $style;
 
-							// add style to cellXf collection
+							// add Styles to cellXf collection
 							$objStyle = new PHPExcel_Style;
 							self::_readStyle($objStyle, $style);
 							$excel->addCellXf($objStyle);
@@ -574,7 +574,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 							);
 							$cellStyles[] = $cellStyle;
 
-							// add style to cellStyleXf collection
+							// add Styles to cellStyleXf collection
 							$objStyle = new PHPExcel_Style;
 							self::_readStyle($objStyle, $cellStyle);
 							$excel->addCellStyleXf($objStyle);
@@ -596,11 +596,11 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 							foreach ($xmlStyles->cellStyles->cellStyle as $cellStyle) {
 								if (intval($cellStyle['builtinId']) == 0) {
 									if (isset($cellStyles[intval($cellStyle['xfId'])])) {
-										// Set default style
+										// Set default Styles
 										$style = new PHPExcel_Style;
 										self::_readStyle($style, $cellStyles[intval($cellStyle['xfId'])]);
 
-										// normal style, currently not using it for anything
+										// normal Styles, currently not using it for anything
 									}
 								}
 							}
@@ -764,8 +764,8 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 							if (isset($xmlSheet->cols) && !$this->_readDataOnly) {
 								foreach ($xmlSheet->cols->col as $col) {
                                     for ($i = intval($col["min"]) - 1; $i < intval($col["max"]); ++$i) {
-										if ($col["style"] && !$this->_readDataOnly) {
-											$docSheet->getColumnDimension(PHPExcel_Cell::stringFromColumnIndex($i))->setXfIndex(intval($col["style"]));
+										if ($col["Styles"] && !$this->_readDataOnly) {
+											$docSheet->getColumnDimension(PHPExcel_Cell::stringFromColumnIndex($i))->setXfIndex(intval($col["Styles"]));
 										}
 										if (self::boolean($col["bestFit"])) {
 											//$docSheet->getColumnDimension(PHPExcel_Cell::stringFromColumnIndex($i))->setAutoSize(TRUE);
@@ -932,7 +932,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
 										// Style information?
 										if ($c["s"] && !$this->_readDataOnly) {
-											// no style index means 0, it seems
+											// no Styles index means 0, it seems
 											$cell->setXfIndex(isset($styles[intval($c["s"])]) ?
 												intval($c["s"]) : 0);
 										}
@@ -1324,8 +1324,8 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 									foreach ($shapes as $shape) {
 										$shape->registerXPathNamespace('v', 'urn:schemas-microsoft-com:vml');
 
-										if (isset($shape['style'])) {
-	    									$style        = (string)$shape['style'];
+										if (isset($shape['Styles'])) {
+	    									$style        = (string)$shape['Styles'];
 	    									$fillColor    = strtoupper( substr( (string)$shape['fillcolor'], 1 ) );
 	    									$column       = null;
 	    									$row          = null;
@@ -1348,7 +1348,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 	    									    $comment = $docSheet->getCommentByColumnAndRow((string) $column, $row + 1);
 	    									    $comment->getFillColor()->setRGB( $fillColor );
 
-	    									    // Parse style
+	    									    // Parse Styles
 	    									    $styleArray = explode(';', str_replace(' ', '', $style));
 	    									    foreach ($styleArray as $stylePair) {
 	    									        $stylePair = explode(':', $stylePair);
@@ -1365,7 +1365,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 									}
 								}
 
-								// Header/footer images
+								// Header/footer Images
 								if ($xmlSheet && $xmlSheet->legacyDrawingHF && !$this->_readDataOnly) {
 									if ($zip->locateName(dirname("$dir/$fileWorksheet") . "/_rels/" . basename($fileWorksheet) . ".rels")) {
 										$relsWorksheet = simplexml_load_string($this->securityScan($this->_getFromZipArchive($zip,  dirname("$dir/$fileWorksheet") . "/_rels/" . basename($fileWorksheet) . ".rels")), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions()); //~ http://schemas.openxmlformats.org/package/2006/relationships");
@@ -1378,7 +1378,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 										}
 
 										if ($vmlRelationship != '') {
-											// Fetch linked images
+											// Fetch linked Images
 											$relsVML = simplexml_load_string($this->securityScan($this->_getFromZipArchive($zip,  dirname($vmlRelationship) . '/_rels/' . basename($vmlRelationship) . '.rels')), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions()); //~ http://schemas.openxmlformats.org/package/2006/relationships");
 											$drawings = array();
 											foreach ($relsVML->Relationship as $ele) {
@@ -1400,7 +1400,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 												$imageData = $imageData[$idx];
 
 												$imageData = $imageData->attributes('urn:schemas-microsoft-com:office:office');
-												$style = self::toCSSArray( (string)$shape['style'] );
+												$style = self::toCSSArray( (string)$shape['Styles'] );
 
 												$hfImages[ (string)$shape['id'] ] = new PHPExcel_Worksheet_HeaderFooterDrawing();
 												if (isset($imageData['title'])) {
@@ -1788,9 +1788,9 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
 	private static function _readStyle($docStyle, $style) {
 		// format code
-//		if (isset($style->numFmt)) {
-//			if (isset($style->numFmt['formatCode'])) {
-//				$docStyle->getNumberFormat()->setFormatCode((string) $style->numFmt['formatCode']);
+//		if (isset($Styles->numFmt)) {
+//			if (isset($Styles->numFmt['formatCode'])) {
+//				$docStyle->getNumberFormat()->setFormatCode((string) $Styles->numFmt['formatCode']);
 //			} else {
 				$docStyle->getNumberFormat()->setFormatCode($style->numFmt);
 //			}
@@ -1911,7 +1911,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 			}
 		}
 
-		// top-level style settings
+		// top-level Styles settings
 		if (isset($style->quotePrefix)) {
 			$docStyle->setQuotePrefix($style->quotePrefix);
         }
@@ -1919,8 +1919,8 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
 
 	private static function _readBorder($docBorder, $eleBorder) {
-		if (isset($eleBorder["style"])) {
-			$docBorder->setBorderStyle((string) $eleBorder["style"]);
+		if (isset($eleBorder["Styles"])) {
+			$docBorder->setBorderStyle((string) $eleBorder["Styles"]);
 		}
 		if (isset($eleBorder->color)) {
 			$docBorder->getColor()->setARGB(self::_readColor($eleBorder->color));

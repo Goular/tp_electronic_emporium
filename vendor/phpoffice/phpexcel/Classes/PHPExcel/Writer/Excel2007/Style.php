@@ -169,7 +169,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 	 * Write Fill
 	 *
 	 * @param 	PHPExcel_Shared_XMLWriter 	$objWriter 		XML Writer
-	 * @param 	PHPExcel_Style_Fill			$pFill			Fill style
+	 * @param 	PHPExcel_Style_Fill			$pFill			Fill Styles
 	 * @throws 	PHPExcel_Writer_Exception
 	 */
 	private function _writeFill(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Style_Fill $pFill = null)
@@ -189,7 +189,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 	 * Write Gradient Fill
 	 *
 	 * @param 	PHPExcel_Shared_XMLWriter 	$objWriter 		XML Writer
-	 * @param 	PHPExcel_Style_Fill			$pFill			Fill style
+	 * @param 	PHPExcel_Style_Fill			$pFill			Fill Styles
 	 * @throws 	PHPExcel_Writer_Exception
 	 */
 	private function _writeGradientFill(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Style_Fill $pFill = null)
@@ -233,7 +233,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 	 * Write Pattern Fill
 	 *
 	 * @param 	PHPExcel_Shared_XMLWriter			$objWriter 		XML Writer
-	 * @param 	PHPExcel_Style_Fill					$pFill			Fill style
+	 * @param 	PHPExcel_Style_Fill					$pFill			Fill Styles
 	 * @throws 	PHPExcel_Writer_Exception
 	 */
 	private function _writePatternFill(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Style_Fill $pFill = null)
@@ -271,7 +271,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 	 * Write Font
 	 *
 	 * @param 	PHPExcel_Shared_XMLWriter		$objWriter 		XML Writer
-	 * @param 	PHPExcel_Style_Font				$pFont			Font style
+	 * @param 	PHPExcel_Style_Font				$pFont			Font Styles
 	 * @throws 	PHPExcel_Writer_Exception
 	 */
 	private function _writeFont(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Style_Font $pFont = null)
@@ -284,7 +284,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 
 			// Bold. We explicitly write this element also when false (like MS Office Excel 2007 does
 			// for conditional formatting). Otherwise it will apparently not be picked up in conditional
-			// formatting style dialog
+			// formatting Styles dialog
 			if ($pFont->getBold() !== NULL) {
 				$objWriter->startElement('b');
 					$objWriter->writeAttribute('val', $pFont->getBold() ? '1' : '0');
@@ -351,7 +351,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 	 * Write Border
 	 *
 	 * @param 	PHPExcel_Shared_XMLWriter			$objWriter 		XML Writer
-	 * @param 	PHPExcel_Style_Borders				$pBorders		Borders style
+	 * @param 	PHPExcel_Style_Borders				$pBorders		Borders Styles
 	 * @throws 	PHPExcel_Writer_Exception
 	 */
 	private function _writeBorder(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Style_Borders $pBorders = null)
@@ -529,7 +529,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 	 *
 	 * @param 	PHPExcel_Shared_XMLWriter		$objWriter 		XML Writer
 	 * @param 	string							$pName			Element name
-	 * @param 	PHPExcel_Style_Border			$pBorder		Border style
+	 * @param 	PHPExcel_Style_Border			$pBorder		Border Styles
 	 * @throws 	PHPExcel_Writer_Exception
 	 */
 	private function _writeBorderPr(PHPExcel_Shared_XMLWriter $objWriter = null, $pName = 'left', PHPExcel_Style_Border $pBorder = null)
@@ -537,7 +537,7 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
 		// Write BorderPr
 		if ($pBorder->getBorderStyle() != PHPExcel_Style_Border::BORDER_NONE) {
 			$objWriter->startElement($pName);
-			$objWriter->writeAttribute('style', 	$pBorder->getBorderStyle());
+			$objWriter->writeAttribute('Styles', 	$pBorder->getBorderStyle());
 
 				// color
 				$objWriter->startElement('color');

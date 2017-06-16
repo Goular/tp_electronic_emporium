@@ -35,11 +35,11 @@ class GoodsModel extends Model
                 array(130, 130),
                 array(50, 50),
             ));
-            $data['logo'] = $ret['images'][0];
-            $data['mbig_logo'] = $ret['images'][1];
-            $data['big_logo'] = $ret['images'][2];
-            $data['mid_logo'] = $ret['images'][3];
-            $data['sm_logo'] = $ret['images'][4];
+            $data['logo'] = $ret['Images'][0];
+            $data['mbig_logo'] = $ret['Images'][1];
+            $data['big_logo'] = $ret['Images'][2];
+            $data['mid_logo'] = $ret['Images'][3];
+            $data['sm_logo'] = $ret['Images'][4];
         }
         // 获取当前时间并添加到表单中这样就会插入到数据库中
         $data['addtime'] = date('Y-m-d H:i:s', time());
@@ -60,11 +60,11 @@ class GoodsModel extends Model
                 array(130, 130),
                 array(50, 50),
             ));
-            $data['logo'] = $ret['images'][0];
-            $data['mbig_logo'] = $ret['images'][1];
-            $data['big_logo'] = $ret['images'][2];
-            $data['mid_logo'] = $ret['images'][3];
-            $data['sm_logo'] = $ret['images'][4];
+            $data['logo'] = $ret['Images'][0];
+            $data['mbig_logo'] = $ret['Images'][1];
+            $data['big_logo'] = $ret['Images'][2];
+            $data['mid_logo'] = $ret['Images'][3];
+            $data['sm_logo'] = $ret['Images'][4];
             /*************** 删除原来的图片 *******************/
             // 先查询出原来图片的路径
             $oldLogo = $this->field('logo,mbig_logo,big_logo,mid_logo,sm_logo')->find($id);
@@ -109,10 +109,10 @@ class GoodsModel extends Model
                     ));
                     if ($ret['ok'] == 1) {
                         $gpModel->add(array(
-                            'pic' => $ret['images'][0],
-                            'big_pic' => $ret['images'][1],
-                            'mid_pic' => $ret['images'][2],
-                            'sm_pic' => $ret['images'][3],
+                            'pic' => $ret['Images'][0],
+                            'big_pic' => $ret['Images'][1],
+                            'mid_pic' => $ret['Images'][2],
+                            'sm_pic' => $ret['Images'][3],
                             'goods_id' => $id
                         ));
                     }
@@ -310,10 +310,10 @@ class GoodsModel extends Model
                     ));
                     if ($ret['ok'] == 1) {
                         $gpModel->add(array(
-                            'pic' => $ret['images'][0],
-                            'big_pic' => $ret['images'][1],
-                            'mid_pic' => $ret['images'][2],
-                            'sm_pic' => $ret['images'][3],
+                            'pic' => $ret['Images'][0],
+                            'big_pic' => $ret['Images'][1],
+                            'mid_pic' => $ret['Images'][2],
+                            'sm_pic' => $ret['Images'][3],
                             'goods_id' => $data['id']
                         ));
                     }

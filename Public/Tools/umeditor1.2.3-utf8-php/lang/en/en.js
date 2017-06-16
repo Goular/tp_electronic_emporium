@@ -40,7 +40,7 @@ UM.I18N['en'] = {
     'ok':"OK",
     'cancel':"Cancel",
     'closeDialog':"closeDialog",
-    'tableDrag':"You must import the file uiUtils.js before drag! ",
+    'tableDrag':"You must import the file uiUtils.Js before drag! ",
     'autofloatMsg':"The plugin AutoFloat depends on EditorUI!",
     'anthorMsg':"Link",
     'clearColor':'Clear',

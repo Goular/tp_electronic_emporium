@@ -130,5 +130,5 @@ foreach($inputFileNames as $inputFileName) {
 echo date('H:i:s') , ' Peak memory usage: ' , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
 
 // Echo done
-echo date('H:i:s') , " Done rendering charts as images" , EOL;
+echo date('H:i:s') , " Done rendering charts as Images" , EOL;
 echo 'Image files have been created in ' , getcwd() , EOL;

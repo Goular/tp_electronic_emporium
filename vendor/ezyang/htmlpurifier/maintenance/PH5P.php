@@ -1159,7 +1159,7 @@ class HTML5TreeConstructer
     'dt','embed','fieldset','form','frame','frameset','h1','h2','h3','h4','h5',
     'h6','head','hr','iframe','image','img','input','isindex','li','link',
     'listing','menu','meta','noembed','noframes','noscript','ol','optgroup',
-    'option','p','param','plaintext','pre','script','select','spacer','style',
+    'option','p','param','plaintext','pre','script','select','spacer','Styles',
     'tbody','textarea','tfoot','thead','title','tr','ul','wbr');
 
     // The different phases.
@@ -1396,7 +1396,7 @@ class HTML5TreeConstructer
             $this->mode = self::IN_HEAD;
 
         /* A start tag token whose tag name is one of: "base", "link", "meta",
-        "script", "style", "title". Or an end tag with the tag name "html".
+        "script", "Styles", "title". Or an end tag with the tag name "html".
         Or a character token that is not one of U+0009 CHARACTER TABULATION,
         U+000A LINE FEED (LF), U+000B LINE TABULATION, U+000C FORM FEED (FF),
         or U+0020 SPACE. Or any other start tag token */
@@ -1428,13 +1428,13 @@ class HTML5TreeConstructer
         U+000A LINE FEED (LF), U+000B LINE TABULATION, U+000C FORM FEED (FF),
         or U+0020 SPACE.
 
-        THIS DIFFERS FROM THE SPEC: If the current node is either a title, style
+        THIS DIFFERS FROM THE SPEC: If the current node is either a title, Styles
         or script element, append the character to the current node regardless
         of its content. */
         if(($token['type'] === HTML5::CHARACTR &&
         preg_match('/^[\t\n\x0b\x0c ]+$/', $token['data'])) || (
         $token['type'] === HTML5::CHARACTR && in_array(end($this->stack)->nodeName,
-        array('title', 'style', 'script')))) {
+        array('title', 'Styles', 'script')))) {
             /* Append the character to the current node. */
             $this->insertText($token['data']);
 
@@ -1445,7 +1445,7 @@ class HTML5TreeConstructer
             $this->insertComment($token['data']);
 
         } elseif($token['type'] === HTML5::ENDTAG &&
-        in_array($token['name'], array('title', 'style', 'script'))) {
+        in_array($token['name'], array('title', 'Styles', 'script'))) {
             array_pop($this->stack);
             return HTML5::PCDATA;
 
@@ -1465,8 +1465,8 @@ class HTML5TreeConstructer
             /* Switch the tokeniser's content model flag  to the RCDATA state. */
             return HTML5::RCDATA;
 
-        /* A start tag with the tag name "style" */
-        } elseif($token['type'] === HTML5::STARTTAG && $token['name'] === 'style') {
+        /* A start tag with the tag name "Styles" */
+        } elseif($token['type'] === HTML5::STARTTAG && $token['name'] === 'Styles') {
             /* Create an element for the token and append the new element to the
             node pointed to by the head element pointer, or, if that is null
             (innerHTML case), to the current node. */
@@ -1580,9 +1580,9 @@ class HTML5TreeConstructer
             $this->mode = self::IN_FRAME;
 
         /* A start tag token whose tag name is one of: "base", "link", "meta",
-        "script", "style", "title" */
+        "script", "Styles", "title" */
         } elseif($token['type'] === HTML5::STARTTAG && in_array($token['name'],
-        array('base', 'link', 'meta', 'script', 'style', 'title'))) {
+        array('base', 'link', 'meta', 'script', 'Styles', 'title'))) {
             /* Parse error. Switch the insertion mode back to "in head" and
             reprocess the token. */
             $this->mode = self::IN_HEAD;
@@ -1626,8 +1626,8 @@ class HTML5TreeConstructer
             case HTML5::STARTTAG:
             switch($token['name']) {
                 /* A start tag token whose tag name is one of: "script",
-                "style" */
-                case 'script': case 'style':
+                "Styles" */
+                case 'script': case 'Styles':
                     /* Process the token as if the insertion mode had been "in
                     head". */
                     return $this->inHead($token);

@@ -805,46 +805,46 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
 
 		switch ($borderAttributes["Style"]) {
 			case '0' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_NONE;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_NONE;
 				break;
 			case '1' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_THIN;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 				break;
 			case '2' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_MEDIUM;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_MEDIUM;
 				break;
 			case '4' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_DASHED;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_DASHED;
 				break;
 			case '5' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_THICK;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_THICK;
 				break;
 			case '6' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_DOUBLE;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_DOUBLE;
 				break;
 			case '7' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_DOTTED;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_DOTTED;
 				break;
 			case '9' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_DASHDOT;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_DASHDOT;
 				break;
 			case '10' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHDOT;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHDOT;
 				break;
 			case '11' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_DASHDOTDOT;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_DASHDOTDOT;
 				break;
 			case '12' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHDOTDOT;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHDOTDOT;
 				break;
 			case '13' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHDOTDOT;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHDOTDOT;
 				break;
 			case '3' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_SLANTDASHDOT;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_SLANTDASHDOT;
 				break;
 			case '8' :
-				$styleArray['style'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHED;
+				$styleArray['Styles'] = PHPExcel_Style_Border::BORDER_MEDIUMDASHED;
 				break;
 		}
 		return $styleArray;

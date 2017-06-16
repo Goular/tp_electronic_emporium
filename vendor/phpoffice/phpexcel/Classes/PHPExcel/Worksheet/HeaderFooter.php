@@ -79,14 +79,14 @@
  * &"font name,font type" - code for "text font name" and "text font type", where font name and font type
  * are strings specifying the name and type of the font, separated by a comma. When a hyphen appears in font
  * name, it means "none specified". Both of font name and font type can be localized values.
- * &"-,Bold" - code for "bold font style"
- * &B - also means "bold font style".
- * &"-,Regular" - code for "regular font style"
- * &"-,Italic" - code for "italic font style"
- * &I - also means "italic font style"
- * &"-,Bold Italic" code for "bold italic font style"
- * &O - code for "outline style"
- * &H - code for "shadow style"
+ * &"-,Bold" - code for "bold font Styles"
+ * &B - also means "bold font Styles".
+ * &"-,Regular" - code for "regular font Styles"
+ * &"-,Italic" - code for "italic font Styles"
+ * &I - also means "italic font Styles"
+ * &"-,Bold Italic" code for "bold italic font Styles"
+ * &O - code for "outline Styles"
+ * &H - code for "shadow Styles"
  * </code>
  *
  * @category   PHPExcel
@@ -174,7 +174,7 @@ class PHPExcel_Worksheet_HeaderFooter
 	private $_alignWithMargins	= true;
 
 	/**
-	 * Header/footer images
+	 * Header/footer Images
 	 *
 	 * @var PHPExcel_Worksheet_HeaderFooterDrawing[]
 	 */
@@ -415,7 +415,7 @@ class PHPExcel_Worksheet_HeaderFooter
     }
 
     /**
-     * Set header/footer images
+     * Set header/footer Images
      *
      * @param PHPExcel_Worksheet_HeaderFooterDrawing[] $images
      * @throws PHPExcel_Exception
@@ -431,7 +431,7 @@ class PHPExcel_Worksheet_HeaderFooter
     }
 
     /**
-     * Get header/footer images
+     * Get header/footer Images
      *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing[]
      */

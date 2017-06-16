@@ -96,7 +96,7 @@
                 if ($(".zoomPreload", el).length == 0) {
                     loader.append();
                 }
-                //preloading images
+                //preloading Images
                 if (settings.preloadImages || settings.zoomType == 'drag' || settings.alwaysOn) {
                     obj.load();
                 }

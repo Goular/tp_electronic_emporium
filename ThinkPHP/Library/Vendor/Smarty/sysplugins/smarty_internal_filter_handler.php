@@ -39,7 +39,7 @@ class Smarty_Internal_Filter_Handler {
                 $plugin_name = "Smarty_{$type}filter_{$name}";
                 if ($template->smarty->loadPlugin($plugin_name)) {
                     if (function_exists($plugin_name)) {
-                        // use loaded Smarty2 style plugin
+                        // use loaded Smarty2 Styles plugin
                         $output = $plugin_name($output, $template);
                     } elseif (class_exists($plugin_name, false)) {
                         // loaded class of filter plugin

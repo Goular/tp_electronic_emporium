@@ -238,7 +238,7 @@ class HTMLPurifier_Generator
             // becomes
             //      <img alt='' />
             // Fortunately, all we need to do is trigger an appropriate
-            // quoting style, which we do by adding an extra space.
+            // quoting Styles, which we do by adding an extra space.
             // This also is consistent with the W3C spec, which states
             // that user agents may ignore leading or trailing
             // whitespace (in fact, most don't, at least for attributes
@@ -249,7 +249,7 @@ class HTMLPurifier_Generator
             // on supporting Internet Explorer.
             if ($this->_innerHTMLFix) {
                 if (strpos($value, '`') !== false) {
-                    // check if correct quoting style would not already be
+                    // check if correct quoting Styles would not already be
                     // triggered
                     if (strcspn($value, '"\' <>') === strlen($value)) {
                         // protect!
@@ -268,7 +268,7 @@ class HTMLPurifier_Generator
      *       for properly generating HTML here w/o using tokens, it stays
      *       public.
      * @param string $string String data to escape for HTML.
-     * @param int $quote Quoting style, like htmlspecialchars. ENT_NOQUOTES is
+     * @param int $quote Quoting Styles, like htmlspecialchars. ENT_NOQUOTES is
      *               permissible for non-attribute output.
      * @return string escaped data.
      */

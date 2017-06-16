@@ -4,7 +4,7 @@
 
 (function($){
 
-// source: src/i18n/jquery-ui-timepicker-af.js
+// source: src/i18n/jquery-ui-timepicker-af.Js
 /* Afrikaans translation for the jQuery Timepicker Addon */
 /* Written by Deon Heyns */
 
@@ -26,7 +26,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-am.js
+// source: src/i18n/jquery-ui-timepicker-am.Js
 /* Armenian translation for the jQuery Timepicker Addon */
 /* Written by Artavazd Avetisyan artavazda@hotmail.com */
 
@@ -48,7 +48,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-bg.js
+// source: src/i18n/jquery-ui-timepicker-bg.Js
 /* Bulgarian translation for the jQuery Timepicker Addon */
 /* Written by Plamen Kovandjiev */
 
@@ -70,7 +70,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-ca.js
+// source: src/i18n/jquery-ui-timepicker-ca.Js
 /* Catalan translation for the jQuery Timepicker Addon */
 /* Written by Sergi Faber */
 
@@ -92,7 +92,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-cs.js
+// source: src/i18n/jquery-ui-timepicker-cs.Js
 /* Czech translation for the jQuery Timepicker Addon */
 /* Written by Ondřej Vodáček */
 
@@ -114,7 +114,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-da.js
+// source: src/i18n/jquery-ui-timepicker-da.Js
 /* Danish translation for the jQuery Timepicker Addon */
 /* Written by Lars H. Jensen (http://www.larshj.dk) */
 
@@ -136,7 +136,7 @@
         isRTL: false
     };
 
-// source: src/i18n/jquery-ui-timepicker-de.js
+// source: src/i18n/jquery-ui-timepicker-de.Js
 /* German translation for the jQuery Timepicker Addon */
 /* Written by Marvin */
 
@@ -158,7 +158,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-el.js
+// source: src/i18n/jquery-ui-timepicker-el.Js
 /* Hellenic translation for the jQuery Timepicker Addon */
 /* Written by Christos Pontikis */
 
@@ -180,7 +180,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-es.js
+// source: src/i18n/jquery-ui-timepicker-es.Js
 /* Spanish translation for the jQuery Timepicker Addon */
 /* Written by Ianaré Sévi */
 /* Modified by Carlos Martínez */
@@ -203,7 +203,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-et.js
+// source: src/i18n/jquery-ui-timepicker-et.Js
 /* Estonian translation for the jQuery Timepicker Addon */
 /* Written by Karl Sutt (karl@sutt.ee) */
 
@@ -225,7 +225,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-eu.js
+// source: src/i18n/jquery-ui-timepicker-eu.Js
 /* Basque trannslation for JQuery Timepicker Addon */
 /* Translated by Xabi Fer */
 /* Fixed by Asier Iturralde Sarasola - iametza interaktiboa */
@@ -248,7 +248,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-fa.js
+// source: src/i18n/jquery-ui-timepicker-fa.Js
 /* Persian translation for the jQuery Timepicker Addon */
 /* Written by Meysam Pour Ganji */
 
@@ -270,7 +270,7 @@
         isRTL: true
     };
 
-// source: src/i18n/jquery-ui-timepicker-fi.js
+// source: src/i18n/jquery-ui-timepicker-fi.Js
 /* Finnish translation for the jQuery Timepicker Addon */
 /* Written by Juga Paazmaya (http://github.com/paazmaya) */
 
@@ -292,7 +292,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-fr.js
+// source: src/i18n/jquery-ui-timepicker-fr.Js
 /* French translation for the jQuery Timepicker Addon */
 /* Written by Thomas Lété */
 
@@ -314,7 +314,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-gl.js
+// source: src/i18n/jquery-ui-timepicker-gl.Js
 /* Galician translation for the jQuery Timepicker Addon */
 /* Written by David Barral */
 
@@ -336,7 +336,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-he.js
+// source: src/i18n/jquery-ui-timepicker-he.Js
 /* Hebrew translation for the jQuery Timepicker Addon */
 /* Written by Lior Lapid */
 
@@ -358,7 +358,7 @@
 		isRTL: true
 	};
 
-// source: src/i18n/jquery-ui-timepicker-hr.js
+// source: src/i18n/jquery-ui-timepicker-hr.Js
 /* Croatian translation for the jQuery Timepicker Addon */
 /* Written by Mladen */
 
@@ -380,7 +380,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-hu.js
+// source: src/i18n/jquery-ui-timepicker-hu.Js
 /* Hungarian translation for the jQuery Timepicker Addon */
 /* Written by Vas Gábor */
 
@@ -402,7 +402,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-id.js
+// source: src/i18n/jquery-ui-timepicker-id.Js
 /* Indonesian translation for the jQuery Timepicker Addon */
 /* Written by Nia */
 
@@ -424,7 +424,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-it.js
+// source: src/i18n/jquery-ui-timepicker-it.Js
 /* Italian translation for the jQuery Timepicker Addon */
 /* Written by Marco "logicoder" Del Tongo */
 
@@ -446,7 +446,7 @@
         isRTL: false
     };
 
-// source: src/i18n/jquery-ui-timepicker-ja.js
+// source: src/i18n/jquery-ui-timepicker-ja.Js
 /* Japanese translation for the jQuery Timepicker Addon */
 /* Written by Jun Omae */
 
@@ -468,7 +468,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-ko.js
+// source: src/i18n/jquery-ui-timepicker-ko.Js
 /* Korean translation for the jQuery Timepicker Addon */
 /* Written by Genie */
 
@@ -490,7 +490,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-lt.js
+// source: src/i18n/jquery-ui-timepicker-lt.Js
 /* Lithuanian translation for the jQuery Timepicker Addon */
 /* Written by Irmantas Šiupšinskas */
 
@@ -512,7 +512,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-lv.js
+// source: src/i18n/jquery-ui-timepicker-lv.Js
 /* Latvian translation for the jQuery Timepicker Addon */
 /* Written by Dmitry Bogatykh */
 
@@ -534,7 +534,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-nl.js
+// source: src/i18n/jquery-ui-timepicker-nl.Js
 /* Dutch translation for the jQuery Timepicker Addon */
 /* Written by Martijn van der Lee */
 
@@ -556,7 +556,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-no.js
+// source: src/i18n/jquery-ui-timepicker-no.Js
 /* Norwegian translation for the jQuery Timepicker Addon */
 /* Written by Morten Hauan (http://hauan.me) */
 
@@ -578,7 +578,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-pl.js
+// source: src/i18n/jquery-ui-timepicker-pl.Js
 /* Polish translation for the jQuery Timepicker Addon */
 /* Written by Michał Pena */
 
@@ -600,7 +600,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-pt-BR.js
+// source: src/i18n/jquery-ui-timepicker-pt-BR.Js
 /* Brazilian Portuguese translation for the jQuery Timepicker Addon */
 /* Written by Diogo Damiani (diogodamiani@gmail.com) */
 
@@ -622,7 +622,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-pt.js
+// source: src/i18n/jquery-ui-timepicker-pt.Js
 /* Portuguese translation for the jQuery Timepicker Addon */
 /* Written by Luan Almeida */
 
@@ -644,7 +644,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-ro.js
+// source: src/i18n/jquery-ui-timepicker-ro.Js
 /* Romanian translation for the jQuery Timepicker Addon */
 /* Written by Romeo Adrian Cioaba */
 
@@ -666,7 +666,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-ru.js
+// source: src/i18n/jquery-ui-timepicker-ru.Js
 /* Russian translation for the jQuery Timepicker Addon */
 /* Written by Trent Richardson */
 
@@ -688,7 +688,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-sk.js
+// source: src/i18n/jquery-ui-timepicker-sk.Js
 /* Slovak translation for the jQuery Timepicker Addon */
 /* Written by David Vallner */
 
@@ -710,7 +710,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-sl.js
+// source: src/i18n/jquery-ui-timepicker-sl.Js
 /* Slovenian translation for the jQuery Timepicker Addon */
 /* Written by Hadalin (https://github.com/hadalin) */
 
@@ -732,7 +732,7 @@
         isRTL: false
     };
 
-// source: src/i18n/jquery-ui-timepicker-sr-RS.js
+// source: src/i18n/jquery-ui-timepicker-sr-RS.Js
 /* Serbian cyrilic translation for the jQuery Timepicker Addon */
 /* Written by Vladimir Jelovac */
 
@@ -754,7 +754,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-sr-YU.js
+// source: src/i18n/jquery-ui-timepicker-sr-YU.Js
 /* Serbian latin translation for the jQuery Timepicker Addon */
 /* Written by Vladimir Jelovac */
 
@@ -776,7 +776,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-sv.js
+// source: src/i18n/jquery-ui-timepicker-sv.Js
 /* Swedish translation for the jQuery Timepicker Addon */
 /* Written by Nevon */
 
@@ -798,7 +798,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-th.js
+// source: src/i18n/jquery-ui-timepicker-th.Js
 /* Thai translation for the jQuery Timepicker Addon */
 /* Written by Yote Wachirapornpongsa */
 
@@ -817,7 +817,7 @@
 		timeSuffix: ''
 	};
 
-// source: src/i18n/jquery-ui-timepicker-tr.js
+// source: src/i18n/jquery-ui-timepicker-tr.Js
 /* Turkish translation for the jQuery Timepicker Addon */
 /* Written by Fehmi Can Saglam, Edited by Goktug Ozturk */
 
@@ -839,7 +839,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-uk.js
+// source: src/i18n/jquery-ui-timepicker-uk.Js
 /* Ukrainian translation for the jQuery Timepicker Addon */
 /* Written by Sergey Noskov */
 
@@ -861,7 +861,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-vi.js
+// source: src/i18n/jquery-ui-timepicker-vi.Js
 /* Vietnamese translation for the jQuery Timepicker Addon */
 /* Written by Nguyen Dinh Trung */
 
@@ -883,7 +883,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-zh-CN.js
+// source: src/i18n/jquery-ui-timepicker-zh-CN.Js
 /* Simplified Chinese translation for the jQuery Timepicker Addon /
 / Written by Will Lu */
 
@@ -905,7 +905,7 @@
 		isRTL: false
 	};
 
-// source: src/i18n/jquery-ui-timepicker-zh-TW.js
+// source: src/i18n/jquery-ui-timepicker-zh-TW.Js
 /* Chinese translation for the jQuery Timepicker Addon */
 /* Written by Alang.lin */
 

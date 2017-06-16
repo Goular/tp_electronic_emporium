@@ -209,7 +209,7 @@
                     var div = document.createElement( "div" );
                     div.setAttribute( "name", j );
                     if ( j == "none" ) div.className="edui-video-focus";
-                    div.style.cssText = "background:url("+ vidoe_home +"images/" + j + "_focus.jpg);";
+                    div.style.cssText = "background:url("+ vidoe_home +"Images/" + j + "_focus.jpg);";
                     div.setAttribute( "title", nameMaps[j] );
                     floatContainer.appendChild( div );
                 }

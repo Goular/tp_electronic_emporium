@@ -24,7 +24,7 @@ class HTMLPurifier_Printer_CSSDefinition extends HTMLPurifier_Printer
         $ret .= $this->start('thead');
         $ret .= $this->start('tr');
         $ret .= $this->element('th', 'Property', array('class' => 'heavy'));
-        $ret .= $this->element('th', 'Definition', array('class' => 'heavy', 'style' => 'width:auto;'));
+        $ret .= $this->element('th', 'Definition', array('class' => 'heavy', 'Styles' => 'width:auto;'));
         $ret .= $this->end('tr');
         $ret .= $this->end('thead');
 

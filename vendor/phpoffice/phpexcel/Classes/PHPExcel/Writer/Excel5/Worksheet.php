@@ -179,7 +179,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 	public $_phpSheet;
 
 	/**
-	 * Count cell style Xfs
+	 * Count cell Styles Xfs
 	 *
 	 * @var int
 	 */
@@ -304,7 +304,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 		for ($i = 0; $i <= $maxCol; ++$i) {
 			$hidden = 0;
 			$level = 0;
-			$xfIndex = 15; // there are 15 cell style Xfs
+			$xfIndex = 15; // there are 15 cell Styles Xfs
 
 			$width = $defaultWidth;
 
@@ -316,14 +316,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 				}
 				$hidden = $columnDimension->getVisible() ? 0 : 1;
 				$level = $columnDimension->getOutlineLevel();
-				$xfIndex = $columnDimension->getXfIndex() + 15; // there are 15 cell style Xfs
+				$xfIndex = $columnDimension->getXfIndex() + 15; // there are 15 cell Styles Xfs
 			}
 
 			// Components of _colinfo:
 			// $firstcol first column on the range
 			// $lastcol  last column on the range
 			// $width	width to set
-			// $xfIndex  The optional cell style Xf index to apply to the columns
+			// $xfIndex  The optional cell Styles Xf index to apply to the columns
 			// $hidden   The optional hidden atribute
 			// $level	The optional outline level
 			$this->_colinfo[] = array($i, $i, $width, $xfIndex, $hidden, $level);
@@ -418,7 +418,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 			}
 
 			// Write cell value
-			$xfIndex = $cell->getXfIndex() + 15; // there are 15 cell style Xfs
+			$xfIndex = $cell->getXfIndex() + 15; // there are 15 cell Styles Xfs
 
 			$cVal = $cell->getValue();
 			if ($cVal instanceof PHPExcel_RichText) {
@@ -1132,7 +1132,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 		$record	  = 0x01B8;					   // Record identifier
 		$length	  = 0x00000;					  // Bytes to follow
 
-		// Strip URL type and change Unix dir separator to Dos style (if needed)
+		// Strip URL type and change Unix dir separator to Dos Styles (if needed)
 		//
 		$url = preg_replace('/^external:/', '', $url);
 		$url = preg_replace('/\//', "\\", $url);
@@ -1212,7 +1212,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 	 * @param integer $row	The row to set
 	 * @param integer $height Height we are giving to the row.
 	 *						Use null to set XF without setting height
-	 * @param integer $xfIndex  The optional cell style Xf index to apply to the columns
+	 * @param integer $xfIndex  The optional cell Styles Xf index to apply to the columns
 	 * @param bool	$hidden The optional hidden attribute
 	 * @param integer $level  The optional outline level for row, in range [0,7]
 	 */
@@ -2526,10 +2526,10 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 		$fls		 = 0x00;	 // Fill pattern
 		$fAuto	   = 0x00;	 // Automatic fill
 		$icv		 = 0x08;	 // Line colour
-		$lns		 = 0xff;	 // Line style
+		$lns		 = 0xff;	 // Line Styles
 		$lnw		 = 0x01;	 // Line weight
 		$fAutoB	  = 0x00;	 // Automatic border
-		$frs		 = 0x0000;   // Frame style
+		$frs		 = 0x0000;   // Frame Styles
 		$cf		  = 0x0009;   // Image format, 9 = bitmap
 		$Reserved3   = 0x0000;   // Reserved
 		$cbPictFmla  = 0x0000;   // Length of FMLA structure
@@ -2859,7 +2859,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 				}
 				$options |= $type << 0;
 
-				// error style
+				// error Styles
 				$errorStyle = $dataValidation->getType();
 				switch ($errorStyle) {
 					case PHPExcel_Cell_DataValidation::STYLE_STOP:			$errorStyle = 0x00;		break;

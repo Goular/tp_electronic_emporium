@@ -160,7 +160,7 @@ class HTMLPurifier_AttrDef_CSS_FontFamily extends HTMLPurifier_AttrDef
             //    quotes into single quotes.)  So, because their
             //    fixpoint behavior is identical to single quotes, they
             //    cannot be allowed either.  Firefox 3.x displays
-            //    single-quote style behavior.
+            //    single-quote Styles behavior.
             //  - Backslashes are reduced by one (so \\ -> \) every
             //    iteration, so they cannot be used safely.  This shows
             //    up in IE7, IE8 and FF3
@@ -199,7 +199,7 @@ class HTMLPurifier_AttrDef_CSS_FontFamily extends HTMLPurifier_AttrDef
             // We could try to be clever and use single-quote wrapping
             // when there is a double quote present, but I have choosen
             // not to implement that.  (NOTE: you can reduce the amount
-            // of escapes by one depending on what quoting style you use)
+            // of escapes by one depending on what quoting Styles you use)
             // $font = str_replace('\\', '\\5C ', $font);
             // $font = str_replace('"',  '\\22 ', $font);
             // $font = str_replace("'",  '\\27 ', $font);

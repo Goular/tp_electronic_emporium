@@ -37,7 +37,7 @@ class BrandModel extends Model
         if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
             $ret = uploadOne('logo', 'Brand', array());
             if ($ret['ok'] == 1) {
-                $data['logo'] = $ret['images'][0];
+                $data['logo'] = $ret['Images'][0];
             } else {
                 $this->error = $ret['error'];
                 return FALSE;
@@ -51,7 +51,7 @@ class BrandModel extends Model
         if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
             $ret = uploadOne('logo', 'Brand', array());
             if ($ret['ok'] == 1) {
-                $data['logo'] = $ret['images'][0];
+                $data['logo'] = $ret['Images'][0];
             } else {
                 $this->error = $ret['error'];
                 return FALSE;

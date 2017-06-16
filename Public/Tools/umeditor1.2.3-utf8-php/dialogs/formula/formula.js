@@ -57,7 +57,7 @@
             $.each(formula, function (k, v) {
                 var contentHtml = [];
                 $.each(v, function (i, f) {
-                    contentHtml.push('<li class="edui-formula-latex-item" data-latex="' + f + '" style="background-position:-' + (xMax * 30) + 'px -' + (yMax * 30) + 'px"></li>');
+                    contentHtml.push('<li class="edui-formula-latex-item" data-latex="' + f + '" Styles="background-position:-' + (xMax * 30) + 'px -' + (yMax * 30) + 'px"></li>');
                     if (++xMax >=8) {
                         ++yMax; xMax = 0;
                     }

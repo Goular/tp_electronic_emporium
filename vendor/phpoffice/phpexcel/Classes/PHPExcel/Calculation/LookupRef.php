@@ -61,9 +61,9 @@ class PHPExcel_Calculation_LookupRef {
 	 *								2				Absolute row; relative column
 	 *								3				Relative row; absolute column
 	 *								4				Relative
-	 * @param	referenceStyle	A logical value that specifies the A1 or R1C1 reference style.
-	 *								TRUE or omitted		CELL_ADDRESS returns an A1-style reference
-	 *								FALSE				CELL_ADDRESS returns an R1C1-style reference
+	 * @param	referenceStyle	A logical value that specifies the A1 or R1C1 reference Styles.
+	 *								TRUE or omitted		CELL_ADDRESS returns an A1-Styles reference
+	 *								FALSE				CELL_ADDRESS returns an R1C1-Styles reference
 	 * @param	sheetText		Optional Name of worksheet to use
 	 * @return	string
 	 */

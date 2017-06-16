@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Validates the HTML attribute style, otherwise known as CSS.
+ * Validates the HTML attribute Styles, otherwise known as CSS.
  * @note We don't implement the whole CSS specification, so it might be
  *       difficult to reuse this component in the context of validating
  *       actual stylesheet declarations.

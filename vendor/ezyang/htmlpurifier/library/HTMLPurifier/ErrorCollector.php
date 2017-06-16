@@ -64,7 +64,7 @@ class HTMLPurifier_ErrorCollector
 
     /**
      * Sends an error message to the collector for later use
-     * @param int $severity Error severity, PHP error style (don't use E_USER_)
+     * @param int $severity Error severity, PHP error Styles (don't use E_USER_)
      * @param string $msg Error message text
      */
     public function send($severity, $msg)

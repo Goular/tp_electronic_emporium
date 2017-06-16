@@ -162,7 +162,7 @@ class PHPExcel_Writer_Excel5_Xf
 
 
 	/**
-	 * Generate an Excel BIFF XF record (style or cell).
+	 * Generate an Excel BIFF XF record (Styles or cell).
 	 *
 	 * @return string The XF record
 	 */
@@ -228,7 +228,7 @@ class PHPExcel_Writer_Excel5_Xf
 		$icv            = $this->_fg_color;      // fg and bg pattern colors
 		$icv           |= $this->_bg_color      << 7;
 
-		$border1        = self::_mapBorderStyle($this->_style->getBorders()->getLeft()->getBorderStyle());          // Border line style and color
+		$border1        = self::_mapBorderStyle($this->_style->getBorders()->getLeft()->getBorderStyle());          // Border line Styles and color
 		$border1       |= self::_mapBorderStyle($this->_style->getBorders()->getRight()->getBorderStyle())         << 4;
 		$border1       |= self::_mapBorderStyle($this->_style->getBorders()->getTop()->getBorderStyle())           << 8;
 		$border1       |= self::_mapBorderStyle($this->_style->getBorders()->getBottom()->getBorderStyle())        << 12;
@@ -267,7 +267,7 @@ class PHPExcel_Writer_Excel5_Xf
 	}
 
 	/**
-	 * Is this a style XF ?
+	 * Is this a Styles XF ?
 	 *
 	 * @param boolean $value
 	 */
@@ -398,7 +398,7 @@ class PHPExcel_Writer_Excel5_Xf
 											);
 
 	/**
-	 * Map border style
+	 * Map border Styles
 	 *
 	 * @param string $borderStyle
 	 * @return int

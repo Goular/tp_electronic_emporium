@@ -272,13 +272,13 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
 														break;
 											case 'D' :	$formatArray['font']['bold'] = true;
 														break;
-											case 'T' :	$formatArray['borders']['top']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'T' :	$formatArray['borders']['top']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
-											case 'B' :	$formatArray['borders']['bottom']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'B' :	$formatArray['borders']['bottom']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
-											case 'L' :	$formatArray['borders']['left']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'L' :	$formatArray['borders']['left']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
-											case 'R' :	$formatArray['borders']['right']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'R' :	$formatArray['borders']['right']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
 										}
 									}
@@ -301,7 +301,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
 						case 'K' :	$cellData = substr($rowDatum,1);
 									break;
 						case 'E' :	$cellDataFormula = '='.substr($rowDatum,1);
-									//	Convert R1C1 style references to A1 style references (but only when not quoted)
+									//	Convert R1C1 Styles references to A1 Styles references (but only when not quoted)
 									$temp = explode('"',$cellDataFormula);
 									$key = false;
 									foreach($temp as &$value) {
@@ -312,7 +312,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
 											//		through the formula from left to right. Reversing means that we work right to left.through
 											//		the formula
 											$cellReferences = array_reverse($cellReferences);
-											//	Loop through each R1C1 style reference in turn, converting it to its A1 style equivalent,
+											//	Loop through each R1C1 Styles reference in turn, converting it to its A1 Styles equivalent,
 											//		then modify the formula to use that new reference
 											foreach($cellReferences as $cellReference) {
 												$rowReference = $cellReference[2][0];
@@ -370,13 +370,13 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
 														break;
 											case 'D' :	$styleData['font']['bold'] = true;
 														break;
-											case 'T' :	$styleData['borders']['top']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'T' :	$styleData['borders']['top']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
-											case 'B' :	$styleData['borders']['bottom']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'B' :	$styleData['borders']['bottom']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
-											case 'L' :	$styleData['borders']['left']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'L' :	$styleData['borders']['left']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
-											case 'R' :	$styleData['borders']['right']['style'] = PHPExcel_Style_Border::BORDER_THIN;
+											case 'R' :	$styleData['borders']['right']['Styles'] = PHPExcel_Style_Border::BORDER_THIN;
 														break;
 										}
 									}

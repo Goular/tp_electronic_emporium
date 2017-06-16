@@ -1235,7 +1235,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         $columnDimension = $this->getColumnDimension($aCoordinates[0], FALSE);
 
         if ($rowDimension !== NULL && $rowDimension->getXfIndex() > 0) {
-            // then there is a row dimension with explicit style, assign it to the cell
+            // then there is a row dimension with explicit Styles, assign it to the cell
             $cell->setXfIndex($rowDimension->getXfIndex());
         } elseif ($columnDimension !== NULL && $columnDimension->getXfIndex() > 0) {
             // then there is a column dimension, assign it to the cell
@@ -1372,7 +1372,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Get default style of workbook.
+     * Get default Styles of workbook.
      *
      * @deprecated
      * @return PHPExcel_Style
@@ -1384,7 +1384,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Set default style - should only be used by PHPExcel_IReader implementations!
+     * Set default Styles - should only be used by PHPExcel_IReader implementations!
      *
      * @deprecated
      * @param PHPExcel_Style $pValue
@@ -1403,9 +1403,9 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Get style for cell
+     * Get Styles for cell
      *
-     * @param string $pCellCoordinate Cell coordinate (or range) to get style for
+     * @param string $pCellCoordinate Cell coordinate (or range) to get Styles for
      * @return PHPExcel_Style
      * @throws PHPExcel_Exception
      */
@@ -1485,7 +1485,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Get style for cell by using numeric cell coordinates
+     * Get Styles for cell by using numeric cell coordinates
      *
      * @param int $pColumn  Numeric column coordinate of the cell
      * @param int $pRow Numeric row coordinate of the cell
@@ -1505,12 +1505,12 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Set shared cell style to a range of cells
+     * Set shared cell Styles to a range of cells
      *
      * Please note that this will overwrite existing cell styles for cells in range!
      *
      * @deprecated
-     * @param PHPExcel_Style $pSharedCellStyle Cell style to share
+     * @param PHPExcel_Style $pSharedCellStyle Cell Styles to share
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
@@ -1522,21 +1522,21 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Duplicate cell style to a range of cells
+     * Duplicate cell Styles to a range of cells
      *
      * Please note that this will overwrite existing cell styles for cells in range!
      *
-     * @param PHPExcel_Style $pCellStyle Cell style to duplicate
+     * @param PHPExcel_Style $pCellStyle Cell Styles to duplicate
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
      */
     public function duplicateStyle(PHPExcel_Style $pCellStyle = null, $pRange = '')
     {
-        // make sure we have a real style and not supervisor
+        // make sure we have a real Styles and not supervisor
         $style = $pCellStyle->getIsSupervisor() ? $pCellStyle->getSharedComponent() : $pCellStyle;
 
-        // Add the style to the workbook if necessary
+        // Add the Styles to the workbook if necessary
         $workbook = $this->_parent;
 		if ($existingStyle = $this->_parent->getCellXfByHashCode($pCellStyle->getHashCode())) {
             // there is already such cell Xf in our collection
@@ -1568,11 +1568,11 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Duplicate conditional style to a range of cells
+     * Duplicate conditional Styles to a range of cells
      *
      * Please note that this will overwrite existing cell styles for cells in range!
      *
-	 * @param	array of PHPExcel_Style_Conditional	$pCellStyle	Cell style to duplicate
+	 * @param	array of PHPExcel_Style_Conditional	$pCellStyle	Cell Styles to duplicate
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
@@ -1581,7 +1581,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     {
         foreach($pCellStyle as $cellStyle) {
             if (!($cellStyle instanceof PHPExcel_Style_Conditional)) {
-                throw new PHPExcel_Exception('Style is not a conditional style');
+                throw new PHPExcel_Exception('Style is not a conditional Styles');
             }
         }
 
@@ -1606,14 +1606,14 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Duplicate cell style array to a range of cells
+     * Duplicate cell Styles array to a range of cells
      *
      * Please note that this will overwrite existing cell styles for cells in range,
      * if they are in the styles array. For example, if you decide to set a range of
      * cells to font bold, only include font bold in the styles array.
      *
      * @deprecated
-     * @param array $pStyles Array containing style information
+     * @param array $pStyles Array containing Styles information
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @param boolean $pAdvanced Advanced mode for setting borders.
      * @throws PHPExcel_Exception
@@ -2587,7 +2587,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
 	public function garbageCollect() {
         // Flush cache
         $this->_cellCollection->getCacheData('A1');
-        // Build a reference table from images
+        // Build a reference table from Images
 //        $imageCoordinates = array();
 //        $iterator = $this->getDrawingCollection()->getIterator();
 //        while ($iterator->valid()) {

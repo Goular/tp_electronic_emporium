@@ -325,7 +325,7 @@ class PHPExcel_Writer_Excel2007_Rels extends PHPExcel_Writer_Excel2007_WriterPar
 		$objWriter->startElement('Relationships');
 		$objWriter->writeAttribute('xmlns', 'http://schemas.openxmlformats.org/package/2006/relationships');
 
-			// Loop through images and write relationships
+			// Loop through Images and write relationships
 			$i = 1;
 			$iterator = $pWorksheet->getDrawingCollection()->getIterator();
 			while ($iterator->valid()) {
@@ -389,7 +389,7 @@ class PHPExcel_Writer_Excel2007_Rels extends PHPExcel_Writer_Excel2007_WriterPar
 		$objWriter->startElement('Relationships');
 		$objWriter->writeAttribute('xmlns', 'http://schemas.openxmlformats.org/package/2006/relationships');
 
-			// Loop through images and write relationships
+			// Loop through Images and write relationships
 			foreach ($pWorksheet->getHeaderFooter()->getImages() as $key => $value) {
 				// Write relationship for image drawing
 				$this->_writeRelationship(

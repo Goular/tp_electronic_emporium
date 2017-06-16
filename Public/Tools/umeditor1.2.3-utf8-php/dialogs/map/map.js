@@ -4,7 +4,7 @@
 
     UM.registerWidget(widgetName, {
 
-        tpl: "<style type=\"text/css\">" +
+        tpl: "<Styles type=\"text/css\">" +
             ".edui-dialog-map .edui-map-content{width:530px; height: 350px;margin: 10px auto;}" +
             ".edui-dialog-map .edui-map-content table{width: 100%}" +
             ".edui-dialog-map .edui-map-content table td{vertical-align: middle;}" +
@@ -15,7 +15,7 @@
             ".edui-dialog-map .edui-map-address{width:150px}" +
             ".edui-dialog-map .edui-map-dynamic-label span{vertical-align:middle;margin: 3px 0px 3px 3px;}" +
             ".edui-dialog-map .edui-map-dynamic-label input{vertical-align:middle;margin: 3px;}" +
-            "</style>" +
+            "</Styles>" +
             "<div class=\"edui-map-content\">" +
             "<table>" +
             "<tr>" +
@@ -27,7 +27,7 @@
             "<td><label class=\"edui-map-dynamic-label\"><input class=\"edui-map-dynamic\" type=\"checkbox\" name=\"edui-map-dynamic\" /><span><%=lang_dynamicmap%></span></label></td>"+
             "</tr>" +
             "</table>" +
-            "<div style=\"width:100%;height:340px;margin:5px auto;border:1px solid gray\" class=\"edui-map-container\"></div>" +
+            "<div Styles=\"width:100%;height:340px;margin:5px auto;border:1px solid gray\" class=\"edui-map-container\"></div>" +
             "</div>" +
             "<script class=\"edui-tpl-container\" type=\"text/plain\">" +
             "<!DOCTYPE html>" +
@@ -89,7 +89,7 @@
                 this.initBaiduMap();
             } else {
 
-                $ifr = $('<iframe style="display: none;"></iframe>');
+                $ifr = $('<iframe Styles="display: none;"></iframe>');
                 $ifr.appendTo( this.root() );
 
                 $ifr = $ifr[ 0 ].contentWindow.document;
@@ -245,7 +245,7 @@
                     } else {
                         url = "http://api.map.baidu.com/staticimage?center=" + center.lng + ',' + center.lat +
                             "&zoom=" + zoom + "&width=" + size.width + '&height=' + size.height + "&markers=" + point.lng + ',' + point.lat;
-                        editor.execCommand('inserthtml', '<img width="' + size.width + '"height="' + size.height + '" src="' + url + '"' + (widget.imgcss ? ' style="' + widget.imgcss + '"' : '') + '/>', true);
+                        editor.execCommand('inserthtml', '<img width="' + size.width + '"height="' + size.height + '" src="' + url + '"' + (widget.imgcss ? ' Styles="' + widget.imgcss + '"' : '') + '/>', true);
                     }
 
                     widget.reset();

@@ -9,7 +9,7 @@ function htmlpurifier_filter_extractstyleblocks_muteerrorhandler()
 }
 
 /**
- * This filter extracts <style> blocks from input HTML, cleans them up
+ * This filter extracts <Styles> blocks from input HTML, cleans them up
  * using CSSTidy, and then places them in $purifier->context->get('StyleBlocks')
  * so they can be used elsewhere in the document.
  *
@@ -73,8 +73,8 @@ class HTMLPurifier_Filter_ExtractStyleBlocks extends HTMLPurifier_Filter
     }
 
     /**
-     * Save the contents of CSS blocks to style matches
-     * @param array $matches preg_replace style $matches array
+     * Save the contents of CSS blocks to Styles matches
+     * @param array $matches preg_replace Styles $matches array
      */
     protected function styleCallback($matches)
     {
@@ -82,12 +82,12 @@ class HTMLPurifier_Filter_ExtractStyleBlocks extends HTMLPurifier_Filter
     }
 
     /**
-     * Removes inline <style> tags from HTML, saves them for later use
+     * Removes inline <Styles> tags from HTML, saves them for later use
      * @param string $html
      * @param HTMLPurifier_Config $config
      * @param HTMLPurifier_Context $context
      * @return string
-     * @todo Extend to indicate non-text/css style blocks
+     * @todo Extend to indicate non-text/css Styles blocks
      */
     public function preFilter($html, $config, $context)
     {
@@ -96,9 +96,9 @@ class HTMLPurifier_Filter_ExtractStyleBlocks extends HTMLPurifier_Filter
             $this->_tidy = $tidy;
         }
         // NB: this must be NON-greedy because if we have
-        // <style>foo</style>  <style>bar</style>
-        // we must not grab foo</style>  <style>bar
-        $html = preg_replace_callback('#<style(?:\s.*)?>(.*)<\/style>#isU', array($this, 'styleCallback'), $html);
+        // <Styles>foo</Styles>  <Styles>bar</Styles>
+        // we must not grab foo</Styles>  <Styles>bar
+        $html = preg_replace_callback('#<Styles(?:\s.*)?>(.*)<\/Styles>#isU', array($this, 'styleCallback'), $html);
         $style_blocks = $this->_styleMatches;
         $this->_styleMatches = array(); // reset
         $context->register('StyleBlocks', $style_blocks); // $context must not be reused
@@ -111,7 +111,7 @@ class HTMLPurifier_Filter_ExtractStyleBlocks extends HTMLPurifier_Filter
     }
 
     /**
-     * Takes CSS (the stuff found in <style>) and cleans it.
+     * Takes CSS (the stuff found in <Styles>) and cleans it.
      * @warning Requires CSSTidy <http://csstidy.sourceforge.net/>
      * @param string $css CSS styling to clean
      * @param HTMLPurifier_Config $config
@@ -326,7 +326,7 @@ class HTMLPurifier_Filter_ExtractStyleBlocks extends HTMLPurifier_Filter
         $this->_tidy->namespace = null;
         $css = $this->_tidy->print->plain();
         // we are going to escape any special characters <>& to ensure
-        // that no funny business occurs (i.e. </style> in a font-family prop).
+        // that no funny business occurs (i.e. </Styles> in a font-family prop).
         if ($config->get('Filter.ExtractStyleBlocks.Escaping')) {
             $css = str_replace(
                 array('<', '>', '&'),

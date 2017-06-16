@@ -19,7 +19,7 @@ class HTMLPurifier_AttrDef_CSS_Border extends HTMLPurifier_AttrDef
     {
         $def = $config->getCSSDefinition();
         $this->info['border-width'] = $def->info['border-width'];
-        $this->info['border-style'] = $def->info['border-style'];
+        $this->info['border-Styles'] = $def->info['border-Styles'];
         $this->info['border-top-color'] = $def->info['border-top-color'];
     }
 

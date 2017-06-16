@@ -58,7 +58,7 @@ class HTMLPurifier_AttrValidator
         }
 
         // do local transformations only applicable to this element (pre)
-        // ex. <p align="right"> to <p style="text-align:right;">
+        // ex. <p align="right"> to <p Styles="text-align:right;">
         foreach ($definition->info[$token->name]->attr_transform_pre as $transform) {
             $attr = $transform->transform($o = $attr, $config, $context);
             if ($e) {

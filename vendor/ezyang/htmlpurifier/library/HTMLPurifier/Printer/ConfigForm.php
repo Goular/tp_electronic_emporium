@@ -79,7 +79,7 @@ class HTMLPurifier_Printer_ConfigForm extends HTMLPurifier_Printer
      */
     public static function getJavaScript()
     {
-        return file_get_contents(HTMLPURIFIER_PREFIX . '/HTMLPurifier/Printer/ConfigForm.js');
+        return file_get_contents(HTMLPURIFIER_PREFIX . '/HTMLPurifier/Printer/ConfigForm.Js');
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Validates shorthand CSS property list-style.
+ * Validates shorthand CSS property list-Styles.
  * @warning Does not support url tokens that have internal spaces.
  */
 class HTMLPurifier_AttrDef_CSS_ListStyle extends HTMLPurifier_AttrDef
@@ -20,9 +20,9 @@ class HTMLPurifier_AttrDef_CSS_ListStyle extends HTMLPurifier_AttrDef
     public function __construct($config)
     {
         $def = $config->getCSSDefinition();
-        $this->info['list-style-type'] = $def->info['list-style-type'];
-        $this->info['list-style-position'] = $def->info['list-style-position'];
-        $this->info['list-style-image'] = $def->info['list-style-image'];
+        $this->info['list-Styles-type'] = $def->info['list-Styles-type'];
+        $this->info['list-Styles-position'] = $def->info['list-Styles-position'];
+        $this->info['list-Styles-image'] = $def->info['list-Styles-image'];
     }
 
     /**
@@ -61,7 +61,7 @@ class HTMLPurifier_AttrDef_CSS_ListStyle extends HTMLPurifier_AttrDef
                 if ($status !== false) {
                     continue;
                 }
-                $r = $this->info['list-style-' . $key]->validate($bit, $config, $context);
+                $r = $this->info['list-Styles-' . $key]->validate($bit, $config, $context);
                 if ($r === false) {
                     continue;
                 }

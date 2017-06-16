@@ -146,16 +146,16 @@ class HTMLPurifier_HTMLModule_Tidy_XHTMLAndHTML4 extends HTMLPurifier_HTMLModule
         // @type for li, ol, ul -------------------------------------------
         // {{{
         $ul_types = array(
-            'disc' => 'list-style-type:disc;',
-            'square' => 'list-style-type:square;',
-            'circle' => 'list-style-type:circle;'
+            'disc' => 'list-Styles-type:disc;',
+            'square' => 'list-Styles-type:square;',
+            'circle' => 'list-Styles-type:circle;'
         );
         $ol_types = array(
-            '1' => 'list-style-type:decimal;',
-            'i' => 'list-style-type:lower-roman;',
-            'I' => 'list-style-type:upper-roman;',
-            'a' => 'list-style-type:lower-alpha;',
-            'A' => 'list-style-type:upper-alpha;'
+            '1' => 'list-Styles-type:decimal;',
+            'i' => 'list-Styles-type:lower-roman;',
+            'I' => 'list-Styles-type:upper-roman;',
+            'a' => 'list-Styles-type:lower-alpha;',
+            'A' => 'list-Styles-type:upper-alpha;'
         );
         $li_types = $ul_types + $ol_types;
         // }}}

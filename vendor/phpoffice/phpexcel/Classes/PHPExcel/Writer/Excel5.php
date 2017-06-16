@@ -147,7 +147,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 		$this->_buildWorksheetEschers();
 		$this->_buildWorkbookEscher();
 
-		// add 15 identical cell style Xfs
+		// add 15 identical cell Styles Xfs
 		// for now, we use the first cellXf instead of cellStyleXf
 		$cellXfCollection = $this->_phpExcel->getCellXfCollection();
 		for ($i = 0; $i < 15; ++$i) {
@@ -467,7 +467,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 		$bstoreContainer = new PHPExcel_Shared_Escher_DggContainer_BstoreContainer();
 		$dggContainer->setBstoreContainer($bstoreContainer);
 
-		// the BSE's (all the images)
+		// the BSE's (all the Images)
 		foreach ($this->_phpExcel->getAllsheets() as $sheet) {
 			foreach ($sheet->getDrawingCollection() as $drawing) {
 				if ($drawing instanceof PHPExcel_Worksheet_Drawing) {

@@ -82,7 +82,7 @@ class PHPExcel_Cell_DataValidation
     private $_type = PHPExcel_Cell_DataValidation::TYPE_NONE;
 
     /**
-     * Error style
+     * Error Styles
      *
      * @var string
      */
@@ -233,7 +233,7 @@ class PHPExcel_Cell_DataValidation
     }
 
     /**
-     * Get Error style
+     * Get Error Styles
      *
      * @return string
      */
@@ -242,7 +242,7 @@ class PHPExcel_Cell_DataValidation
     }
 
     /**
-     * Set Error style
+     * Set Error Styles
      *
      * @param  string    $value
      * @return PHPExcel_Cell_DataValidation

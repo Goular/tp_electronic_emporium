@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Forgivingly lexes HTML (SGML-style) markup into tokens.
+ * Forgivingly lexes HTML (SGML-Styles) markup into tokens.
  *
- * A lexer parses a string of SGML-style markup and converts them into
+ * A lexer parses a string of SGML-Styles markup and converts them into
  * corresponding tokens.  It doesn't check for well-formedness, although its
  * internal mechanism may make this automatic (such as the case of
  * HTMLPurifier_Lexer_DOMLex).  There are several implementations to choose

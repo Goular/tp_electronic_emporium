@@ -154,7 +154,7 @@ class HTMLPurifier_EntityParser
      */
     protected $_substituteEntitiesRegex =
         '/&(?:[#]x([a-fA-F0-9]+)|[#]0*(\d+)|([A-Za-z_:][A-Za-z0-9.\-_:]*));?/';
-        //     1. hex             2. dec      3. string (XML style)
+        //     1. hex             2. dec      3. string (XML Styles)
 
     /**
      * Decimal to parsed string conversion table for special entities.
@@ -259,7 +259,7 @@ class HTMLPurifier_EntityParser
      *
      * This callback has same syntax as nonSpecialEntityCallback().
      *
-     * @param array $matches  PCRE-style matches array, with 0 the entire match, and
+     * @param array $matches  PCRE-Styles matches array, with 0 the entire match, and
      *                  either index 1, 2 or 3 set with a hex value, dec value,
      *                  or string (respectively).
      * @return string Replacement string.

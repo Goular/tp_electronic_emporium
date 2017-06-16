@@ -69,7 +69,7 @@
             editor = _editor;
             this.widget = $widget;
 
-            emotion.SmileyPath = _editor.options.emotionLocalization === true ? emotionUrl + 'images/' : "http://img.baidu.com/hi/";
+            emotion.SmileyPath = _editor.options.emotionLocalization === true ? emotionUrl + 'Images/' : "http://img.baidu.com/hi/";
             emotion.SmileyBox = me.createTabList( emotion.tabNum );
             emotion.tabExist = me.createArr( emotion.tabNum );
 
@@ -244,7 +244,7 @@
 
                         textHTML.push( '<td  class="edui-emotion-' + tableCss + '" data-surl="'+ sUrl +'" data-realurl="'+ realUrl +'" data-posflag="'+ posflag +'" align="center">' );
                         textHTML.push( '<span>' );
-                        textHTML.push( '<img  style="background-position:left ' + offset + 'px;" title="' + infor + '" src="' + emotion.SmileyPath + (editor.options.emotionLocalization ? '0.gif" width="' : 'default/0.gif" width="') + iWidth + '" height="' + iHeight + '"></img>' );
+                        textHTML.push( '<img  Styles="background-position:left ' + offset + 'px;" title="' + infor + '" src="' + emotion.SmileyPath + (editor.options.emotionLocalization ? '0.gif" width="' : 'default/0.gif" width="') + iWidth + '" height="' + iHeight + '"></img>' );
                         textHTML.push( '</span>' );
                     } else {
                         textHTML.push( '<td bgcolor="#FFFFFF">' );

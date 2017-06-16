@@ -1560,13 +1560,13 @@ class PHPExcel_Writer_Excel2007_Chart extends
     $objWriter->writeAttribute('xmlns:c14', 'http://schemas.microsoft.com/office/drawing/2007/8/2/chart');
     $objWriter->writeAttribute('Requires', 'c14');
 
-    $objWriter->startElement('c14:style');
+    $objWriter->startElement('c14:Styles');
     $objWriter->writeAttribute('val', '102');
     $objWriter->endElement();
     $objWriter->endElement();
 
     $objWriter->startElement('mc:Fallback');
-    $objWriter->startElement('c:style');
+    $objWriter->startElement('c:Styles');
     $objWriter->writeAttribute('val', '2');
     $objWriter->endElement();
     $objWriter->endElement();

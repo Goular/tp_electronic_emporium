@@ -144,11 +144,11 @@ class HTMLPurifier_Lexer_DOMLex extends HTMLPurifier_Lexer
             $tokens[] = $this->factory->createText($node->data);
             return false;
         } elseif ($node->nodeType === XML_CDATA_SECTION_NODE) {
-            // undo libxml's special treatment of <script> and <style> tags
+            // undo libxml's special treatment of <script> and <Styles> tags
             $last = end($tokens);
             $data = $node->data;
             // (note $node->tagname is already normalized)
-            if ($last instanceof HTMLPurifier_Token_Start && ($last->name == 'script' || $last->name == 'style')) {
+            if ($last instanceof HTMLPurifier_Token_Start && ($last->name == 'script' || $last->name == 'Styles')) {
                 $new_data = trim($data);
                 if (substr($new_data, 0, 4) === '<!--') {
                     $data = substr($new_data, 4);
@@ -162,7 +162,7 @@ class HTMLPurifier_Lexer_DOMLex extends HTMLPurifier_Lexer
             $tokens[] = $this->factory->createText($this->parseText($data, $config));
             return false;
         } elseif ($node->nodeType === XML_COMMENT_NODE) {
-            // this is code is only invoked for comments in script/style in versions
+            // this is code is only invoked for comments in script/Styles in versions
             // of libxml pre-2.6.28 (regular comments, of course, are still
             // handled regularly)
             $tokens[] = $this->factory->createComment($node->data);

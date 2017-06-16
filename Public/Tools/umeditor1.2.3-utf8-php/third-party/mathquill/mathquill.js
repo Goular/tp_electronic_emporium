@@ -1004,7 +1004,7 @@ var MathCommand = P(MathElement, function(_, _super) {
     or
       '<span><span>&0</span><span>&1</span></span>'
 
-    See html.test.js for more examples.
+    See html.test.Js for more examples.
 
     Requirements:
     - For each block of the command, there must be exactly one "block content
@@ -1032,7 +1032,7 @@ var MathCommand = P(MathElement, function(_, _super) {
     // Expects .createBlocks() to have been called already, since it uses the
     // .blocks array of child blocks.
     //
-    // See html.test.js for example templates and intended outputs.
+    // See html.test.Js for example templates and intended outputs.
     //
     // Given an .htmlTemplate as described above,
     // - insert the mathquill-command-id attribute into all top-level tags,
@@ -1902,7 +1902,7 @@ LatexCmds.fraction = P(MathCommand, function(_, _super) {
       '<span class="fraction non-leaf">'
     +   '<span class="numerator">&0</span>'
     +   '<span class="denominator">&1</span>'
-    +   '<span style="display:inline-block;width:0">&nbsp;</span>'
+    +   '<span Styles="display:inline-block;width:0">&nbsp;</span>'
     + '</span>'
   ;
   _.textTemplate = ['(', '/', ')'];
@@ -2310,11 +2310,11 @@ LatexCmds.sf = LatexCmds.textsf =
 LatexCmds.tt = LatexCmds.texttt =
   makeTextBlock('\\texttt', 'span', 'class="monospace text"');
 LatexCmds.textsc =
-  makeTextBlock('\\textsc', 'span', 'style="font-variant:small-caps" class="text"');
+  makeTextBlock('\\textsc', 'span', 'Styles="font-variant:small-caps" class="text"');
 LatexCmds.uppercase =
-  makeTextBlock('\\uppercase', 'span', 'style="text-transform:uppercase" class="text"');
+  makeTextBlock('\\uppercase', 'span', 'Styles="text-transform:uppercase" class="text"');
 LatexCmds.lowercase =
-  makeTextBlock('\\lowercase', 'span', 'style="text-transform:lowercase" class="text"');
+  makeTextBlock('\\lowercase', 'span', 'Styles="text-transform:lowercase" class="text"');
 
 // input box to type a variety of LaTeX commands beginning with a backslash
 var LatexCommandInput =
@@ -2565,7 +2565,7 @@ LatexCmds.editable = P(RootMathCommand, function(_, _super) {
  * Symbols and Special Characters
  *********************************/
 
-LatexCmds.f = bind(Symbol, 'f', '<var class="florin">&fnof;</var><span style="display:inline-block;width:0">&nbsp;</span>');
+LatexCmds.f = bind(Symbol, 'f', '<var class="florin">&fnof;</var><span Styles="display:inline-block;width:0">&nbsp;</span>');
 
 var Variable = P(Symbol, function(_, _super) {
   _.init = function(ch, html) {
@@ -2687,7 +2687,7 @@ LatexCmds.Upsilon = //LaTeX
 LatexCmds.Upsi = //Elsevier and 9573-13
 LatexCmds.upsih = //W3C/Unicode "upsilon with hook"
 LatexCmds.Upsih = //'cos it makes sense to me
-  bind(Symbol,'\\Upsilon ','<var style="font-family: serif">&upsih;</var>'); //Symbola's 'upsilon with a hook' is a capital Y without hooks :(
+  bind(Symbol,'\\Upsilon ','<var Styles="font-family: serif">&upsih;</var>'); //Symbola's 'upsilon with a hook' is a capital Y without hooks :(
 
 //other symbols with the same LaTeX command and HTML character entity reference
 LatexCmds.Gamma =
@@ -2927,7 +2927,7 @@ case ':':
 case ';':
   return VanillaSymbol('\\; ','   ');
 case '!':
-  return Symbol('\\! ','<span style="margin-right:-.2em"></span>');
+  return Symbol('\\! ','<span Styles="margin-right:-.2em"></span>');
 */
 
 //binary operators

@@ -178,7 +178,7 @@ echo date('H:i:s') , " Set thin black border outline around column" , EOL;
 $styleThinBlackBorderOutline = array(
 	'borders' => array(
 		'outline' => array(
-			'style' => PHPExcel_Style_Border::BORDER_THIN,
+			'Styles' => PHPExcel_Style_Border::BORDER_THIN,
 			'color' => array('argb' => 'FF000000'),
 		),
 	),
@@ -191,7 +191,7 @@ echo date('H:i:s') , " Set thick brown border outline around Total" , EOL;
 $styleThickBrownBorderOutline = array(
 	'borders' => array(
 		'outline' => array(
-			'style' => PHPExcel_Style_Border::BORDER_THICK,
+			'Styles' => PHPExcel_Style_Border::BORDER_THICK,
 			'color' => array('argb' => 'FF993300'),
 		),
 	),
@@ -203,8 +203,8 @@ echo date('H:i:s') , " Set fills" , EOL;
 $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFill()->getStartColor()->setARGB('FF808080');
 
-// Set style for header row using alternative method
-echo date('H:i:s') , " Set style for header row using alternative method" , EOL;
+// Set Styles for header row using alternative method
+echo date('H:i:s') , " Set Styles for header row using alternative method" , EOL;
 $objPHPExcel->getActiveSheet()->getStyle('A3:E3')->applyFromArray(
 		array(
 			'font'    => array(
@@ -215,7 +215,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A3:E3')->applyFromArray(
 			),
 			'borders' => array(
 				'top'     => array(
- 					'style' => PHPExcel_Style_Border::BORDER_THIN
+ 					'Styles' => PHPExcel_Style_Border::BORDER_THIN
  				)
 			),
 			'fill' => array(
@@ -238,7 +238,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A3')->applyFromArray(
 			),
 			'borders' => array(
 				'left'     => array(
- 					'style' => PHPExcel_Style_Border::BORDER_THIN
+ 					'Styles' => PHPExcel_Style_Border::BORDER_THIN
  				)
 			)
 		)
@@ -256,7 +256,7 @@ $objPHPExcel->getActiveSheet()->getStyle('E3')->applyFromArray(
 		array(
 			'borders' => array(
 				'right'     => array(
- 					'style' => PHPExcel_Style_Border::BORDER_THIN
+ 					'Styles' => PHPExcel_Style_Border::BORDER_THIN
  				)
 			)
 		)
@@ -284,7 +284,7 @@ echo date('H:i:s') , " Add a drawing to the worksheet" , EOL;
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('Logo');
 $objDrawing->setDescription('Logo');
-$objDrawing->setPath('./images/officelogo.jpg');
+$objDrawing->setPath('./Images/officelogo.jpg');
 $objDrawing->setHeight(36);
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
@@ -293,7 +293,7 @@ echo date('H:i:s') , " Add a drawing to the worksheet" , EOL;
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('Paid');
 $objDrawing->setDescription('Paid');
-$objDrawing->setPath('./images/paid.png');
+$objDrawing->setPath('./Images/paid.png');
 $objDrawing->setCoordinates('B15');
 $objDrawing->setOffsetX(110);
 $objDrawing->setRotation(25);
@@ -306,7 +306,7 @@ echo date('H:i:s') , " Add a drawing to the worksheet" , EOL;
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('PHPExcel logo');
 $objDrawing->setDescription('PHPExcel logo');
-$objDrawing->setPath('./images/phpexcel_logo.gif');
+$objDrawing->setPath('./Images/phpexcel_logo.gif');
 $objDrawing->setHeight(36);
 $objDrawing->setCoordinates('D24');
 $objDrawing->setOffsetX(10);
@@ -376,7 +376,7 @@ echo date('H:i:s') , " Add a drawing to the worksheet" , EOL;
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('Terms and conditions');
 $objDrawing->setDescription('Terms and conditions');
-$objDrawing->setPath('./images/termsconditions.jpg');
+$objDrawing->setPath('./Images/termsconditions.jpg');
 $objDrawing->setCoordinates('B14');
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 

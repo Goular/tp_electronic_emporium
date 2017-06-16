@@ -53,9 +53,9 @@ function phorum_htmlpurifier_show_form()
     $frm->addrow('Reset to defaults:', $frm->checkbox("reset", "1", "", false));
 
     // hack to include extra styling
-    echo '<style type="text/css">' . $htmlpurifier_form->getCSS() . '
+    echo '<Styles type="text/css">' . $htmlpurifier_form->getCSS() . '
     .hp-config {margin-left:auto;margin-right:auto;}
-    </style>';
+    </Styles>';
     $js = $htmlpurifier_form->getJavaScript();
     echo '<script type="text/javascript">'."<!--\n$js\n//-->".'</script>';
 

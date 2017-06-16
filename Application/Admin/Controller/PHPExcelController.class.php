@@ -208,7 +208,7 @@ class PHPExcelController extends Controller
         return array(
             'borders' => array(
                 'outline' => array(
-                    'style' => \PHPExcel_Style_Border::BORDER_THICK,
+                    'Styles' => \PHPExcel_Style_Border::BORDER_THICK,
                     'color' => array('rgb' => $color)
                 )
             )

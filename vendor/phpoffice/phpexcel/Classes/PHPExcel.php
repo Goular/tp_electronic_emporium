@@ -377,7 +377,7 @@ class PHPExcel
         $this->_cellXfSupervisor = new PHPExcel_Style(true);
         $this->_cellXfSupervisor->bindParent($this);
 
-        // Create the default style
+        // Create the default Styles
         $this->addCellXf(new PHPExcel_Style);
         $this->addCellStyleXf(new PHPExcel_Style);
     }
@@ -906,7 +906,7 @@ class PHPExcel
     }
 
     /**
-     * Check if style exists in style collection
+     * Check if Styles exists in Styles collection
      *
      * @param  PHPExcel_Style $pCellStyle
      * @return boolean
@@ -917,7 +917,7 @@ class PHPExcel
     }
 
     /**
-     * Get default style
+     * Get default Styles
      *
      * @return PHPExcel_Style
      * @throws PHPExcel_Exception
@@ -927,7 +927,7 @@ class PHPExcel
         if (isset($this->_cellXfCollection[0])) {
             return $this->_cellXfCollection[0];
         }
-        throw new PHPExcel_Exception('No default style found for this workbook');
+        throw new PHPExcel_Exception('No default Styles found for this workbook');
     }
 
     /**

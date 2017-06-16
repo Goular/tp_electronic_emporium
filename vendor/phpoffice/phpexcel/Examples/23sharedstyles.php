@@ -67,8 +67,8 @@ $sharedStyle1->applyFromArray(
 								'color'		=> array('argb' => 'FFCCFFCC')
 							),
 		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
+								'bottom'	=> array('Styles' => PHPExcel_Style_Border::BORDER_THIN),
+								'right'		=> array('Styles' => PHPExcel_Style_Border::BORDER_MEDIUM)
 							)
 		 ));
 
@@ -78,8 +78,8 @@ $sharedStyle2->applyFromArray(
 								'color'		=> array('argb' => 'FFFFFF00')
 							),
 		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
+								'bottom'	=> array('Styles' => PHPExcel_Style_Border::BORDER_THIN),
+								'right'		=> array('Styles' => PHPExcel_Style_Border::BORDER_MEDIUM)
 							)
 		 ));
 

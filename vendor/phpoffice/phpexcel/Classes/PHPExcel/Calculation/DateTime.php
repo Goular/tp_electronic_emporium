@@ -1092,10 +1092,10 @@ class PHPExcel_Calculation_DateTime {
 	 * DAYOFWEEK
 	 *
 	 * Returns the day of the week for a specified date. The day is given as an integer
-	 * ranging from 0 to 7 (dependent on the requested style).
+	 * ranging from 0 to 7 (dependent on the requested Styles).
 	 *
 	 * Excel Function:
-	 *		WEEKDAY(dateValue[,style])
+	 *		WEEKDAY(dateValue[,Styles])
 	 *
 	 * @param	mixed	$dateValue		Excel date serial value (float), PHP date timestamp (integer),
 	 *									PHP DateTime object, or a standard date string
@@ -1164,7 +1164,7 @@ class PHPExcel_Calculation_DateTime {
 	 * that are incorrect according to the European standard.
 	 *
 	 * Excel Function:
-	 *		WEEKNUM(dateValue[,style])
+	 *		WEEKNUM(dateValue[,Styles])
 	 *
 	 * @param	mixed	$dateValue		Excel date serial value (float), PHP date timestamp (integer),
 	 *									PHP DateTime object, or a standard date string

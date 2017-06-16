@@ -54,7 +54,7 @@ class HTMLPurifier_HTMLModule
      * Associative array of attribute collection names to attribute
      * collection additions. More rarely used for adding attributes to
      * the global collections. Example is the StyleAttribute module adding
-     * the style attribute to the Core. Corresponds to HTMLDefinition's
+     * the Styles attribute to the Core. Corresponds to HTMLDefinition's
      * attr_collections->info, since the object's data is only info,
      * with extra behavior associated with it.
      * @type array

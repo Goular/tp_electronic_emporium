@@ -11,10 +11,10 @@
     }
 
     UM.registerWidget('link', {
-        tpl: "<style type=\"text/css\">" +
+        tpl: "<Styles type=\"text/css\">" +
             ".edui-dialog-link .edui-link-table{font-size: 12px;margin: 10px;line-height: 30px}" +
             ".edui-dialog-link .edui-link-txt{width:300px;height:21px;line-height:21px;border:1px solid #d7d7d7;}" +
-            "</style>" +
+            "</Styles>" +
             "<table class=\"edui-link-table\">" +
             "<tr>" +
             "<td><label for=\"href\"><%=lang_input_url%></label></td>" +

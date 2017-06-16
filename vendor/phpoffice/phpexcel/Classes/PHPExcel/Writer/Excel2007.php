@@ -138,7 +138,7 @@ class PHPExcel_Writer_Excel2007 extends PHPExcel_Writer_Abstract implements PHPE
 									'docprops' 		=> 'PHPExcel_Writer_Excel2007_DocProps',
 									'rels'			=> 'PHPExcel_Writer_Excel2007_Rels',
 									'theme' 		=> 'PHPExcel_Writer_Excel2007_Theme',
-									'style' 		=> 'PHPExcel_Writer_Excel2007_Style',
+									'Styles' 		=> 'PHPExcel_Writer_Excel2007_Style',
 									'workbook' 		=> 'PHPExcel_Writer_Excel2007_Workbook',
 									'worksheet' 	=> 'PHPExcel_Writer_Excel2007_Worksheet',
 									'drawing' 		=> 'PHPExcel_Writer_Excel2007_Drawing',

@@ -65,7 +65,7 @@ foreach ($files as $file) {
     switch ($ext) {
         case '.php':
         case '.inc':
-        case '.js':
+        case '.Js':
             $line = '// %s';
             break;
         case '.html':

@@ -207,7 +207,7 @@ class PHPExcel_Writer_Excel2007_Comments extends PHPExcel_Writer_Excel2007_Write
 		$objWriter->startElement('v:shape');
 		$objWriter->writeAttribute('id', 			'_x0000_s' . $id);
 		$objWriter->writeAttribute('type', 			'#_x0000_t202');
-		$objWriter->writeAttribute('style', 		'position:absolute;margin-left:' . $pComment->getMarginLeft() . ';margin-top:' . $pComment->getMarginTop() . ';width:' . $pComment->getWidth() . ';height:' . $pComment->getHeight() . ';z-index:1;visibility:' . ($pComment->getVisible() ? 'visible' : 'hidden'));
+		$objWriter->writeAttribute('Styles', 		'position:absolute;margin-left:' . $pComment->getMarginLeft() . ';margin-top:' . $pComment->getMarginTop() . ';width:' . $pComment->getWidth() . ';height:' . $pComment->getHeight() . ';z-index:1;visibility:' . ($pComment->getVisible() ? 'visible' : 'hidden'));
 		$objWriter->writeAttribute('fillcolor', 	'#' . $pComment->getFillColor()->getRGB());
 		$objWriter->writeAttribute('o:insetmode', 	'auto');
 
@@ -230,11 +230,11 @@ class PHPExcel_Writer_Excel2007_Comments extends PHPExcel_Writer_Excel2007_Write
 
 			// v:textbox
 			$objWriter->startElement('v:textbox');
-			$objWriter->writeAttribute('style', 'mso-direction-alt:auto');
+			$objWriter->writeAttribute('Styles', 'mso-direction-alt:auto');
 
 				// div
 				$objWriter->startElement('div');
-				$objWriter->writeAttribute('style', 'text-align:left');
+				$objWriter->writeAttribute('Styles', 'text-align:left');
 				$objWriter->endElement();
 
 			$objWriter->endElement();

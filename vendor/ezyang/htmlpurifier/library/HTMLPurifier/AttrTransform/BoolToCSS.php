@@ -12,14 +12,14 @@ class HTMLPurifier_AttrTransform_BoolToCSS extends HTMLPurifier_AttrTransform
     protected $attr;
 
     /**
-     * CSS declarations to add to style, needs trailing semicolon.
+     * CSS declarations to add to Styles, needs trailing semicolon.
      * @type string
      */
     protected $css;
 
     /**
      * @param string $attr attribute name to convert from
-     * @param string $css CSS declarations to add to style (needs semicolon)
+     * @param string $css CSS declarations to add to Styles (needs semicolon)
      */
     public function __construct($attr, $css)
     {

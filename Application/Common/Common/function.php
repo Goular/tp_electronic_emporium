@@ -14,8 +14,8 @@ function removeXSS($data)
     $_clean_xss_config = HTMLPurifier_Config::createDefault();
     $_clean_xss_config->set('Core.Encoding', 'UTF-8');
     // 设置保留的标签
-    $_clean_xss_config->set('HTML.Allowed', 'div,b,strong,i,em,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src]');
-    $_clean_xss_config->set('CSS.AllowedProperties', 'font,font-size,font-weight,font-style,font-family,text-decoration,padding-left,color,background-color,text-align');
+    $_clean_xss_config->set('HTML.Allowed', 'div,b,strong,i,em,a[href|title],ul,ol,li,p[Styles],br,span[Styles],img[width|height|alt|src]');
+    $_clean_xss_config->set('CSS.AllowedProperties', 'font,font-size,font-weight,font-Styles,font-family,text-decoration,padding-left,color,background-color,text-align');
     $_clean_xss_config->set('HTML.TargetBlank', TRUE);
     $_clean_xss_obj = new HTMLPurifier($_clean_xss_config);
     // 执行过滤
@@ -44,10 +44,10 @@ function deleteImage($image = array())
  * 返回值：
  * if($ret['ok'] == 1)
  * {
- * $ret['images'][0];   // 原图地址
- * $ret['images'][1];   // 第一个缩略图地址
- * $ret['images'][2];   // 第二个缩略图地址
- * $ret['images'][3];   // 第三个缩略图地址
+ * $ret['Images'][0];   // 原图地址
+ * $ret['Images'][1];   // 第一个缩略图地址
+ * $ret['Images'][2];   // 第二个缩略图地址
+ * $ret['Images'][3];   // 第三个缩略图地址
  * }
  * else
  * {
@@ -77,16 +77,16 @@ function uploadOne($imgName, $dirName, $thumb = array())
             );
         } else {
             $ret['ok'] = 1;
-            $ret['images'][0] = $logoName = $info[$imgName]['savepath'] . $info[$imgName]['savename'];
+            $ret['Images'][0] = $logoName = $info[$imgName]['savepath'] . $info[$imgName]['savename'];
             // 判断是否生成缩略图
             if ($thumb) {
                 $image = new \Think\Image();
                 // 循环生成缩略图
                 foreach ($thumb as $k => $v) {
-                    $ret['images'][$k + 1] = $info[$imgName]['savepath'] . 'thumb_' . $k . '_' . $info[$imgName]['savename'];
+                    $ret['Images'][$k + 1] = $info[$imgName]['savepath'] . 'thumb_' . $k . '_' . $info[$imgName]['savename'];
                     // 打开要处理的图片
                     $image->open($ic['rootPath'] . $logoName);
-                    $image->thumb($v[0], $v[1])->save($ic['rootPath'] . $ret['images'][$k + 1]);
+                    $image->thumb($v[0], $v[1])->save($ic['rootPath'] . $ret['Images'][$k + 1]);
                 }
             }
             return $ret;
@@ -123,16 +123,16 @@ function uploadImageFile($imgFileInfo, $dirName, $thumb = array())
             );
         } else {
             $ret['ok'] = 1;
-            $ret['images'][0] = $logoName = $info[$imgName]['savepath'] . $info[$imgName]['savename'];
+            $ret['Images'][0] = $logoName = $info[$imgName]['savepath'] . $info[$imgName]['savename'];
             // 判断是否生成缩略图
             if ($thumb) {
                 $image = new \Think\Image();
                 // 循环生成缩略图
                 foreach ($thumb as $k => $v) {
-                    $ret['images'][$k + 1] = $info[$imgName]['savepath'] . 'thumb_' . $k . '_' . $info[$imgName]['savename'];
+                    $ret['Images'][$k + 1] = $info[$imgName]['savepath'] . 'thumb_' . $k . '_' . $info[$imgName]['savename'];
                     // 打开要处理的图片
                     $image->open($ic['rootPath'] . $logoName);
-                    $image->thumb($v[0], $v[1])->save($ic['rootPath'] . $ret['images'][$k + 1]);
+                    $image->thumb($v[0], $v[1])->save($ic['rootPath'] . $ret['Images'][$k + 1]);
                 }
             }
             return $ret;

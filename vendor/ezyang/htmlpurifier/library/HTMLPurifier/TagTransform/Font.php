@@ -98,8 +98,8 @@ class HTMLPurifier_TagTransform_Font extends HTMLPurifier_TagTransform
         }
 
         if ($prepend_style) {
-            $attr['style'] = isset($attr['style']) ?
-                $prepend_style . $attr['style'] :
+            $attr['Styles'] = isset($attr['Styles']) ?
+                $prepend_style . $attr['Styles'] :
                 $prepend_style;
         }
 

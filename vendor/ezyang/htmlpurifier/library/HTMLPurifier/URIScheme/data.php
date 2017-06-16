@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements data: URI for base64 encoded images supported by GD.
+ * Implements data: URI for base64 encoded Images supported by GD.
  */
 class HTMLPurifier_URIScheme_data extends HTMLPurifier_URIScheme
 {

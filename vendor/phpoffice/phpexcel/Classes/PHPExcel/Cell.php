@@ -529,7 +529,7 @@ class PHPExcel_Cell
     }
 
 	/**
-	 *	Get cell style
+	 *	Get cell Styles
 	 *
 	 *	@return	PHPExcel_Style
 	 */

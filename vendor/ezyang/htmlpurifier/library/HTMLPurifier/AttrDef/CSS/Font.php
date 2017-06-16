@@ -22,7 +22,7 @@ class HTMLPurifier_AttrDef_CSS_Font extends HTMLPurifier_AttrDef
     public function __construct($config)
     {
         $def = $config->getCSSDefinition();
-        $this->info['font-style'] = $def->info['font-style'];
+        $this->info['font-Styles'] = $def->info['font-Styles'];
         $this->info['font-variant'] = $def->info['font-variant'];
         $this->info['font-weight'] = $def->info['font-weight'];
         $this->info['font-size'] = $def->info['font-size'];
@@ -62,7 +62,7 @@ class HTMLPurifier_AttrDef_CSS_Font extends HTMLPurifier_AttrDef
         $bits = explode(' ', $string); // bits to process
         $stage = 0; // this indicates what we're looking for
         $caught = array(); // which stage 0 properties have we caught?
-        $stage_1 = array('font-style', 'font-variant', 'font-weight');
+        $stage_1 = array('font-Styles', 'font-variant', 'font-weight');
         $final = ''; // output
 
         for ($i = 0, $size = count($bits); $i < $size; $i++) {
@@ -70,7 +70,7 @@ class HTMLPurifier_AttrDef_CSS_Font extends HTMLPurifier_AttrDef
                 continue;
             }
             switch ($stage) {
-                case 0: // attempting to catch font-style, font-variant or font-weight
+                case 0: // attempting to catch font-Styles, font-variant or font-weight
                     foreach ($stage_1 as $validator_name) {
                         if (isset($caught[$validator_name])) {
                             continue;

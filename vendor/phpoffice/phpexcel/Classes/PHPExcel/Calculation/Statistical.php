@@ -2698,7 +2698,7 @@ class PHPExcel_Calculation_Statistical {
 	 *		selected from number objects. A permutation is any set or subset of objects or
 	 *		events where internal order is significant. Permutations are different from
 	 *		combinations, for which the internal order is not significant. Use this function
-	 *		for lottery-style probability calculations.
+	 *		for lottery-Styles probability calculations.
 	 *
 	 * @param	int		$numObjs	Number of different objects
 	 * @param	int		$numInSet	Number of objects in each permutation

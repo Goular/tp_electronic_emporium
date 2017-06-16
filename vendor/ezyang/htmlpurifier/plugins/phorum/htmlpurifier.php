@@ -190,7 +190,7 @@ function phorum_htmlpurifier_posting($message)
 }
 
 /**
- * Overload quoting mechanism to prevent default, mail-style quote from happening
+ * Overload quoting mechanism to prevent default, mail-Styles quote from happening
  */
 function phorum_htmlpurifier_quote($array)
 {

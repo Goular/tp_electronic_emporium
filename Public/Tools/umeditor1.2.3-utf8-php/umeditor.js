@@ -279,7 +279,7 @@ var ie = browser.ie,
  * @name UM.Utils
  * @short Utils
  * @desc UEditor封装使用的静态工具函数
- * @import editor.js
+ * @import editor.Js
  */
 var utils = UM.utils = {
     /**
@@ -541,7 +541,7 @@ var utils = UM.utils = {
      * @example
      * //指定加载到当前document中一个script文件，加载成功后执行function
      * utils.loadFile( document, {
-     *     src:"test.js",
+     *     src:"test.Js",
      *     tag:"script",
      *     type:"text/javascript",
      *     defer:"defer"
@@ -610,7 +610,7 @@ var utils = UM.utils = {
                 }
             };
             element.onerror = function () {
-                throw Error('The load ' + (obj.href || obj.src) + ' fails,check the url settings of file umeditor.config.js ')
+                throw Error('The load ' + (obj.href || obj.src) + ' fails,check the url settings of file umeditor.config.Js ')
             };
             doc.getElementsByTagName("head")[0].appendChild(element);
         }
@@ -789,7 +789,7 @@ utils.each(['String', 'Function', 'Array', 'Number', 'RegExp', 'Object'], functi
  * @file
  * @name UM.EventBase
  * @short EventBase
- * @import editor.js,core/utils.js
+ * @import editor.Js,core/utils.Js
  * @desc UE采用的事件基类，继承此类的对应类将获取addListener,removeListener,fireEvent方法。
  * 在UE中，Editor以及所有ui实例都继承了该类，故可以在对应的ui对象以及editor对象上使用上述方法。
  */
@@ -883,9 +883,9 @@ function getListener(obj, type, force) {
 }
 
 
-///import editor.js
-///import core/dom/dom.js
-///import core/utils.js
+///import editor.Js
+///import core/dom/dom.Js
+///import core/utils.Js
 /**
  * dtd html语义化的体现类
  * @constructor
@@ -1067,7 +1067,7 @@ var dtd = dom.dtd = (function() {
  * @file
  * @name UM.dom.domUtils
  * @short DomUtils
- * @import editor.js, core/utils.js,core/browser.js,core/dom/dtd.js
+ * @import editor.Js, core/utils.Js,core/browser.Js,core/dom/dtd.Js
  * @desc UEditor封装的底层dom操作库
  */
 
@@ -1679,11 +1679,11 @@ var domUtils = dom.domUtils = {
      * @grammar UM.dom.domUtils.removeAttributes(node,attrNames)
      * @example
      * //Before remove
-     * <span style="font-size:14px;" id="test" name="followMe">xxxxx</span>
+     * <span Styles="font-size:14px;" id="test" name="followMe">xxxxx</span>
      * //Remove
      * UM.dom.domUtils.removeAttributes(node,["id","name"]);
      * //After remove
-     * <span style="font-size:14px;">xxxxx</span>
+     * <span Styles="font-size:14px;">xxxxx</span>
      */
     removeAttributes: function (node, attrNames) {
         attrNames = utils.isArray(attrNames) ? attrNames : utils.trim(attrNames).replace(/[ ]{2,}/g, ' ').split(' ');
@@ -1768,7 +1768,7 @@ var domUtils = dom.domUtils = {
      * @param { String } styleName 需要删除的样式名
      * @example
      * ```html
-     * <span id="test" style="color: red; background: blue;"></span>
+     * <span id="test" Styles="color: red; background: blue;"></span>
      *
      * <script>
      *
@@ -1777,7 +1777,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeStyle( testNode, 'color' );
      *
      *     //output: background: blue;
-     *     console.log( testNode.style.cssText );
+     *     console.log( testNode.Styles.cssText );
      *
      * </script>
      * ```
@@ -1919,18 +1919,18 @@ var domUtils = dom.domUtils = {
     }
 };
 var fillCharReg = new RegExp(domUtils.fillChar, 'g');
-///import editor.js
-///import core/utils.js
-///import core/browser.js
-///import core/dom/dom.js
-///import core/dom/dtd.js
-///import core/dom/domUtils.js
+///import editor.Js
+///import core/utils.Js
+///import core/browser.Js
+///import core/dom/dom.Js
+///import core/dom/dtd.Js
+///import core/dom/domUtils.Js
 /**
  * @file
  * @name UM.dom.Range
  * @anthor zhanyi
  * @short Range
- * @import editor.js,core/utils.js,core/browser.js,core/dom/domUtils.js,core/dom/dtd.js
+ * @import editor.Js,core/utils.Js,core/browser.Js,core/dom/domUtils.Js,core/dom/dtd.Js
  * @desc Range范围实现类，本类是UEditor底层核心类，统一w3cRange和ieRange之间的差异，包括接口和属性
  */
 (function () {
@@ -2843,7 +2843,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
 
         },
         scrollIntoView : function(){
-            var $span = $('<span style="padding:0;margin:0;display:block;border:0">&nbsp;</span>');
+            var $span = $('<span Styles="padding:0;margin:0;display:block;border:0">&nbsp;</span>');
             this.cloneRange().insertNode($span.get(0));
             var winScrollTop = $(window).scrollTop(),
                 winHeight = $(window).height(),
@@ -2866,12 +2866,12 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         }
     };
 })();
-///import editor.js
-///import core/browser.js
-///import core/dom/dom.js
-///import core/dom/dtd.js
-///import core/dom/domUtils.js
-///import core/dom/Range.js
+///import editor.Js
+///import core/browser.Js
+///import core/dom/dom.Js
+///import core/dom/dtd.Js
+///import core/dom/domUtils.Js
+///import core/dom/Range.Js
 /**
  * @class UM.dom.Selection    Selection类
  */
@@ -3219,7 +3219,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
  * @file
  * @name UM.Editor
  * @short Editor
- * @import editor.js,core/utils.js,core/EventBase.js,core/browser.js,core/dom/dtd.js,core/dom/domUtils.js,core/dom/Range.js,core/dom/Selection.js,plugins/serialize.js
+ * @import editor.Js,core/utils.Js,core/EventBase.Js,core/browser.Js,core/dom/dtd.Js,core/dom/domUtils.Js,core/dom/Range.Js,core/dom/Selection.Js,plugins/serialize.Js
  * @desc 编辑器主类，包含编辑器提供的大部分公用接口
  */
 (function () {
@@ -3325,7 +3325,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
             loadPlugins(me)
         }else{
             utils.loadFile(document, {
-                src: me.options.langPath + me.options.lang + "/" + me.options.lang + ".js",
+                src: me.options.langPath + me.options.lang + "/" + me.options.lang + ".Js",
                 tag: "script",
                 type: "text/javascript",
                 defer: "defer"
@@ -3458,7 +3458,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
             if (container) {
                 this.id = container.getAttribute('id');
                 UM.setEditor(this);
-                utils.cssRule('edui-style-body',me.options.initialStyle,document);
+                utils.cssRule('edui-Styles-body',me.options.initialStyle,document);
 
                 container = this.initialCont(container);
 
@@ -3718,7 +3718,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
             if (browser.ie && browser.version > 8) {
                 var headHtmlForIE9 = '';
                 utils.each(me.document.styleSheets, function (si) {
-                    headHtmlForIE9 += ( si.href ? '<link rel="stylesheet" type="text/css" href="' + si.href + '" />' : '<style>' + si.cssText + '</style>');
+                    headHtmlForIE9 += ( si.href ? '<link rel="stylesheet" type="text/css" href="' + si.href + '" />' : '<Styles>' + si.cssText + '</Styles>');
                 });
                 utils.each(me.document.getElementsByTagName('script'), function (si) {
                     headHtmlForIE9 += si.outerHTML;
@@ -4323,7 +4323,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
  * @name UM.filterWord
  * @short filterWord
  * @desc 用来过滤word粘贴过来的字符串
- * @import editor.js,core/utils.js
+ * @import editor.Js,core/utils.Js
  * @anthor zhanyi
  */
 var filterWord = UM.filterWord = function () {
@@ -4479,7 +4479,7 @@ var filterWord = UM.filterWord = function () {
                         n[i] = name + ":" + parts[1];
                     }
                 }
-                return tag + (n.length ? ' style="' + n.join( ';').replace(/;{2,}/g,';') + '"' : '');
+                return tag + (n.length ? ' Styles="' + n.join( ';').replace(/;{2,}/g,';') + '"' : '');
             })
             .replace(/[\d.]+(cm|pt)/g,function(str){
                 return utils.transUnitToPx(str)
@@ -4491,11 +4491,11 @@ var filterWord = UM.filterWord = function () {
         return (isWordDocument( html ) ? filterPasteWord( html ) : html);
     };
 }();
-///import editor.js
-///import core/utils.js
-///import core/dom/dom.js
-///import core/dom/dtd.js
-///import core/htmlparser.js
+///import editor.Js
+///import core/utils.Js
+///import core/dom/dom.Js
+///import core/dom/dtd.Js
+///import core/htmlparser.Js
 //模拟的节点类
 //by zhanyi
 (function () {
@@ -5442,7 +5442,7 @@ var htmlparser = UM.htmlparser = function (htmlstr,ignoreBlank) {
  * @name UM.filterNode
  * @short filterNode
  * @desc 根据给定的规则过滤节点
- * @import editor.js,core/utils.js
+ * @import editor.Js,core/utils.Js
  * @anthor zhanyi
  */
 var filterNode = UM.filterNode = function () {
@@ -5754,7 +5754,7 @@ UM.commands['inserthtml'] = {
 };
 
 ///import core
-///import plugins\inserthtml.js
+///import plugins\inserthtml.Js
 ///commands 插入图片，操作图片的对齐方式
 ///commandsName  InsertImage,ImageNone,ImageLeft,ImageRight,ImageCenter
 ///commandsTitle  图片,默认,居左,居右,居中
@@ -5777,23 +5777,23 @@ UM.commands['insertimage'] = {
             str = '<img src="' + ci.src + '" ' + (ci._src ? ' _src="' + ci._src + '" ' : '') +
                 (ci.width ? 'width="' + ci.width + '" ' : '') +
                 (ci.height ? ' height="' + ci.height + '" ' : '') +
-                (ci['floatStyle'] == 'left' || ci['floatStyle'] == 'right' ? ' style="float:' + ci['floatStyle'] + ';"' : '') +
+                (ci['floatStyle'] == 'left' || ci['floatStyle'] == 'right' ? ' Styles="float:' + ci['floatStyle'] + ';"' : '') +
                 (ci.title && ci.title != "" ? ' title="' + ci.title + '"' : '') +
                 (ci.border && ci.border != "0" ? ' border="' + ci.border + '"' : '') +
                 (ci.alt && ci.alt != "" ? ' alt="' + ci.alt + '"' : '') +
                 (ci.hspace && ci.hspace != "0" ? ' hspace = "' + ci.hspace + '"' : '') +
                 (ci.vspace && ci.vspace != "0" ? ' vspace = "' + ci.vspace + '"' : '') + '/>';
             if (ci['floatStyle'] == 'center') {
-                str = '<p style="text-align: center">' + str + '</p>';
+                str = '<p Styles="text-align: center">' + str + '</p>';
             }
             html.push(str);
 
         } else {
             for (var i = 0; ci = opt[i++];) {
-                str = '<p ' + (ci['floatStyle'] == 'center' ? 'style="text-align: center" ' : '') + '><img src="' + ci.src + '" ' +
+                str = '<p ' + (ci['floatStyle'] == 'center' ? 'Styles="text-align: center" ' : '') + '><img src="' + ci.src + '" ' +
                     (ci.width ? 'width="' + ci.width + '" ' : '') + (ci._src ? ' _src="' + ci._src + '" ' : '') +
                     (ci.height ? ' height="' + ci.height + '" ' : '') +
-                    ' style="' + (ci['floatStyle'] && ci['floatStyle'] != 'center' ? 'float:' + ci['floatStyle'] + ';' : '') +
+                    ' Styles="' + (ci['floatStyle'] && ci['floatStyle'] != 'center' ? 'float:' + ci['floatStyle'] + ';' : '') +
                     (ci.border || '') + '" ' +
                     (ci.title ? ' title="' + ci.title + '"' : '') + ' /></p>';
                 html.push(str);
@@ -5833,7 +5833,7 @@ UM.plugins['justify']=function(){
 };
 
 ///import core
-///import plugins\removeformat.js
+///import plugins\removeformat.Js
 ///commands 字体颜色,背景色,字号,字体,下划线,删除线
 ///commandsName  ForeColor,BackColor,FontSize,FontFamily,Underline,StrikeThrough
 ///commandsTitle  字体颜色,背景色,字号,字体,下划线,删除线
@@ -6200,7 +6200,7 @@ UM.plugins['paragraph'] = function() {
 };
 
 ///import core
-///import plugins\inserthtml.js
+///import plugins\inserthtml.Js
 ///commands 分割线
 ///commandsName  Horizontal
 ///commandsTitle  分隔线
@@ -6558,9 +6558,9 @@ UM.plugins['undo'] = function () {
 };
 
 ///import core
-///import plugins/inserthtml.js
-///import plugins/undo.js
-///import plugins/serialize.js
+///import plugins/inserthtml.Js
+///import plugins/undo.Js
+///import plugins/serialize.Js
 ///commands 粘贴
 ///commandsName  PastePlain
 ///commandsTitle  纯文本粘贴模式
@@ -6665,7 +6665,7 @@ UM.plugins['paste'] = function () {
                 }
             }
             if (!browser.ie) {
-                var spans = div.querySelectorAll('span.Apple-style-span');
+                var spans = div.querySelectorAll('span.Apple-Styles-span');
                 for (var i = 0, ci; ci = spans[i++];) {
                     domUtils.remove(ci, true);
                 }
@@ -6832,8 +6832,8 @@ UM.plugins['list'] = function () {
 
 
 ///import core
-///import plugins/serialize.js
-///import plugins/undo.js
+///import plugins/serialize.Js
+///import plugins/undo.Js
 ///commands 查看源码
 ///commandsName  Source
 ///commandsTitle  查看源码
@@ -6915,7 +6915,7 @@ UM.plugins['list'] = function () {
                         me.body.contentEditable = false;
                     }
 
-//                    bakCssText = me.body.style.cssText;
+//                    bakCssText = me.body.Styles.cssText;
                     me.body.style.cssText += ';position:absolute;left:-32768px;top:-32768px;';
 
 
@@ -6967,7 +6967,7 @@ UM.plugins['list'] = function () {
                         'left':'',
                         'top':''
                     });
-//                    me.body.style.cssText = bakCssText;
+//                    me.body.Styles.cssText = bakCssText;
                     var cont = sourceEditor.getContent() || '<p>' + (browser.ie ? '' : '<br/>')+'</p>';
                     //处理掉block节点前后的空格,有可能会误命中，暂时不考虑
                     cont = cont.replace(new RegExp('[\\r\\t\\n ]*<\/?(\\w+)\\s*(?:[^>]*)>','g'), function(a,b){
@@ -7023,7 +7023,7 @@ UM.plugins['list'] = function () {
 
 })();
 ///import core
-///import plugins/undo.js
+///import plugins/undo.Js
 ///commands 设置回车标签p或br
 ///commandsName  EnterKey
 ///commandsTitle  设置回车标签p或br
@@ -7169,8 +7169,8 @@ UM.commands['preview'] = {
             path = this.getOpt('UMEDITOR_HOME_URL'),
             formula = c.indexOf('mathquill-embedded-latex')!=-1 ?
                 '<link rel="stylesheet" href="' + path + 'third-party/mathquill/mathquill.css"/>' +
-                '<script src="' + path + 'third-party/jquery.min.js"></script>' +
-                '<script src="' + path + 'third-party/mathquill/mathquill.min.js"></script>':'';
+                '<script src="' + path + 'third-party/jquery.min.Js"></script>' +
+                '<script src="' + path + 'third-party/mathquill/mathquill.min.Js"></script>':'';
         d.open();
         d.write('<html><head>' + formula + '</head><body><div>'+c+'</div></body></html>');
         d.close();
@@ -7292,7 +7292,7 @@ UM.plugins['basestyle'] = function(){
 
 
 ///import core
-///import plugins/inserthtml.js
+///import plugins/inserthtml.Js
 ///commands 视频
 ///commandsName InsertVideo
 ///commandsTitle  插入视频
@@ -7314,11 +7314,11 @@ UM.plugins['video'] = function (){
         return  !toEmbed ?
 
                 '<img ' + (id ? 'id="' + id+'"' : '') + ' width="'+ width +'" height="' + height + '" _url="'+url+'" class="edui-faked-video"'  +
-                ' src="' + me.options.UMEDITOR_HOME_URL+'themes/default/images/spacer.gif" style="background:url('+me.options.UMEDITOR_HOME_URL+'themes/default/images/videologo.gif) no-repeat center center; border:1px solid gray;'+(align ? 'float:' + align + ';': '')+'" />'
+                ' src="' + me.options.UMEDITOR_HOME_URL+'themes/default/Images/spacer.gif" Styles="background:url('+me.options.UMEDITOR_HOME_URL+'themes/default/Images/videologo.gif) no-repeat center center; border:1px solid gray;'+(align ? 'float:' + align + ';': '')+'" />'
 
                 :
                 '<embed type="application/x-shockwave-flash" class="edui-faked-video" pluginspage="http://www.macromedia.com/go/getflashplayer"' +
-                ' src="' + url + '" width="' + width  + '" height="' + height  + '"'  + (align ? ' style="float:' + align + '"': '') +
+                ' src="' + url + '" width="' + width  + '" height="' + height  + '"'  + (align ? ' Styles="float:' + align + '"': '') +
                 ' wmode="transparent" play="true" loop="false" menu="false" allowscriptaccess="never" allowfullscreen="true" >';
     }
 
@@ -7422,7 +7422,7 @@ UM.plugins['selectall'] = function(){
 //
 //                $(common).find('a').each(function (k, a) {
 //                    if ( isEleInBookmark(a, bk) ) {
-//                        a.removeAttribute('style');
+//                        a.removeAttribute('Styles');
 //                    }
 //                });
 //
@@ -7438,7 +7438,7 @@ UM.plugins['removeformat'] = function(){
     var me = this;
     me.setOpt({
         'removeFormatTags': 'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var',
-        'removeFormatAttributes':'class,style,lang,width,height,align,hspace,valign'
+        'removeFormatAttributes':'class,Styles,lang,width,height,align,hspace,valign'
     });
     me.commands['removeformat'] = {
         execCommand : function( cmdName, tags, style, attrs,notIncludeA ) {
@@ -7457,7 +7457,7 @@ UM.plugins['removeformat'] = function(){
                 }
                 if (browser.ie) {
                     //ie 下判断实效，所以只能简单用style来判断
-                    //return node.style.cssText == '' ? 1 : 0;
+                    //return node.Styles.cssText == '' ? 1 : 0;
                     var attrs = node.attributes;
                     if ( attrs.length ) {
                         for ( var i = 0,l = attrs.length; i<l; i++ ) {
@@ -8183,7 +8183,7 @@ UM.plugins['formula'] = function () {
 };
 
 /**
- * @file xssFilter.js
+ * @file xssFilter.Js
  * @desc xss过滤器
  * @author robbenmu
  */
@@ -8745,7 +8745,7 @@ UM.ui.define('splitbutton',{
  */
 UM.ui.define('colorsplitbutton',{
 
-    tpl : '<div class="edui-splitbutton <%if : ${name}%>edui-splitbutton-${name}<%/if%>"  unselectable="on" <%if: ${title}%>data-original-title="${title}"<%/if%>><div class="edui-btn"  unselectable="on" ><%if: ${icon}%><div unselectable="on" class="edui-icon-${icon} edui-icon"></div><%/if%><div class="edui-splitbutton-color-label" <%if: ${color}%>style="background: ${color}"<%/if%>></div><%if: ${text}%>${text}<%/if%></div>'+
+    tpl : '<div class="edui-splitbutton <%if : ${name}%>edui-splitbutton-${name}<%/if%>"  unselectable="on" <%if: ${title}%>data-original-title="${title}"<%/if%>><div class="edui-btn"  unselectable="on" ><%if: ${icon}%><div unselectable="on" class="edui-icon-${icon} edui-icon"></div><%/if%><div class="edui-splitbutton-color-label" <%if: ${color}%>Styles="background: ${color}"<%/if%>></div><%if: ${text}%>${text}<%/if%></div>'+
             '<div  unselectable="on" class="edui-btn edui-dropdown-toggle" >'+
             '<div  unselectable="on" class="edui-caret"><\/div>'+
             '</div>'+
@@ -8854,7 +8854,7 @@ UM.ui.define('scale', {
         return this;
     },
     initStyle: function () {
-        utils.cssRule('edui-style-scale', '.edui-scale{display:none;position:absolute;border:1px solid #38B2CE;cursor:hand;}' +
+        utils.cssRule('edui-Styles-scale', '.edui-scale{display:none;position:absolute;border:1px solid #38B2CE;cursor:hand;}' +
             '.edui-scale span{position:absolute;left:0;top:0;width:7px;height:7px;overflow:hidden;font-size:0px;display:block;background-color:#3C9DD0;}'
             + '.edui-scale .edui-scale-hand0{cursor:nw-resize;top:0;margin-top:-4px;left:0;margin-left:-4px;}'
             + '.edui-scale .edui-scale-hand1{cursor:n-resize;top:0;margin-top:-4px;left:50%;margin-left:-4px;}'
@@ -9016,7 +9016,7 @@ UM.ui.define('colorpicker', {
             }
             html += i < 70 ? '<td><a unselectable="on" onmousedown="return false" title="' + COLORS[i] + '" class="edui-colorpicker-colorcell"' +
                 ' data-color="#' + COLORS[i] + '"' +
-                ' style="background-color:#' + COLORS[i] + ';border:solid #ccc;' +
+                ' Styles="background-color:#' + COLORS[i] + ';border:solid #ccc;' +
                 (i < 10 || i >= 60 ? 'border-width:1px;' :
                     i >= 10 && i < 20 ? 'border-width:1px 1px 0 1px;' :
                         'border-width:0 1px 0 1px;') +
@@ -9057,10 +9057,10 @@ UM.ui.define('colorpicker', {
             tpl: "<ul class=\"dropdown-menu edui-combobox-menu<%if: ${comboboxName} !==''%> edui-combobox-${comboboxName}<%/if%>\" unselectable=\"on\" onmousedown=\"return false\" role=\"menu\" aria-labelledby=\"dropdownMenu\">" +
                 "<%if: ${autoRecord} %>" +
                 "<%for : ${recordStack} as ${recordItem}, ${index}%>" + 
-                "<%var : style = ${itemStyles}[${recordItem}]%><%var : record = ${items}[${recordItem}]%>" +
+                "<%var : Styles = ${itemStyles}[${recordItem}]%><%var : record = ${items}[${recordItem}]%>" +
                 "<li class=\"${itemClassName}<%if: ${selected} == ${recordItem}%> edui-combobox-checked<%/if%>\" data-item-index=\"${recordItem}\" unselectable=\"on\" onmousedown=\"return false\">" +
                 "<span class=\"edui-combobox-icon\" unselectable=\"on\" onmousedown=\"return false\"></span>" +
-                "<label class=\"${labelClassName}\" style=\"${style}\" unselectable=\"on\" onmousedown=\"return false\">${record}</label>" +
+                "<label class=\"${labelClassName}\" Styles=\"${Styles}\" unselectable=\"on\" onmousedown=\"return false\">${record}</label>" +
                 "</li>" +
                 "<%/for%>" +
                 "<%if: ${index} %>" +
@@ -9071,7 +9071,7 @@ UM.ui.define('colorpicker', {
                 "<%var : labelStyle = ${itemStyles}[${itemIndex}]%>" + 
                 "<li class=\"${itemClassName}<%if: ${selected} == ${item} %> edui-combobox-checked<%/if%> edui-combobox-item-${itemIndex}\" data-item-index=\"${itemIndex}\" unselectable=\"on\" onmousedown=\"return false\">" +
                 "<span class=\"edui-combobox-icon\" unselectable=\"on\" onmousedown=\"return false\"></span>" +
-                "<label class=\"${labelClassName}\" style=\"${labelStyle}\" unselectable=\"on\" onmousedown=\"return false\">${item}</label>" +
+                "<label class=\"${labelClassName}\" Styles=\"${labelStyle}\" unselectable=\"on\" onmousedown=\"return false\">${item}</label>" +
                 "</li>" +
                 "<%/for%>" +
                 "</ul>",
@@ -9387,7 +9387,7 @@ UM.ui.define('modal', {
         '<div class="edui-close" data-hide="modal"></div>' +
         '<h3 class="edui-title">${title}</h3>' +
         '</div>' +
-        '<div class="edui-modal-body"  style="<%if: ${width}%>width:${width}px;<%/if%>' +
+        '<div class="edui-modal-body"  Styles="<%if: ${width}%>width:${width}px;<%/if%>' +
         '<%if: ${height}%>height:${height}px;<%/if%>">' +
         ' </div>' +
         '<% if: ${cancellabel} || ${oklabel} %>' +
@@ -9687,9 +9687,9 @@ UM.ui.define('separator', {
     }
 });
 /**
- * @file adapter.js
+ * @file adapter.Js
  * @desc adapt ui to editor
- * @import core/Editor.js, core/utils.js
+ * @import core/Editor.Js, core/utils.Js
  */
 
 (function () {
@@ -9858,7 +9858,7 @@ UM.ui.define('separator', {
 
             //修正在ie9+以上的版本中，自动长高收起时的，残影问题
             if(browser.ie && browser.ie9above){
-                var $span = $('<span style="padding:0;margin:0;height:0;width:0"></span>');
+                var $span = $('<span Styles="padding:0;margin:0;height:0;width:0"></span>');
                 $span.insertAfter($container);
             }
             //初始化注册的ui组件
@@ -10370,7 +10370,7 @@ UM.registerUI('link image video map formula',function(name){
     var me = this, currentRange, $dialog,
         opt = {
             title: (me.options.labelMap && me.options.labelMap[name]) || me.getLang("labelMap." + name),
-            url: me.options.UMEDITOR_HOME_URL + 'dialogs/' + name + '/' + name + '.js'
+            url: me.options.UMEDITOR_HOME_URL + 'dialogs/' + name + '/' + name + '.Js'
         };
 
     var $btn = $.eduibutton({
@@ -10468,7 +10468,7 @@ UM.registerUI('link image video map formula',function(name){
 });
 UM.registerUI( 'emotion formula', function( name ){
     var me = this,
-        url  = me.options.UMEDITOR_HOME_URL + 'dialogs/' +name+ '/'+name+'.js';
+        url  = me.options.UMEDITOR_HOME_URL + 'dialogs/' +name+ '/'+name+'.Js';
 
     var $btn = $.eduibutton({
         icon: name,

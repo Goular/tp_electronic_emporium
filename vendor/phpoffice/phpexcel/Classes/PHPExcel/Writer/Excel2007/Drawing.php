@@ -62,7 +62,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 		$objWriter->writeAttribute('xmlns:xdr', 'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing');
 		$objWriter->writeAttribute('xmlns:a', 'http://schemas.openxmlformats.org/drawingml/2006/main');
 
-			// Loop through images and write drawings
+			// Loop through Images and write drawings
 			$i = 1;
 			$iterator = $pWorksheet->getDrawingCollection()->getIterator();
 			while ($iterator->valid()) {
@@ -380,7 +380,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 	}
 
 	/**
-	 * Write VML header/footer images to XML format
+	 * Write VML header/footer Images to XML format
 	 *
 	 * @param 	PHPExcel_Worksheet				$pWorksheet
 	 * @return 	string 								XML Output
@@ -399,7 +399,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 		// XML header
 		$objWriter->startDocument('1.0','UTF-8','yes');
 
-  		// Header/footer images
+  		// Header/footer Images
   		$images = $pWorksheet->getHeaderFooter()->getImages();
 
 		// xml
@@ -515,7 +515,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 
 			$objWriter->endElement();
 
-			// Loop through images
+			// Loop through Images
 			foreach ($images as $key => $value) {
 				$this->_writeVMLHeaderFooterImage($objWriter, $key, $value);
 			}
@@ -551,7 +551,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 		$objWriter->writeAttribute('id', 			$pReference);
 		$objWriter->writeAttribute('o:spid', 		'_x0000_s' . $id);
 		$objWriter->writeAttribute('type', 			'#_x0000_t75');
-		$objWriter->writeAttribute('style', 		"position:absolute;margin-left:{$marginLeft}px;margin-top:{$marginTop}px;width:{$width}px;height:{$height}px;z-index:1");
+		$objWriter->writeAttribute('Styles', 		"position:absolute;margin-left:{$marginLeft}px;margin-top:{$marginTop}px;width:{$width}px;height:{$height}px;z-index:1");
 
 			// v:imagedata
 			$objWriter->startElement('v:imagedata');
@@ -584,7 +584,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 		// Loop through PHPExcel
 		$sheetCount = $pPHPExcel->getSheetCount();
 		for ($i = 0; $i < $sheetCount; ++$i) {
-			// Loop through images and add to array
+			// Loop through Images and add to array
 			$iterator = $pPHPExcel->getSheet($i)->getDrawingCollection()->getIterator();
 			while ($iterator->valid()) {
 				$aDrawings[] = $iterator->current();

@@ -413,7 +413,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
 					}
 
 					// Style
-					$objWriter->writeAttribute('style', $colDimension->getXfIndex());
+					$objWriter->writeAttribute('Styles', $colDimension->getXfIndex());
 
 					$objWriter->endElement();
 				}
@@ -1210,7 +1210,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
 	 */
 	private function _writeLegacyDrawingHF(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Worksheet $pSheet = null)
 	{
-		// If sheet contains images, add the relationships
+		// If sheet contains Images, add the relationships
 		if (count($pSheet->getHeaderFooter()->getImages()) > 0) {
 			$objWriter->startElement('legacyDrawingHF');
 			$objWriter->writeAttribute('r:id', 'rId_headerfooter_vml1');

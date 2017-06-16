@@ -38,7 +38,7 @@ class BcsMimetypes
         'iges'    => 'model/iges', 'igs'                   => 'model/iges',
         'jnlp'    => 'application/x-java-jnlp-file', 'jp2' => 'image/jp2',
         'jpe'     => 'image/jpeg', 'jpeg'                  => 'image/jpeg',
-        'jpg'     => 'image/jpeg', 'js'                    => 'application/x-javascript',
+        'jpg'     => 'image/jpeg', 'Js'                    => 'application/x-javascript',
         'kar'     => 'audio/midi', 'latex'                 => 'application/x-latex',
         'lha'     => 'application/octet-stream',
         'lzh'     => 'application/octet-stream',

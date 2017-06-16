@@ -27,10 +27,10 @@ class HTMLPurifier_CSSDefinition extends HTMLPurifier_Definition
         );
 
         $border_style =
-            $this->info['border-bottom-style'] =
-            $this->info['border-right-style'] =
-            $this->info['border-left-style'] =
-            $this->info['border-top-style'] = new HTMLPurifier_AttrDef_Enum(
+            $this->info['border-bottom-Styles'] =
+            $this->info['border-right-Styles'] =
+            $this->info['border-left-Styles'] =
+            $this->info['border-top-Styles'] = new HTMLPurifier_AttrDef_Enum(
                 array(
                     'none',
                     'hidden',
@@ -46,7 +46,7 @@ class HTMLPurifier_CSSDefinition extends HTMLPurifier_Definition
                 false
             );
 
-        $this->info['border-style'] = new HTMLPurifier_AttrDef_CSS_Multiple($border_style);
+        $this->info['border-Styles'] = new HTMLPurifier_AttrDef_CSS_Multiple($border_style);
 
         $this->info['clear'] = new HTMLPurifier_AttrDef_Enum(
             array('none', 'left', 'right', 'both'),
@@ -56,7 +56,7 @@ class HTMLPurifier_CSSDefinition extends HTMLPurifier_Definition
             array('none', 'left', 'right'),
             false
         );
-        $this->info['font-style'] = new HTMLPurifier_AttrDef_Enum(
+        $this->info['font-Styles'] = new HTMLPurifier_AttrDef_Enum(
             array('normal', 'italic', 'oblique'),
             false
         );
@@ -72,11 +72,11 @@ class HTMLPurifier_CSSDefinition extends HTMLPurifier_Definition
             )
         );
 
-        $this->info['list-style-position'] = new HTMLPurifier_AttrDef_Enum(
+        $this->info['list-Styles-position'] = new HTMLPurifier_AttrDef_Enum(
             array('inside', 'outside'),
             false
         );
-        $this->info['list-style-type'] = new HTMLPurifier_AttrDef_Enum(
+        $this->info['list-Styles-type'] = new HTMLPurifier_AttrDef_Enum(
             array(
                 'disc',
                 'circle',
@@ -90,9 +90,9 @@ class HTMLPurifier_CSSDefinition extends HTMLPurifier_Definition
             ),
             false
         );
-        $this->info['list-style-image'] = $uri_or_none;
+        $this->info['list-Styles-image'] = $uri_or_none;
 
-        $this->info['list-style'] = new HTMLPurifier_AttrDef_CSS_ListStyle($config);
+        $this->info['list-Styles'] = new HTMLPurifier_AttrDef_CSS_ListStyle($config);
 
         $this->info['text-transform'] = new HTMLPurifier_AttrDef_Enum(
             array('capitalize', 'uppercase', 'lowercase', 'none'),

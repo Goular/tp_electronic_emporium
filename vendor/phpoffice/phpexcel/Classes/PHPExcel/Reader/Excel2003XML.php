@@ -449,11 +449,11 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 //									echo $borderStyleKey.' = '.$borderStyleValue.'<br />';
 									switch ($borderStyleKey) {
 										case 'LineStyle' :
-												$thisBorder['style'] = PHPExcel_Style_Border::BORDER_MEDIUM;
-//												$thisBorder['style'] = $borderStyleValue;
+												$thisBorder['Styles'] = PHPExcel_Style_Border::BORDER_MEDIUM;
+//												$thisBorder['Styles'] = $borderStyleValue;
 												break;
 										case 'Weight' :
-//												$thisBorder['style'] = $borderStyleValue;
+//												$thisBorder['Styles'] = $borderStyleValue;
 												break;
 										case 'Position' :
 												$borderPosition = strtolower($borderStyleValue);
@@ -683,7 +683,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 										}
 									}
 								} else {
-									//	Convert R1C1 style references to A1 style references (but only when not quoted)
+									//	Convert R1C1 Styles references to A1 Styles references (but only when not quoted)
 //									echo 'Before: ',$cellDataFormula,'<br />';
 									$temp = explode('"',$cellDataFormula);
 									$key = false;
@@ -695,7 +695,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 											//		through the formula from left to right. Reversing means that we work right to left.through
 											//		the formula
 											$cellReferences = array_reverse($cellReferences);
-											//	Loop through each R1C1 style reference in turn, converting it to its A1 style equivalent,
+											//	Loop through each R1C1 Styles reference in turn, converting it to its A1 Styles equivalent,
 											//		then modify the formula to use that new reference
 											foreach($cellReferences as $cellReference) {
 												$rowReference = $cellReference[2][0];
@@ -750,10 +750,10 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 						if (($cellIsSet) && (isset($cell_ss['StyleID']))) {
 							$style = (string) $cell_ss['StyleID'];
-//							echo 'Cell style for '.$columnID.$rowID.' is '.$style.'<br />';
+//							echo 'Cell Styles for '.$columnID.$rowID.' is '.$Styles.'<br />';
 							if ((isset($this->_styles[$style])) && (!empty($this->_styles[$style]))) {
 //								echo 'Cell '.$columnID.$rowID.'<br />';
-//								print_r($this->_styles[$style]);
+//								print_r($this->_styles[$Styles]);
 //								echo '<br />';
 								if (!$objPHPExcel->getActiveSheet()->cellExists($columnID.$rowID)) {
 									$objPHPExcel->getActiveSheet()->getCell($columnID.$rowID)->setValue(NULL);
