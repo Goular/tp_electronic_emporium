@@ -461,8 +461,7 @@
 
     //获取最新的子分类内容
     catDatas =
-    <
-        ? php
+    <?php
     if ($catGoodsDataJson) {
         echo
         $catGoodsDataJson;
@@ -470,9 +469,7 @@
         echo
         'null';
     }
-        ?
-    >
-    ;
+    ?>;
     //创建select标签
     function createSelect(data) {
         var _ret = "";
