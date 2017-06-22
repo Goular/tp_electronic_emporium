@@ -8,6 +8,13 @@ class IndexController extends NavController
      */
     public function index()
     {
+        //获取Model模型
+        $goodsModel = D('Admin/Goods');
+        $goodsReMai = $goodsModel->getPromoteGoods();//获取热卖商品
+
+        $this->assign(array(
+            'goodsReMai' => $goodsReMai
+        ));
         $this->assign(array(
             '_show_nav' => 1,
             '_page_title' => '首页',
