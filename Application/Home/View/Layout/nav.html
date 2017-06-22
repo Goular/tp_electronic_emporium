@@ -98,9 +98,12 @@
             </div>
             <div class="cat_bd <?php if($_show_nav == 0) echo 'none'; ?>">
 
+                <!--添加显示目录级数的控制-->
+                <?php $index = 0;$maxCat = 13?>
+                <?php foreach ($catData as $k => $v): ?>
+                <?php if($index == $maxCat)break;else $index++;?>
 
                 <!-- 循环输出三层分类数据 -->
-                <?php foreach ($catData as $k => $v): ?>
                 <div class="cat <?php if($k==0) echo 'item1'; ?>">
                     <h3><a href=""><?php echo $v['cat_name'];?></a> <b></b></h3>
                     <div class="cat_detail none">
