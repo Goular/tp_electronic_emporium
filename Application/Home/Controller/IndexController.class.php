@@ -9,7 +9,7 @@ class IndexController extends NavController
     public function index()
     {
         $this->assign(array(
-            '_show_nav' => 0,
+            '_show_nav' => 1,
             '_page_title' => '首页',
             '_page_keywords' => '首页',
             '_page_description' => '首页',
