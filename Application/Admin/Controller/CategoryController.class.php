@@ -44,8 +44,9 @@ class CategoryController extends BaseController
         $model = D('Category');
         if (IS_POST) {
             if ($model->create(I('p.'), 2)) {
-                if ($model->save()) {
-                    $this->success('修改成功!');
+                if ($model->save() !== false) {
+                    $this->success('修改成功!', U('lst'));
+                    exit;
                 }
             }
             $this->error($model->getError());
