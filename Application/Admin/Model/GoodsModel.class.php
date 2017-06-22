@@ -179,7 +179,7 @@ class GoodsModel extends Model
      * 搜索商品内容，可以实现翻页，搜索和排序的操作
      * __WORK__和 __CARD__在最终解析的时候会转换为 think_work和 think_card。
      */
-    public function search($perPage = 3)
+    public function search($perPage = 20)
     {
         /*************** 搜索 ******************/
         $where = array();  // 空的where条件
@@ -429,5 +429,23 @@ class GoodsModel extends Model
             }
         }
         return $ids;
+    }
+
+    /**
+     * 取出当前正在促销的商品
+     * $limit为获取前几个的内容
+     */
+    public function getPromoteGoods($limit = 5)
+    {
+        $today = date('Y-m-d H:i');
+        return $this->field('id,goods_name,mid_logo,promote_price')
+            ->where(array(
+                'is_on_sale' => array('eq', '是'),
+                'promote_price' => array('gt', 0),
+                'promote_start_date' => array('elt', $today),
+                'promote_end_date' => array('egt', $today)))
+            ->limit($limit)
+            ->order('sort_num ASC')
+            ->select();
     }
 }
