@@ -157,7 +157,7 @@ class CategoryModel extends Model
     }
 
     /**
-     * 获取导航条上的数据
+     * 获取导航条上的数据[使用ThinkPHP自带的S方法来进行默认的缓存]
      */
     public function getNavData()
     {
