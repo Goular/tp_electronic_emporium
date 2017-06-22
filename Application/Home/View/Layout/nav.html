@@ -108,8 +108,7 @@
                     <h3><a href=""><?php echo $v['cat_name'];?></a> <b></b></h3>
                     <div class="cat_detail none">
                         <?php foreach ($v['children'] as $k1 => $v1): ?>
-                        <dl
-                        <?php if($k1==0) echo 'class="dl_1st"'; ?>>
+                        <dl <?php if($k1==0) echo 'class="dl_1st"'; ?>>
                         <dt><a href=""><?php echo $v1['cat_name'];?></a></dt>
                         <dd>
                             <?php foreach ($v1['children'] as $k2 => $v2): ?>
