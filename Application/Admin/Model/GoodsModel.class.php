@@ -448,4 +448,20 @@ class GoodsModel extends Model
             ->order('sort_num ASC')
             ->select();
     }
+
+    /**
+     * 获取三种首页的数据[热卖/推荐/新品]
+     */
+    public function getRecommendGoods($recType, $limit = 5)
+    {
+        $today = date('Y-m-d H:i');
+        return $this->field('id,goods_name,mid_logo,promote_price')
+            ->where(array(
+                'is_on_sale' => array('eq', '是'),
+                $recType => array('eq', '是')
+            ))
+            ->limit($limit)
+            ->order('sort_num ASC')
+            ->select();
+    }
 }

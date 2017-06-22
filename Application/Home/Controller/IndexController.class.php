@@ -10,10 +10,18 @@ class IndexController extends NavController
     {
         //获取Model模型
         $goodsModel = D('Admin/Goods');
-        $goodsReMai = $goodsModel->getPromoteGoods();//获取热卖商品
+        //获取促销商品
+        $goodsCuXiao = $goodsModel->getPromoteGoods();
+        //获取新品，热卖，精品的展示数据
+        $goodsXinPin = $goodsModel->getRecommendGoods('is_new');
+        $goodsReMai = $goodsModel->getRecommendGoods('is_hot');
+        $goodsJingPin = $goodsModel->getRecommendGoods('is_best');
 
         $this->assign(array(
-            'goodsReMai' => $goodsReMai
+            'goodsCuXiao' => $goodsCuXiao,
+            'goodsXinPin' => $goodsXinPin,
+            'goodsReMai' => $goodsReMai,
+            'goodsJingPin' => $goodsJingPin
         ));
         $this->assign(array(
             '_show_nav' => 1,

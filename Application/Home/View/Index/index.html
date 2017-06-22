@@ -153,7 +153,7 @@
             <!-- 疯狂抢购 start-->
             <div class="crazy">
                 <ul>
-                    <?php foreach($goodsReMai as $k => $v):?>
+                    <?php foreach($goodsCuXiao as $k => $v):?>
                     <li>
                         <dl>
                             <dt><a href="<?php echo U('goods?id='.$v['id']);?>"><?php showImage($v['mid_logo']);?></a></dt>
@@ -169,27 +169,15 @@
             <!-- 热卖商品 start -->
             <div class="hot none">
                 <ul>
+                    <?php foreach($goodsReMai as $k => $v):?>
                     <li>
                         <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hot1.jpg" alt=""/></a></dt>
-                            <dd><a href="">索尼双核五英寸四核手机！</a></dd>
-                            <dd><span>售价：</span><strong> ￥1386.00</strong></dd>
+                            <dt><a href="<?php echo U('goods?id='.$v['id']);?>"><?php showImage($v['mid_logo']);?></a></dt>
+                            <dd><a href="<?php echo U('goods?id='.$v['id']);?>"><?php echo $v['goods_name'];?></a></dd>
+                            <dd><span>售价:</span><strong>¥<?php echo $v['promote_price'];?>元</strong></dd>
                         </dl>
                     </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hot2.jpg" alt=""/></a></dt>
-                            <dd><a href="">华为通话平板仅需969元！</a></dd>
-                            <dd><span>售价：</span><strong> ￥969.00</strong></dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hot3.jpg" alt=""/></a></dt>
-                            <dd><a href="">卡姿兰明星单品7件彩妆套装</a></dd>
-                            <dd><span>售价：</span><strong> ￥169.00</strong></dd>
-                        </dl>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <!-- 热卖商品 end -->
@@ -197,27 +185,15 @@
             <!-- 推荐商品 atart -->
             <div class="recommend none">
                 <ul>
+                    <?php foreach($goodsJingPin as $k => $v):?>
                     <li>
                         <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/recommend1.jpg" alt=""/></a></dt>
-                            <dd><a href="">黄飞红麻辣花生整箱特惠装</a></dd>
-                            <dd><span>售价：</span><strong> ￥139.00</strong></dd>
+                            <dt><a href="<?php echo U('goods?id='.$v['id']);?>"><?php showImage($v['mid_logo']);?></a></dt>
+                            <dd><a href="<?php echo U('goods?id='.$v['id']);?>"><?php echo $v['goods_name'];?></a></dd>
+                            <dd><span>售价:</span><strong>¥<?php echo $v['promote_price'];?>元</strong></dd>
                         </dl>
                     </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/recommend2.jpg" alt=""/></a></dt>
-                            <dd><a href="">戴尔IN1940MW 19英寸LE</a></dd>
-                            <dd><span>售价：</span><strong> ￥679.00</strong></dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/recommend3.jpg" alt=""/></a></dt>
-                            <dd><a href="">罗辑思维音频车载CD</a></dd>
-                            <dd><span>售价：</span><strong> ￥24.80</strong></dd>
-                        </dl>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <!-- 推荐商品 end -->
@@ -225,27 +201,15 @@
             <!-- 新品上架 start-->
             <div class="new none">
                 <ul>
+                    <?php foreach($goodsXinPin as $k => $v):?>
                     <li>
                         <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/new1.jpg" alt=""/></a></dt>
-                            <dd><a href="">E路航T70超薄GPS 7寸大屏！</a></dd>
-                            <dd><span>售价：</span><strong> ￥369.00</strong></dd>
+                            <dt><a href="<?php echo U('goods?id='.$v['id']);?>"><?php showImage($v['mid_logo']);?></a></dt>
+                            <dd><a href="<?php echo U('goods?id='.$v['id']);?>"><?php echo $v['goods_name'];?></a></dd>
+                            <dd><span>售价:</span><strong>¥<?php echo $v['promote_price'];?>元</strong></dd>
                         </dl>
                     </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/new2.jpg" alt=""/></a></dt>
-                            <dd><a href="">乐和居 爆品 特价疯狂抢</a></dd>
-                            <dd><span>售价：</span><strong> ￥2799.00</strong></dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/new3.jpg" alt=""/></a></dt>
-                            <dd><a href="">北欧 套装 抄底再续最后几小时</a></dd>
-                            <dd><span>售价：</span><strong> ￥999.00</strong></dd>
-                        </dl>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <!-- 新品上架 end-->
@@ -253,27 +217,15 @@
             <!-- 猜您喜欢 start -->
             <div class="guess none">
                 <ul>
+                    <?php foreach($goodsCuXiao as $k => $v):?>
                     <li>
                         <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/guess1.jpg" alt=""/></a></dt>
-                            <dd><a href="">Thinkpad USB光电鼠标</a></dd>
-                            <dd><span>售价：</span><strong> ￥39.00</strong></dd>
+                            <dt><a href="<?php echo U('goods?id='.$v['id']);?>"><?php showImage($v['mid_logo']);?></a></dt>
+                            <dd><a href="<?php echo U('goods?id='.$v['id']);?>"><?php echo $v['goods_name'];?></a></dd>
+                            <dd><span>售价:</span><strong>¥<?php echo $v['promote_price'];?>元</strong></dd>
                         </dl>
                     </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/guess2.jpg" alt=""/></a></dt>
-                            <dd><a href="">宜客莱（ECOLA）电脑散热器</a></dd>
-                            <dd><span>售价：</span><strong> ￥89.00</strong></dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/guess3.jpg" alt=""/></a></dt>
-                            <dd><a href="">巴黎欧莱雅男士洁面膏 100ml</a></dd>
-                            <dd><span>售价：</span><strong> ￥30.00</strong></dd>
-                        </dl>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <!-- 猜您喜欢 end -->
