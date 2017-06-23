@@ -401,7 +401,7 @@ class GoodsModel extends Model
     public function getGoodsIdByCatId($catId)
     {
         //先取出所有分类的ID
-        $catModel = D('category');
+        $catModel = D('Admin/Category');
         $children = $catModel->getChildrenOnlyNumber($catId);
         //将当前选中的分类添加到$children中
         $children[] = $catId;

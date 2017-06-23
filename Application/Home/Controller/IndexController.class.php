@@ -17,6 +17,10 @@ class IndexController extends NavController
         $goodsReMai = $goodsModel->getRecommendGoods('is_hot');
         $goodsJingPin = $goodsModel->getRecommendGoods('is_best');
 
+        //取出楼层的数据
+        $catModel = D('Admin/Category');
+        $floorData = $catModel->floorData();
+
         $this->assign(array(
             'goodsCuXiao' => $goodsCuXiao,
             'goodsXinPin' => $goodsXinPin,
