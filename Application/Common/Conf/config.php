@@ -20,5 +20,19 @@ return array(
         'exts' => array('jpg', 'gif', 'png', 'jpeg'),
         'rootPath' => './Public/Uploads/',  // 上传图片的保存路径  -> PHP要使用的路径，硬盘上的路径
         'viewPath' => __ROOT__ . '/Public/Uploads/',   // 显示图片时的路径    -> 浏览器用的路径，相对网站根目录
-    )
+    ),
+    /************ BootStrap相关的CDN加速地址 ***************/
+    'BootStrap_bootstrap-theme_css' => 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.css',
+    'BootStrap_bootstrap-theme_min_css' => 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
+    'BootStrap_bootstrap_css' => 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css',
+    'BootStrap_bootstrap_min_css' => 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css',
+    'BootStrap_glyphicons-halflings-regular_svg' => 'https://cdn.bootcss.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg',
+    'BootStrap_bootstrap_js' => 'https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js',
+    'BootStrap_bootstrap_min_js' => 'https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js',
+    'BootStrap_npm_js' => 'https://cdn.bootcss.com/bootstrap/3.3.7/js/npm.js',
+
+    /************ JQuery相关的CDN加速地址 ***************/
+    'JQuery_core_js'=>'https://cdn.bootcss.com/jquery/3.2.1/core.js',
+    'JQuery_jquery_js'=>'https://cdn.bootcss.com/jquery/3.2.1/jquery.js',
+    'JQuery_jquery_min_js'=>'https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js',
 );

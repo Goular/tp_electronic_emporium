@@ -11,8 +11,8 @@ use Think\Model;
 class CategoryModel extends Model
 {
     //添加插入和更新的的校验内容
-    protected $insertFields = array('cat_name','parent_id','is_floor');
-    protected $updateFields = array('id','cat_name','parent_id','is_floor');
+    protected $insertFields = array('cat_name', 'parent_id', 'is_floor');
+    protected $updateFields = array('id', 'cat_name', 'parent_id', 'is_floor');
     protected $_validate = array(
         array("cat_name", "require", "商品分类名称必须填写", 1, "regex", self::MODEL_BOTH)
     );
@@ -191,5 +191,50 @@ class CategoryModel extends Model
             return $ret;
         } else
             return $catData;  // 有缓存直接返回缓存数据
+    }
+
+    /**
+     * 获取前台首页楼层的数据
+     */
+    public function floorData()
+    {
+        //获取缓存是否存在相关的内容
+        $floorData = S('floorData');
+        if ($floorData)
+            return $floorData;
+        else {
+            //先取出推荐到楼层的顶级的分类
+            $ret = $this->where(array(
+                'parent_id' => array('eq', 0),
+                'is_floor' => array('eq', '是')
+            ))->select();
+            $goodsModel = D('Admin/Goods');
+            //循环每个楼层取出楼层中的数据
+            foreach ($ret as $k => $v) {
+                /****************** 这个楼层中的品牌数据 *********************/
+                //先取出这个楼层下面所有的商品的ID
+                $goodsIds = $goodsModel->getGoodsIdByCatId($v['id']);
+                //再取出这些商品所用到的品牌
+                $ret[$k]['brand'] = $goodsModel->distinct(true)
+                    ->field('brand_id,b.brand_name,b.logo')
+                    ->alias('a')
+                    ->join('LEFT JOIN __BRAND__ b ON a.brand_id = b.id')
+                    ->where(array(
+                        'a.id' => array('in', $goodsIds),
+                        'a.brand_id' => array('neq', 0)
+                    ))
+                    ->limit(9)
+                    ->select();
+
+                /**** 取出未推荐的二级分类并保存到这个顶级分类的subCat字段中 *************/
+                $ret[$k]['subCat'] = $this->where(array(
+                    'parent_id' => array('eq', $v['id']),
+                    'is_floor' => array('eq', '是')
+                ))->select();
+
+                /**** 取出推荐的二级分类并保存到这个顶级分类的subCat字段中 *************/
+
+            }
+        }
     }
 }
