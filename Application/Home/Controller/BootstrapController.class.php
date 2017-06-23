@@ -15,6 +15,7 @@ class BootstrapController extends Controller
         $this->display();
     }
 
+    //首次使用bootstrap，不用管内容
     public function d1Index02(){
         $this->display();
     }

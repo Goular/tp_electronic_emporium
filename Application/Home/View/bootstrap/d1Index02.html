@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="<?php echo C('BootStrap_bootstrap_min_css');?>">
+<layout name="Layout/bootstrap"/>
 
-    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="<?php echo C('BootStrap_bootstrap-theme_min_css');?>">
-
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="<?php echo C('JQuery_jquery_min_js');?>"></script>
-
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="<?php echo C('BootStrap_bootstrap_min_js');?>"></script>
-</head>
-<body>
-</body>
-</html>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
