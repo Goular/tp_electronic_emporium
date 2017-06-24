@@ -38,7 +38,7 @@ class CategoryModel extends Model
         //取出所有的分类
         $data = $this->select();
         //递归同时遍历所有的分类，并从中挑选指定ID的后代分类ID
-        return $this->__getChildrenOnlyNumber($data, $catId);
+        return $this->__getChildrenOnlyNumber($data, $catId, true);
     }
 
     /**
@@ -91,10 +91,11 @@ class CategoryModel extends Model
      * @param $data
      * @return array
      */
-    private function __getChildrenOnlyNumber($data, $catId = 0)
+    private function __getChildrenOnlyNumber($data, $catId = 0, $flag = false)
     {
         //定义函数静态变量(这个静态区域仅限于函数范围内)
         static $_ret = array();//static创建的函数变量创建一次
+        if ($flag) $_ret = array();
         foreach ($data as $key => $value) {
             if ($catId == $value['parent_id']) {
                 $_ret[] = $value['id'];
@@ -225,6 +226,14 @@ class CategoryModel extends Model
                         'a.brand_id' => array('neq', 0),
                     ))->limit(9)->select();
             }
+            /**** 获取楼层推荐内容 *************/
+            $ret[$k]['tuijian'] = $goodsModel->alias('a')
+                ->field('id,mid_logo,goods_name,shop_price')
+                ->where(array(
+                    'is_on_sale' => array('eq', '是'),
+                    'is_best' => array('eq', '是'),
+                    'id' => array('in', $goodsId),
+                ))->order('sort_num ASC')->limit(8)->select();
             /**** 取出未推荐的二级分类并保存到这个顶级分类的subCat字段中 *************/
             $ret[$k]['subCat'] = $this->where(array(
                 'parent_id' => array('eq', $v['id']),
@@ -234,7 +243,7 @@ class CategoryModel extends Model
             $ret[$k]['recSubCat'] = $this->where(array(
                 'parent_id' => array('eq', $v['id']),
                 'is_floor' => array('eq', '是'),
-            ))->select();
+            ))->limit(4)->select();
             /********* 循环每个推荐的二级分类取出分类下的8件被推荐到楼层的商品 *********/
             foreach ($ret[$k]['recSubCat'] as $k1 => &$v1) {
                 // 取出这个分类下所有商品的ID并返回一维数组

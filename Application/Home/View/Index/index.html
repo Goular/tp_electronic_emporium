@@ -500,9 +500,6 @@
 
 <div style="clear:both;"></div>
 
-
-
-
 <!-- 楼层数据开始 -->
 <?php $floor_level=0; foreach($floorData as $key => $value):?>
 <div class="floor1 floor w1210 bc mt10">
@@ -536,146 +533,37 @@
                 <?php endforeach;?>
             </h2>
             <div class="goodslist_wrap">
+                <!-- 推荐商品 -->
                 <div floor_level="<?php echo $floor_level?>">
                     <ul>
+                        <?php foreach($value['tuijian'] as $key6 => $value6):?>
                         <li>
                             <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hpG4.jpg" alt=""/></a></dt>
-                                <dd><a href="">惠普G4-1332TX 14英寸笔</a></dd>
-                                <dd><span>售价：</span> <strong>￥2999.00</strong></dd>
+                                <dt><a href=""><?php showImage($value6['mid_logo']);?></a></dt>
+                                <dd><a href=""><?php echo $value6['goods_name'];?></a></dd>
+                                <dd><span>售价：</span> <strong>￥<?php echo $value6['shop_price'];?></strong></dd>
                             </dl>
                         </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/thinkpad e420.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">ThinkPad E42014英寸笔..</a></dd>
-                                <dd><span>售价：</span> <strong>￥4199.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/acer4739.jpg" alt=""/></a></dt>
-                                <dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
-                                <dd><span>售价：</span> <strong>￥2799.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/samsung6800.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">三星Galaxy Tab P6800.</a></dd>
-                                <dd><span>售价：</span> <strong>￥4699.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/lh531.jpg" alt=""/></a></dt>
-                                <dd><a href="">富士通LH531 14.1英寸笔记</a></dd>
-                                <dd><span>售价：</span> <strong>￥2189.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/qinghuax2.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">清华同方精锐X2笔记本 </a></dd>
-                                <dd><span>售价：</span> <strong>￥2499.00</strong></dd>
-                            </dl>
-                        </li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
 
+                <!-- 非推荐商品 -->
+                <?php foreach($value['recSubCat'] as $key4 => $value4):?>
                 <div class="none" floor_level="<?php echo $floor_level?>">
                     <ul>
+                        <?php foreach($value4['goods'] as $key5 => $value5):?>
                         <li>
                             <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hpG4.jpg" alt=""/></a></dt>
-                                <dd><a href="">惠普G4-1332TX 14英寸笔</a></dd>
-                                <dd><span>售价：</span> <strong>￥2999.00</strong></dd>
+                                <dt><a href=""><?php showImage($value5['mid_logo']);?></a></dt>
+                                <dd><a href=""><?php echo $value5['goods_name'];?></a></dd>
+                                <dd><span>售价：</span> <strong>￥<?php echo $value5['shop_price'];?></strong></dd>
                             </dl>
                         </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/qinghuax2.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">清华同方精锐X2笔记本 </a></dd>
-                                <dd><span>售价：</span> <strong>￥2499.00</strong></dd>
-                            </dl>
-                        </li>
-
+                        <?php endforeach;?>
                     </ul>
                 </div>
-
-                <div class="none" floor_level="<?php echo $floor_level?>">
-                    <ul>
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/thinkpad e420.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">ThinkPad E42014英寸笔..</a></dd>
-                                <dd><span>售价：</span> <strong>￥4199.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/acer4739.jpg" alt=""/></a></dt>
-                                <dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
-                                <dd><span>售价：</span> <strong>￥2799.00</strong></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="none" floor_level="<?php echo $floor_level?>">
-                    <ul>
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/acer4739.jpg" alt=""/></a></dt>
-                                <dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
-                                <dd><span>售价：</span> <strong>￥2799.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/samsung6800.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">三星Galaxy Tab P6800.</a></dd>
-                                <dd><span>售价：</span> <strong>￥4699.00</strong></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="none" floor_level="<?php echo $floor_level?>">
-                    <ul>
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/samsung6800.jpg" alt=""/></a>
-                                </dt>
-                                <dd><a href="">三星Galaxy Tab P6800.</a></dd>
-                                <dd><span>售价：</span> <strong>￥4699.00</strong></dd>
-                            </dl>
-                        </li>
-
-                        <li>
-                            <dl>
-                                <dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/lh531.jpg" alt=""/></a></dt>
-                                <dd><a href="">富士通LH531 14.1英寸笔记</a></dd>
-                                <dd><span>售价：</span> <strong>￥2189.00</strong></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-
+                <?php endforeach;?>
             </div>
         </div>
         <!-- 商品列表信息 end-->
