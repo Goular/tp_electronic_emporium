@@ -500,13 +500,11 @@
 
 <div style="clear:both;"></div>
 
-<pre>
-   <?php var_dump($floorData);?>
-</pre>
+
 
 
 <!-- 楼层数据开始 -->
-<?php foreach($floorData as $key => $value):?>
+<?php $floor_level=0; foreach($floorData as $key => $value):?>
 <div class="floor1 floor w1210 bc mt10">
     <!-- 1F 左侧 start -->
     <div class="floor_left fl">
@@ -529,16 +527,16 @@
         <!-- 商品列表信息 start-->
         <div class="goodslist fl">
             <h2>
-                <span class="on">推荐商品</span>
+                <span class="on" floor_level="<?php echo $floor_level?>">推荐商品</span>
                 <?php $index=0; foreach($value['recSubCat'] as $key2 => $value2):?>
                 <?php if($index<4):?>
-                <span><?php echo $value2['cat_name'];?></span>
+                <span floor_level="<?php echo $floor_level?>"><?php echo $value2['cat_name'];?></span>
                 <?php endif;?>
                 <?php $index++;?>
                 <?php endforeach;?>
             </h2>
             <div class="goodslist_wrap">
-                <div>
+                <div floor_level="<?php echo $floor_level?>">
                     <ul>
                         <li>
                             <dl>
@@ -593,7 +591,7 @@
                     </ul>
                 </div>
 
-                <div class="none">
+                <div class="none" floor_level="<?php echo $floor_level?>">
                     <ul>
                         <li>
                             <dl>
@@ -615,7 +613,7 @@
                     </ul>
                 </div>
 
-                <div class="none">
+                <div class="none" floor_level="<?php echo $floor_level?>">
                     <ul>
                         <li>
                             <dl>
@@ -636,7 +634,7 @@
                     </ul>
                 </div>
 
-                <div class="none">
+                <div class="none" floor_level="<?php echo $floor_level?>">
                     <ul>
                         <li>
                             <dl>
@@ -657,7 +655,7 @@
                     </ul>
                 </div>
 
-                <div class="none">
+                <div class="none" floor_level="<?php echo $floor_level?>">
                     <ul>
                         <li>
                             <dl>
@@ -691,15 +689,9 @@
             <h2><a href="">更多品牌&nbsp;></a><strong>品牌旗舰店</strong></h2>
             <div class="sidebar_wrap">
                 <ul>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/dell.gif" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/acer.gif" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/fujitsu.jpg" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hp.jpg" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/lenove.jpg" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/samsung.gif" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/dlink.gif" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/seagate.jpg" alt=""/></a></li>
-                    <li><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/intel.jpg" alt=""/></a></li>
+                    <?php foreach($value['brand'] as $key3 => $value3):?>
+                    <li><a href=""><?php showImage($value3['logo']);?></a></li>
+                    <?php endforeach;?>
                 </ul>
             </div>
         </div>
@@ -729,7 +721,7 @@
     <!-- 右侧 end -->
 
 </div>
-<?php endforeach;?>
+<?php $floor_level++; endforeach;?>
 <!--楼层数据结束-->
 
 <div style="clear:both;"></div>
