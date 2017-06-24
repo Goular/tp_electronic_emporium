@@ -512,22 +512,12 @@
     <div class="floor_left fl">
         <!-- 商品分类信息 start-->
         <div class="cate fl">
-            <h2><?php echo $value['']?></h2>
+            <h2><?php echo $value['cat_name']?></h2>
             <div class="cate_wrap">
                 <ul>
-                    <li><a href=""><b>.</b>外设产品</a></li>
-                    <li><a href=""><b>.</b>鼠标</a></li>
-                    <li><a href=""><b>.</b>笔记本</a></li>
-                    <li><a href=""><b>.</b>超极本</a></li>
-                    <li><a href=""><b>.</b>平板电脑</a></li>
-                    <li><a href=""><b>.</b>主板</a></li>
-                    <li><a href=""><b>.</b>显卡</a></li>
-                    <li><a href=""><b>.</b>打印机</a></li>
-                    <li><a href=""><b>.</b>一体机</a></li>
-                    <li><a href=""><b>.</b>投影机</a></li>
-                    <li><a href=""><b>.</b>路由器</a></li>
-                    <li><a href=""><b>.</b>网卡</a></li>
-                    <li><a href=""><b>.</b>交换机</a></li>
+                    <?php foreach($value['subCat'] as $key1 => $value1):?>
+                    <li><a href=""><b>.</b><?php echo $value1['cat_name'];?></a></li>
+                    <?php endforeach;?>
                 </ul>
                 <p><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/notebook.jpg" alt=""/></a></p>
             </div>
@@ -540,10 +530,12 @@
         <div class="goodslist fl">
             <h2>
                 <span class="on">推荐商品</span>
-                <span>电脑整机</span>
-                <span>电脑配件</span>
-                <span>办公打印</span>
-                <span>网络产品</span>
+                <?php $index=0; foreach($value['recSubCat'] as $key2 => $value2):?>
+                <?php if($index<4):?>
+                <span><?php echo $value2['cat_name'];?></span>
+                <?php endif;?>
+                <?php $index++;?>
+                <?php endforeach;?>
             </h2>
             <div class="goodslist_wrap">
                 <div>
