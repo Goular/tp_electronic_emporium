@@ -25,7 +25,8 @@ class IndexController extends NavController
             'goodsCuXiao' => $goodsCuXiao,
             'goodsXinPin' => $goodsXinPin,
             'goodsReMai' => $goodsReMai,
-            'goodsJingPin' => $goodsJingPin
+            'goodsJingPin' => $goodsJingPin,
+            'floorData' => $floorData
         ));
         $this->assign(array(
             '_show_nav' => 1,

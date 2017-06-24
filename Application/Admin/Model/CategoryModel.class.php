@@ -14,7 +14,8 @@ class CategoryModel extends Model
     protected $insertFields = array('cat_name', 'parent_id', 'is_floor');
     protected $updateFields = array('id', 'cat_name', 'parent_id', 'is_floor');
     protected $_validate = array(
-        array("cat_name", "require", "商品分类名称必须填写", 1, "regex", self::MODEL_BOTH)
+        array("cat_name", "require", "商品分类名称必须填写", 1, "regex", self::MODEL_BOTH),
+        array("cat_name", "", "商品分类名称已存在", 1, "unique", self::MODEL_BOTH)
     );
 
     /**
@@ -198,10 +199,10 @@ class CategoryModel extends Model
      */
     public function floorData()
     {
-        $floorData = S('floorData');
-        if ($floorData)
-            return $floorData;
-        else {
+//        $floorData = S('floorData');
+//        if ($floorData)
+//            return $floorData;
+//        else {
             // 先取出推荐到楼层的顶级分类
             //select * from php_39 where parent_id = 0 and is_floor = '是';
             $ret = $this->where(array(
@@ -214,15 +215,16 @@ class CategoryModel extends Model
                 /****************** 这个楼层中的品牌数据 *********************/
                 // 先取出这个楼层下所有的商品ID
                 $goodsId = $goodsModel->getGoodsIdByCatId($v['id']);
-                // 再取出这些商品所用到的品牌
-                $ret[$k]['brand'] = $goodsModel->alias('a')
-                    ->join('LEFT JOIN __BRAND__ b ON a.brand_id=b.id')
-                    ->field('DISTINCT brand_id,b.brand_name,b.logo')
-                    ->where(array(
-                        'a.id' => array('in', $goodsId),
-                        'a.brand_id' => array('neq', 0),
-                    ))->limit(9)->select();
-
+                if($goodsId){
+                    // 再取出这些商品所用到的品牌
+                    $ret[$k]['brand'] = $goodsModel->alias('a')
+                        ->join('LEFT JOIN __BRAND__ b ON a.brand_id=b.id')
+                        ->field('DISTINCT brand_id,b.brand_name,b.logo')
+                        ->where(array(
+                            'a.id' => array('in', $goodsId),
+                            'a.brand_id' => array('neq', 0),
+                        ))->limit(9)->select();
+                }
                 /**** 取出未推荐的二级分类并保存到这个顶级分类的subCat字段中 *************/
                 $ret[$k]['subCat'] = $this->where(array(
                     'parent_id' => array('eq', $v['id']),
@@ -245,8 +247,8 @@ class CategoryModel extends Model
                     ))->order('sort_num ASC')->limit(8)->select();
                 }
             }
-            S('floorData', $ret, 86400);
+//            S('floorData', $ret, 86400);
             return $ret;
         }
-    }
+//    }
 }
