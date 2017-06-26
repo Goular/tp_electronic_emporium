@@ -42,6 +42,16 @@ class IndexController extends NavController
      */
     public function goods()
     {
+        //获取面包屑导航
+        $id = I('get.id');
+        $model = D('Admin/Goods');
+        $info = $model->find($id);
+        $catModel = D('Admin/Category');
+        $catPath = $catModel->parentPath($info['cat_id']);
+        $this->assign(array(
+            'info' => $info,
+            'catPath' => $catPath
+        ));
         $this->assign(array(
             '_page_title' => '商品详情页',
             '_page_keywords' => '商品详情页',

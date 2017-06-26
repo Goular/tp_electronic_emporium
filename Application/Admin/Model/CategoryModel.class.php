@@ -262,4 +262,20 @@ class CategoryModel extends Model
             return $ret;
         }
     }
+
+    /**
+     * 取出一个分类所有上级分类
+     */
+    public function parentPath($catId, $flag = false)
+    {
+        static $ret = array();
+        if ($flag) $ret = array();
+        $info = $this->field('id,cat_name,parent_id')->find($catId);
+        $ret[] = $info;
+        //如果还有上级信息
+        if ($info['parent_id'] > 0) {
+            $this->parentPath($info['parent_id']);
+        }
+        return $ret;
+    }
 }
