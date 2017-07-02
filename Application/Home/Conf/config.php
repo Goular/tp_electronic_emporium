@@ -14,6 +14,6 @@ return array(
         //前台首页
         'index:index' => array('index', '86400', 'md5'),
         //前台商品详情
-        'index:goods' => array('goods-{id}', 86400)
+//        'index:goods' => array('goods-{id}', 86400)
     )
 );

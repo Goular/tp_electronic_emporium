@@ -46,8 +46,10 @@ class IndexController extends NavController
         $id = I('get.id');
         $model = D('Admin/Goods');
         $info = $model->find($id);
+        //获取分类的内容
         $catModel = D('Admin/Category');
         $catPath = $catModel->parentPath($info['cat_id']);
+        //绑定数据到我们的页面
         $this->assign(array(
             'info' => $info,
             'catPath' => $catPath
@@ -69,9 +71,9 @@ class IndexController extends NavController
         // 把最新浏览的这件商品放到数组中的第一个位置上
         array_unshift($data, $id);
         // 去重
-        $data =	array_unique($data);
+        $data = array_unique($data);
         // 只取数组中前6个
-        if(count($data) > 6)
+        if (count($data) > 6)
             $data = array_slice($data, 0, 6);
         // 数组存回COOKIE
         setcookie('display_history', serialize($data), time() + 30 * 86400, '/');

@@ -539,8 +539,8 @@
                         <?php foreach($value['tuijian'] as $key6 => $value6):?>
                         <li>
                             <dl>
-                                <dt><a href=""><?php showImage($value6['mid_logo']);?></a></dt>
-                                <dd><a href=""><?php echo $value6['goods_name'];?></a></dd>
+                                <dt><a href="<?php echo U('index/goods',array('id'=>$value6['id']));?>"><?php showImage($value6['mid_logo']);?></a></dt>
+                                <dd><a href="<?php echo U('index/goods',array('id'=>$value6['id']));?>"><?php echo $value6['goods_name'];?></a></dd>
                                 <dd><span>售价：</span> <strong>￥<?php echo $value6['shop_price'];?></strong></dd>
                             </dl>
                         </li>
@@ -555,8 +555,8 @@
                         <?php foreach($value4['goods'] as $key5 => $value5):?>
                         <li>
                             <dl>
-                                <dt><a href=""><?php showImage($value5['mid_logo']);?></a></dt>
-                                <dd><a href=""><?php echo $value5['goods_name'];?></a></dd>
+                                <dt><a href="<?php echo U('index/goods',array('id'=>$value5['id']));?>"><?php showImage($value5['mid_logo']);?></a></dt>
+                                <dd><a href="<?php echo U('index/goods',array('id'=>$value5['id']));?>"><?php echo $value5['goods_name'];?></a></dd>
                                 <dd><span>售价：</span> <strong>￥<?php echo $value5['shop_price'];?></strong></dd>
                             </dl>
                         </li>
