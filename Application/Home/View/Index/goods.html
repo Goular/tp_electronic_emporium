@@ -1,48 +1,10 @@
-<layout name="Layout/layout" />
-<!-- 引入这个页面专用的CSS和JS -->
-<link rel="stylesheet" href="<?php echo C('HOME_CSS_URL');?>/goods.css" type="text/css">
-<link rel="stylesheet" href="<?php echo C('HOME_CSS_URL');?>/common.css" type="text/css">
-<link rel="stylesheet" href="<?php echo C('HOME_CSS_URL');?>/jqzoom.css" type="text/css">
-<script type="text/javascript" src="<?php echo C('HOME_JS_URL');?>/goods.js"></script>
-<script type="text/javascript" src="<?php echo C('HOME_JS_URL');?>/jqzoom-core.js"></script>
-<!-- jqzoom 效果 -->
-<script type="text/javascript">
-    $(function(){
-        $('.jqzoom').jqzoom({
-            zoomType: 'standard',
-            lens:true,
-            preloadImages: false,
-            alwaysOn:false,
-            title:false,
-            zoomWidth:400,
-            zoomHeight:400
-        });
-    });
-</script>
-
-<!-- 引入导航条文件  -->
-<include file="Common/nav" />
-
 <!-- 商品页面主体 start -->
 <div class="main w1210 mt10 bc">
 	<!-- 面包屑导航 start -->
 	<div class="breadcrumb">
-		<h2>当前位置：
-			<a href="/">首页</a> >
-			<?php
-			/**
-			 * 方法二、先反转数组再foreach，反转函数：array_reverse($catPath);
-			 */
-
-			// 倒的循环输出
-			$count = count($catPath);
-			for($i=$count-1; $i>=0; $i--): ?>
-			<a href=""><?php echo $catPath[$i]['cat_name']; ?></a> >
-			<?php endfor; ?>
-			<?php echo $info['goods_name']; ?></h2>
+		<h2>当前位置：<a href="">首页</a> > <a href="">电脑、办公</a> > <a href="">笔记本</a> > ThinkPad X230(23063T4）12.5英寸笔记本</h2>
 	</div>
 	<!-- 面包屑导航 end -->
-
 	<!-- 主体页面左侧内容 start -->
 	<div class="goods_left fl">
 		<!-- 相关分类 start -->
@@ -57,7 +19,6 @@
 			</div>
 		</div>
 		<!-- 相关分类 end -->
-
 		<!-- 相关品牌 start -->
 		<div class="related_cat	leftbar mt10">
 			<h2><strong>同类品牌</strong></h2>
@@ -86,7 +47,6 @@
 		</div>
 		<!-- 热销排行 end -->
 
-
 		<!-- 浏览过该商品的人还浏览了  start 注：因为和list页面newgoods样式相同，故加入了该class -->
 		<div class="related_view newgoods leftbar mt10">
 			<h2><strong>浏览了该商品的用户还浏览了</strong></h2>
@@ -94,7 +54,7 @@
 				<ul>
 					<li>
 						<dl>
-							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view1.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="images/relate_view1.jpg" alt="" /></a></dt>
 							<dd><a href="">ThinkPad E431(62771A7) 14英寸笔记本电脑 (i5-3230 4G 1TB 2G独显 蓝牙 win8)</a></dd>
 							<dd><strong>￥5199.00</strong></dd>
 						</dl>
@@ -102,7 +62,7 @@
 
 					<li>
 						<dl>
-							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view2.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="images/relate_view2.jpg" alt="" /></a></dt>
 							<dd><a href="">ThinkPad X230i(2306-3V9） 12.5英寸笔记本电脑 （i3-3120M 4GB 500GB 7200转 蓝牙 摄像头 Win8）</a></dd>
 							<dd><strong>￥5199.00</strong></dd>
 						</dl>
@@ -110,7 +70,7 @@
 
 					<li>
 						<dl>
-							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view3.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="images/relate_view3.jpg" alt="" /></a></dt>
 							<dd><a href="">T联想（Lenovo） Yoga13 II-Pro 13.3英寸超极本 （i5-4200U 4G 128G固态硬盘 摄像头 蓝牙 Win8）晧月银</a></dd>
 							<dd><strong>￥7999.00</strong></dd>
 						</dl>
@@ -118,7 +78,7 @@
 
 					<li>
 						<dl>
-							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view4.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="images/relate_view4.jpg" alt="" /></a></dt>
 							<dd><a href="">联想（Lenovo） Y510p 15.6英寸笔记本电脑（i5-4200M 4G 1T 2G独显 摄像头 DVD刻录 Win8）黑色</a></dd>
 							<dd><strong>￥6199.00</strong></dd>
 						</dl>
@@ -126,7 +86,7 @@
 
 					<li class="last">
 						<dl>
-							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view5.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="images/relate_view5.jpg" alt="" /></a></dt>
 							<dd><a href="">ThinkPad E530c(33662D0) 15.6英寸笔记本电脑 （i5-3210M 4G 500G NV610M 1G独显 摄像头 Win8）</a></dd>
 							<dd><strong>￥4399.00</strong></dd>
 						</dl>
@@ -135,17 +95,25 @@
 			</div>
 		</div>
 		<!-- 浏览过该商品的人还浏览了  end -->
-
 		<!-- 最近浏览 start -->
 		<div class="viewd leftbar mt10">
 			<h2><a href="">清空</a><strong>最近浏览过的商品</strong></h2>
-			<div class="leftbar_wrap" id="display_history"></div>
+			<div class="leftbar_wrap">
+				<dl>
+					<dt><a href=""><img src="images/hpG4.jpg" alt="" /></a></dt>
+					<dd><a href="">惠普G4-1332TX 14英寸笔记...</a></dd>
+				</dl>
+
+				<dl class="last">
+					<dt><a href=""><img src="images/crazy4.jpg" alt="" /></a></dt>
+					<dd><a href="">直降200元！TCL正1.5匹空调</a></dd>
+				</dl>
+			</div>
 		</div>
 		<!-- 最近浏览 end -->
 
 	</div>
 	<!-- 主体页面左侧内容 end -->
-
 	<!-- 商品信息内容 start -->
 	<div class="goods_content fl mt10 ml10">
 		<!-- 商品概要信息 start -->
@@ -155,8 +123,8 @@
 			<!-- 图片预览区域 start -->
 			<div class="preview fl">
 				<div class="midpic">
-					<a href="<?php echo C('HOME_IMG_URL');?>/preview_l1.jpg" class="jqzoom" rel="gal1">   <!-- 第一幅图片的大图 class 和 rel属性不能更改 -->
-						<?php showImage($info['big_logo']); ?>               <!-- 第一幅图片的中图 -->
+					<a href="images/preview_l1.jpg" class="jqzoom" rel="gal1">   <!-- 第一幅图片的大图 class 和 rel属性不能更改 -->
+						<img src="images/preview_m1.jpg" alt="" />               <!-- 第一幅图片的中图 -->
 					</a>
 				</div>
 
@@ -168,45 +136,45 @@
 					<div class="smallpic_wrap">
 						<ul>
 							<li class="cur">
-								<a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m1.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l1.jpg'}"><img src="<?php echo C('HOME_IMG_URL');?>/preview_s1.jpg"></a>
+								<a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'images/preview_m1.jpg',largeimage: 'images/preview_l1.jpg'}"><img src="images/preview_s1.jpg"></a>
 							</li>
 							<li>
-								<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m2.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l2.jpg'}"><img src="<?php echo C('HOME_IMG_URL');?>/preview_s2.jpg"></a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m3.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l3.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s3.jpg"></a>
+								<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'images/preview_m2.jpg',largeimage: 'images/preview_l2.jpg'}"><img src="images/preview_s2.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m4.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l4.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s4.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m3.jpg',largeimage: 'images/preview_l3.jpg'}">
+									<img src="images/preview_s3.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m5.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l5.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s5.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m4.jpg',largeimage: 'images/preview_l4.jpg'}">
+									<img src="images/preview_s4.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m6.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l6.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s6.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m5.jpg',largeimage: 'images/preview_l5.jpg'}">
+									<img src="images/preview_s5.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m7.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l7.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s7.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m6.jpg',largeimage: 'images/preview_l6.jpg'}">
+									<img src="images/preview_s6.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m8.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l8.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s8.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m7.jpg',largeimage: 'images/preview_l7.jpg'}">
+									<img src="images/preview_s7.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m9.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l9.jpg'}">
-									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s9.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m8.jpg',largeimage: 'images/preview_l8.jpg'}">
+									<img src="images/preview_s8.jpg"></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"
+								   rel="{gallery: 'gal1', smallimage: 'images/preview_m9.jpg',largeimage: 'images/preview_l9.jpg'}">
+									<img src="images/preview_s9.jpg"></a>
 							</li>
 						</ul>
 					</div>
@@ -214,7 +182,6 @@
 				</div>
 			</div>
 			<!-- 图片预览区域 end -->
-
 			<!-- 商品基本信息区域 start -->
 			<div class="goodsinfo fl ml10">
 				<ul>
@@ -277,9 +244,7 @@
 			<!-- 商品基本信息区域 end -->
 		</div>
 		<!-- 商品概要信息 end -->
-
 		<div style="clear:both;"></div>
-
 		<!-- 商品详情 start -->
 		<div class="detail">
 			<div class="detail_hd">
@@ -307,30 +272,28 @@
 							<li><span>尺寸：</span>12英寸</li>
 						</ul>
 					</div>
-
 					<div class="desc mt10">
 						<!-- 此处的内容 一般是通过在线编辑器添加保存到数据库，然后直接从数据库中读出 -->
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc1.jpg" alt="" />
+						<img src="images/desc1.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc2.jpg" alt="" />
+						<img src="images/desc2.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc3.jpg" alt="" />
+						<img src="images/desc3.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc4.jpg" alt="" />
+						<img src="images/desc4.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc5.jpg" alt="" />
+						<img src="images/desc5.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc6.jpg" alt="" />
+						<img src="images/desc6.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc7.jpg" alt="" />
+						<img src="images/desc7.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc8.jpg" alt="" />
+						<img src="images/desc8.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="<?php echo C('HOME_IMG_URL');?>/desc9.jpg" alt="" />
+						<img src="images/desc9.jpg" alt="" />
 					</div>
 				</div>
 				<!-- 商品介绍 end -->
-
 				<!-- 商品评论 start -->
 				<div class="comment detail_div mt10">
 					<div class="comment_summary">
@@ -364,11 +327,10 @@
 							</dl>
 						</div>
 					</div>
-
 					<div class="comment_items mt10">
 						<div class="user_pic">
 							<dl>
-								<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/user1.gif" alt="" /></a></dt>
+								<dt><a href=""><img src="images/user1.gif" alt="" /></a></dt>
 								<dd><a href="">乖乖</a></dd>
 							</dl>
 						</div>
@@ -402,11 +364,10 @@
 						</div>
 						<div class="cornor"></div>
 					</div>
-
 					<div class="comment_items mt10">
 						<div class="user_pic">
 							<dl>
-								<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/user2.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="images/user2.jpg" alt="" /></a></dt>
 								<dd><a href="">小宝贝</a></dd>
 							</dl>
 						</div>
@@ -436,11 +397,10 @@
 						</div>
 						<div class="cornor"></div>
 					</div>
-
 					<div class="comment_items mt10">
 						<div class="user_pic">
 							<dl>
-								<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/user3.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="images/user3.jpg" alt="" /></a></dt>
 								<dd><a href="">天使</a></dd>
 							</dl>
 						</div>
@@ -474,7 +434,6 @@
 						</div>
 						<div class="cornor"></div>
 					</div>
-
 					<!-- 分页信息 start -->
 					<div class="page mt20">
 						<a href="">首页</a>
@@ -488,7 +447,6 @@
 						<a href="">尾页</a>
 					</div>
 					<!-- 分页信息 end -->
-
 					<!--  评论表单 start-->
 					<div class="comment_form mt20">
 						<form action="">
@@ -514,10 +472,8 @@
 						</form>
 					</div>
 					<!--  评论表单 end-->
-
 				</div>
 				<!-- 商品评论 end -->
-
 				<!-- 售后保障 start -->
 				<div class="after_sale mt15 none detail_div">
 					<div>
@@ -525,7 +481,6 @@
 						<p>售后服务电话：800-898-9006 <br />品牌官方网站：http://www.lenovo.com.cn/</p>
 
 					</div>
-
 					<div>
 						<h3>服务承诺：</h3>
 						<p>本商城向您保证所售商品均为正品行货，京东自营商品自带机打发票，与商品一起寄送。凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由本商城联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。本商城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</p>
@@ -533,7 +488,6 @@
 						<p>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！</p>
 
 					</div>
-
 					<div>
 						<h3>权利声明：</h3>
 						<p>本商城上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是京东商城重要的经营资源，未经许可，禁止非法转载使用。</p>
@@ -542,40 +496,11 @@
 					</div>
 				</div>
 				<!-- 售后保障 end -->
-
 			</div>
 		</div>
 		<!-- 商品详情 end -->
-
-
 	</div>
 	<!-- 商品信息内容 end -->
-
-
 </div>
 <!-- 商品页面主体 end -->
-
-<!-- 引入帮助文件  -->
-<include file="Common/help" />
-
-<script>
-    <?php $config = C('IMAGE_CONFIG'); ?>
-    var viewPath = '<?php echo $config['viewPath']; ?>';
-    // 记录浏览历史
-    $.ajax({
-        type : "GET",
-        url : "<?php echo U('Index/displayHistory?id='.$info['id']); ?>",
-        dataType : "json",
-        success : function(data)
-        {
-            // 循环服务器返回的浏览历史数据放到页面中
-            // 先拼HTML字符串
-            var html = "";
-            $(data).each(function(k,v){
-                html += '<dl><dt><a href="<?php echo U('goods', '', FALSE); ?>/id/'+v.id+'"><img src="'+viewPath+v.mid_logo+'" /></a></dt><dd><a href="<?php echo U('goods', '', FALSE); ?>/id/'+v.id+'">'+v.goods_name+'</a></dd></dl>';
-            });
-            // 放到 页面中
-            $("#display_history").html(html);
-        }
-    });
-</script>
+<div style="clear:both;"></div>
