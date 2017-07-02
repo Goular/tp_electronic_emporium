@@ -1,3 +1,13 @@
+<Layout name="layout/layout"/>
+
+<link rel="stylesheet" href="<?php echo C('HOME_CSS_URL');?>/goods.css" type="text/css">
+<link rel="stylesheet" href="<?php echo C('HOME_CSS_URL');?>/common.css" type="text/css">
+<!--引入jqzoom css -->
+<link rel="stylesheet" href="<?php echo C('HOME_CSS_URL');?>/jqzoom.css" type="text/css">
+
+<script type="text/javascript" src="<?php echo C('HOME_JS_URL');?>/goods.js"></script>
+<script type="text/javascript" src="<?php echo C('HOME_JS_URL');?>/jqzoom-core.js"></script>
+
 <!-- 商品页面主体 start -->
 <div class="main w1210 mt10 bc">
 	<!-- 面包屑导航 start -->
@@ -54,7 +64,7 @@
 				<ul>
 					<li>
 						<dl>
-							<dt><a href=""><img src="images/relate_view1.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view1.jpg" alt="" /></a></dt>
 							<dd><a href="">ThinkPad E431(62771A7) 14英寸笔记本电脑 (i5-3230 4G 1TB 2G独显 蓝牙 win8)</a></dd>
 							<dd><strong>￥5199.00</strong></dd>
 						</dl>
@@ -62,7 +72,7 @@
 
 					<li>
 						<dl>
-							<dt><a href=""><img src="images/relate_view2.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view2.jpg" alt="" /></a></dt>
 							<dd><a href="">ThinkPad X230i(2306-3V9） 12.5英寸笔记本电脑 （i3-3120M 4GB 500GB 7200转 蓝牙 摄像头 Win8）</a></dd>
 							<dd><strong>￥5199.00</strong></dd>
 						</dl>
@@ -70,7 +80,7 @@
 
 					<li>
 						<dl>
-							<dt><a href=""><img src="images/relate_view3.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view3.jpg" alt="" /></a></dt>
 							<dd><a href="">T联想（Lenovo） Yoga13 II-Pro 13.3英寸超极本 （i5-4200U 4G 128G固态硬盘 摄像头 蓝牙 Win8）晧月银</a></dd>
 							<dd><strong>￥7999.00</strong></dd>
 						</dl>
@@ -78,7 +88,7 @@
 
 					<li>
 						<dl>
-							<dt><a href=""><img src="images/relate_view4.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view4.jpg" alt="" /></a></dt>
 							<dd><a href="">联想（Lenovo） Y510p 15.6英寸笔记本电脑（i5-4200M 4G 1T 2G独显 摄像头 DVD刻录 Win8）黑色</a></dd>
 							<dd><strong>￥6199.00</strong></dd>
 						</dl>
@@ -86,7 +96,7 @@
 
 					<li class="last">
 						<dl>
-							<dt><a href=""><img src="images/relate_view5.jpg" alt="" /></a></dt>
+							<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/relate_view5.jpg" alt="" /></a></dt>
 							<dd><a href="">ThinkPad E530c(33662D0) 15.6英寸笔记本电脑 （i5-3210M 4G 500G NV610M 1G独显 摄像头 Win8）</a></dd>
 							<dd><strong>￥4399.00</strong></dd>
 						</dl>
@@ -100,12 +110,12 @@
 			<h2><a href="">清空</a><strong>最近浏览过的商品</strong></h2>
 			<div class="leftbar_wrap">
 				<dl>
-					<dt><a href=""><img src="images/hpG4.jpg" alt="" /></a></dt>
+					<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/hpG4.jpg" alt="" /></a></dt>
 					<dd><a href="">惠普G4-1332TX 14英寸笔记...</a></dd>
 				</dl>
 
 				<dl class="last">
-					<dt><a href=""><img src="images/crazy4.jpg" alt="" /></a></dt>
+					<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/crazy4.jpg" alt="" /></a></dt>
 					<dd><a href="">直降200元！TCL正1.5匹空调</a></dd>
 				</dl>
 			</div>
@@ -123,8 +133,8 @@
 			<!-- 图片预览区域 start -->
 			<div class="preview fl">
 				<div class="midpic">
-					<a href="images/preview_l1.jpg" class="jqzoom" rel="gal1">   <!-- 第一幅图片的大图 class 和 rel属性不能更改 -->
-						<img src="images/preview_m1.jpg" alt="" />               <!-- 第一幅图片的中图 -->
+					<a href="<?php echo C('HOME_IMG_URL');?>/preview_l1.jpg" class="jqzoom" rel="gal1">   <!-- 第一幅图片的大图 class 和 rel属性不能更改 -->
+						<img src="<?php echo C('HOME_IMG_URL');?>/preview_m1.jpg" alt="" />               <!-- 第一幅图片的中图 -->
 					</a>
 				</div>
 
@@ -136,45 +146,45 @@
 					<div class="smallpic_wrap">
 						<ul>
 							<li class="cur">
-								<a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'images/preview_m1.jpg',largeimage: 'images/preview_l1.jpg'}"><img src="images/preview_s1.jpg"></a>
+								<a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m1.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l1.jpg'}"><img src="<?php echo C('HOME_IMG_URL');?>/preview_s1.jpg"></a>
 							</li>
 							<li>
-								<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'images/preview_m2.jpg',largeimage: 'images/preview_l2.jpg'}"><img src="images/preview_s2.jpg"></a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m3.jpg',largeimage: 'images/preview_l3.jpg'}">
-									<img src="images/preview_s3.jpg"></a>
+								<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m2.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l2.jpg'}"><img src="<?php echo C('HOME_IMG_URL');?>/preview_s2.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m4.jpg',largeimage: 'images/preview_l4.jpg'}">
-									<img src="images/preview_s4.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m3.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l3.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s3.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m5.jpg',largeimage: 'images/preview_l5.jpg'}">
-									<img src="images/preview_s5.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m4.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l4.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s4.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m6.jpg',largeimage: 'images/preview_l6.jpg'}">
-									<img src="images/preview_s6.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m5.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l5.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s5.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m7.jpg',largeimage: 'images/preview_l7.jpg'}">
-									<img src="images/preview_s7.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m6.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l6.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s6.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m8.jpg',largeimage: 'images/preview_l8.jpg'}">
-									<img src="images/preview_s8.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m7.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l7.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s7.jpg"></a>
 							</li>
 							<li>
 								<a href="javascript:void(0);"
-								   rel="{gallery: 'gal1', smallimage: 'images/preview_m9.jpg',largeimage: 'images/preview_l9.jpg'}">
-									<img src="images/preview_s9.jpg"></a>
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m8.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l8.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s8.jpg"></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"
+								   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m9.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l9.jpg'}">
+									<img src="<?php echo C('HOME_IMG_URL');?>/preview_s9.jpg"></a>
 							</li>
 						</ul>
 					</div>
@@ -274,23 +284,23 @@
 					</div>
 					<div class="desc mt10">
 						<!-- 此处的内容 一般是通过在线编辑器添加保存到数据库，然后直接从数据库中读出 -->
-						<img src="images/desc1.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc1.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc2.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc2.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc3.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc3.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc4.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc4.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc5.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc5.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc6.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc6.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc7.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc7.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc8.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc8.jpg" alt="" />
 						<p style="height:10px;"></p>
-						<img src="images/desc9.jpg" alt="" />
+						<img src="<?php echo C('HOME_IMG_URL');?>/desc9.jpg" alt="" />
 					</div>
 				</div>
 				<!-- 商品介绍 end -->
@@ -330,7 +340,7 @@
 					<div class="comment_items mt10">
 						<div class="user_pic">
 							<dl>
-								<dt><a href=""><img src="images/user1.gif" alt="" /></a></dt>
+								<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/user1.gif" alt="" /></a></dt>
 								<dd><a href="">乖乖</a></dd>
 							</dl>
 						</div>
@@ -367,7 +377,7 @@
 					<div class="comment_items mt10">
 						<div class="user_pic">
 							<dl>
-								<dt><a href=""><img src="images/user2.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/user2.jpg" alt="" /></a></dt>
 								<dd><a href="">小宝贝</a></dd>
 							</dl>
 						</div>
@@ -400,7 +410,7 @@
 					<div class="comment_items mt10">
 						<div class="user_pic">
 							<dl>
-								<dt><a href=""><img src="images/user3.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="<?php echo C('HOME_IMG_URL');?>/user3.jpg" alt="" /></a></dt>
 								<dd><a href="">天使</a></dd>
 							</dl>
 						</div>
