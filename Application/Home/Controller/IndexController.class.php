@@ -60,11 +60,26 @@ class IndexController extends NavController
             ->field('a.*,b.attr_name,b.attr_type')
             ->join('left join __ATTRIBUTE__ b ON a.attr_id = b.id')
             ->where(array(
-                'a.goods_id'=>array('eq',$id)
+                'a.goods_id' => array('eq', $id)
             ))->select();
 
+        //统计分类的数据
+        $weiYiData = array();
+        $keXuanData = array();
+        foreach ($gaDatas as $key => $value) {
+            if ($value['attr_type'] == '唯一') {
+                $weiYiData[] = $value;
+            } else if ($value['attr_type'] == '可选') {
+                $keXuanData[] = $value;
+            }
+        }
 
-        formatVarDump($goodsPics);
+        echo "<pre>";
+        var_dump($weiYiData);
+        var_dump($keXuanData);
+        echo "</pre>";
+
+
 
         //绑定数据到我们的页面
         $this->assign(array(
