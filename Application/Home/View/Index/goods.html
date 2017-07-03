@@ -151,56 +151,13 @@
                                    rel="{gallery: 'gal1', smallimage: '<?php echo $viewPath.$info['big_logo'];?>',largeimage: '<?php echo $viewPath.$info['mbig_logo'];?>'}"><img
                                         src="<?php echo $viewPath.$info['sm_logo'];?>"></a>
                             </li>
-
-
-
-
-
-
-
-
-
-
+                            <?php foreach($goodsPics as $key => $value):?>
                             <li>
                                 <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m2.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l2.jpg'}"><img
-                                        src="<?php echo C('HOME_IMG_URL');?>/preview_s2.jpg"></a>
+                                   rel="{gallery: 'gal1', smallimage: '<?php echo $viewPath.$value['mid_pic'];?>',largeimage: '<?php echo $viewPath.$value['big_pic'];?>'}"><img
+                                        src="<?php echo $viewPath.$value['sm_pic'];?>"></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m3.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l3.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s3.jpg"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m4.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l4.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s4.jpg"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m5.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l5.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s5.jpg"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m6.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l6.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s6.jpg"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m7.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l7.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s7.jpg"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m8.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l8.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s8.jpg"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m9.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l9.jpg'}">
-                                    <img src="<?php echo C('HOME_IMG_URL');?>/preview_s9.jpg"></a>
-                            </li>
+                            <?php endforeach;?>
                         </ul>
                     </div>
 
@@ -554,15 +511,15 @@
         }
     });
 
-    $(function(){
+    $(function () {
         $('.jqzoom').jqzoom({
             zoomType: 'standard',
-            lens:true,
+            lens: true,
             preloadImages: false,
-            alwaysOn:false,
-            title:false,
-            zoomWidth:300,
-            zoomHeight:300
+            alwaysOn: false,
+            title: false,
+            zoomWidth: 300,
+            zoomHeight: 300
         });
     })
 </script>
