@@ -132,9 +132,9 @@
             <!-- 图片预览区域 start -->
             <div class="preview fl">
                 <div class="midpic">
-                    <a href="<?php echo C('HOME_IMG_URL');?>/preview_l1.jpg" class="jqzoom" rel="gal1">
+                    <a href="<?php echo $viewPath.$info['mbig_logo'];?>" class="jqzoom" rel="gal1">
                         <!-- 第一幅图片的大图 class 和 rel属性不能更改 -->
-                        <img src="<?php echo C('HOME_IMG_URL');?>/preview_m1.jpg" alt=""/>
+                        <?php showImage($info['big_logo']);?>"
                         <!-- 第一幅图片的中图 -->
                     </a>
                 </div>
@@ -148,9 +148,19 @@
                         <ul>
                             <li class="cur">
                                 <a class="zoomThumbActive" href="javascript:void(0);"
-                                   rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m1.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l1.jpg'}"><img
-                                        src="<?php echo C('HOME_IMG_URL');?>/preview_s1.jpg"></a>
+                                   rel="{gallery: 'gal1', smallimage: '<?php echo $viewPath.$info['big_logo'];?>',largeimage: '<?php echo $viewPath.$info['mbig_logo'];?>'}"><img
+                                        src="<?php echo $viewPath.$info['sm_logo'];?>"></a>
                             </li>
+
+
+
+
+
+
+
+
+
+
                             <li>
                                 <a href="javascript:void(0);"
                                    rel="{gallery: 'gal1', smallimage: '<?php echo C('HOME_IMG_URL');?>/preview_m2.jpg',largeimage: '<?php echo C('HOME_IMG_URL');?>/preview_l2.jpg'}"><img
@@ -543,4 +553,16 @@
             });
         }
     });
+
+    $(function(){
+        $('.jqzoom').jqzoom({
+            zoomType: 'standard',
+            lens:true,
+            preloadImages: false,
+            alwaysOn:false,
+            title:false,
+            zoomWidth:300,
+            zoomHeight:300
+        });
+    })
 </script>

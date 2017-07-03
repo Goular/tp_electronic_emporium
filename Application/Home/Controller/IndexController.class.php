@@ -50,9 +50,15 @@ class IndexController extends NavController
         //获取分类的内容
         $catModel = D('Admin/Category');
         $catPath = $catModel->parentPath($info['cat_id']);
+        //取出商品的相册
+        $goodPic = D('goods_pic');
+        $goodsPics = $goodPic->where(array('goods_id' => array('eq', $id)))->select();
+        $viewConfig = C("IMAGE_CONFIG");
         //绑定数据到我们的页面
         $this->assign(array(
             'info' => $info,
+            'goodsPics' => $goodsPics,
+            'viewPath' => $viewConfig['viewPath'],
             'catPath' => $catPath
         ));
         $this->assign(array(
