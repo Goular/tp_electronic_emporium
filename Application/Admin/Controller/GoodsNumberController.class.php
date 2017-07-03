@@ -44,7 +44,7 @@ class GoodsNumberController extends BaseController
                     'goods_number' => $v,
                 ));
             }
-            $this->success('设置成功！', U('goods_number?id=' . I('get.id')));
+            $this->success('设置成功！', U('lst?id=' . I('get.id')));
             exit;
         }
 

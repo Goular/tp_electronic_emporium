@@ -54,6 +54,18 @@ class IndexController extends NavController
         $goodPic = D('goods_pic');
         $goodsPics = $goodPic->where(array('goods_id' => array('eq', $id)))->select();
         $viewConfig = C("IMAGE_CONFIG");
+        //取出这件商品的所有属性
+        $gaModel = D('goods_attr');
+        $gaDatas = $gaModel->alias('a')
+            ->field('a.*,b.attr_name,b.attr_type')
+            ->join('left join __ATTRIBUTE__ b ON a.attr_id = b.id')
+            ->where(array(
+                'a.goods_id'=>array('eq',$id)
+            ))->select();
+
+
+        formatVarDump($goodsPics);
+
         //绑定数据到我们的页面
         $this->assign(array(
             'info' => $info,
