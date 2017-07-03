@@ -74,11 +74,16 @@ class IndexController extends NavController
             }
         }
 
-        echo "<pre>";
-        var_dump($weiYiData);
-        var_dump($keXuanData);
-        echo "</pre>";
-
+        //显示会员价格
+        $mpModel = D('member_price');
+        $mpData = $mpModel->distinct(true)
+            ->alias('a')
+            ->field('a.*,b.level_name')
+            ->join('LEFT JOIN __MEMBER_LEVEL__ b ON a.level_id = b.id')
+            ->where(array(
+            "goods_id"=>array('eq',$id)
+        ))->order('level_id desc')
+          ->select();
 
         //绑定数据到我们的页面
         $this->assign(array(
@@ -87,7 +92,8 @@ class IndexController extends NavController
             'viewPath' => $viewConfig['viewPath'],
             'catPath' => $catPath,
             'keXuanData' => $keXuanData,
-            'weiYiData' => $weiYiData
+            'weiYiData' => $weiYiData,
+            'mpData'=>$mpData
         ));
         $this->assign(array(
             '_page_title' => '商品详情页',
