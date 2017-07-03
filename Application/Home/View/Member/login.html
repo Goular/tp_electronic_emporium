@@ -30,7 +30,7 @@
                     <li class="checkcode">
                         <label for="">验证码：</label>
                         <input type="text" name="checkcode"/>
-                        <img src="<?php echo U('home/member/chkCode')?>" alt=""/>
+                        <img src="<?php echo U('home/member/chkCode')?>" alt="" onclick="this.src='<?php echo U('home/member/chkCode')?>?time='+Math.random();"/>
                         <span>看不清？<a href="">换一张</a></span>
                     </li>
                     <li>
