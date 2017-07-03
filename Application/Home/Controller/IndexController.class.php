@@ -44,6 +44,7 @@ class IndexController extends NavController
     {
         //获取面包屑导航
         $id = I('get.id');
+        //获取商品详细信息
         $model = D('Admin/Goods');
         $info = $model->find($id);
         //获取分类的内容
