@@ -70,7 +70,7 @@ class IndexController extends NavController
             if ($value['attr_type'] == '唯一') {
                 $weiYiData[] = $value;
             } else if ($value['attr_type'] == '可选') {
-                $keXuanData[] = $value;
+                $keXuanData[$value['attr_name']][] = $value;
             }
         }
 
@@ -80,13 +80,14 @@ class IndexController extends NavController
         echo "</pre>";
 
 
-
         //绑定数据到我们的页面
         $this->assign(array(
             'info' => $info,
             'goodsPics' => $goodsPics,
             'viewPath' => $viewConfig['viewPath'],
-            'catPath' => $catPath
+            'catPath' => $catPath,
+            'keXuanData' => $keXuanData,
+            'weiYiData' => $weiYiData
         ));
         $this->assign(array(
             '_page_title' => '商品详情页',
