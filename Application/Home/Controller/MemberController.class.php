@@ -22,6 +22,10 @@ class MemberController extends Controller
         if (IS_POST) {
             $model = D('Admin/Member');
             if ($model->validate($model->_login_validate)->create()) {
+
+                //formatVarDump(I('post.'));
+
+
                 if ($model->login()) {
 
                     $this->success('登录成功');
@@ -50,6 +54,16 @@ class MemberController extends Controller
     //注册操作
     public function register()
     {
+        if (IS_POST) {
+            $model = D('Admin/Member');
+            if ($model->create(I('post.'), 1)) {
+                if ($model->add()) {
+                    $this->success('注册成功!', U('login'));
+                    exit;
+                }
+            }
+            $this->error($model->getError());
+        }
         // 设置页面信息
         $this->assign(array(
             '_page_title' => '注册',

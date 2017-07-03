@@ -34,18 +34,18 @@
                     </li>
                     <li>
                         <label for="">确认密码：</label>
-                        <input type="password" class="txt" name="password" />
+                        <input type="password" class="txt" name="cpassword" />
                         <p> <span>请再次输入密码</p>
                     </li>
                     <li class="checkcode">
                         <label for="">验证码：</label>
-                        <input type="text"  name="checkcode" />
+                        <input type="text"  name="chkcode" />
                         <img src="<?php echo U('home/member/chkCode')?>" alt="" onclick="this.src='<?php echo U('home/member/chkCode')?>?time='+Math.random();"/>
                         <span>看不清？<a href="">换一张</a></span>
                     </li>
                     <li>
                         <label for="">&nbsp;</label>
-                        <input type="checkbox" class="chb" checked="checked" /> 我已阅读并同意《用户注册协议》
+                        <input name="must_click" value="1" type="checkbox" class="chb" checked="checked" /> 我已阅读并同意《用户注册协议》
                     </li>
                     <li>
                         <label for="">&nbsp;</label>

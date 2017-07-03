@@ -3,10 +3,10 @@ namespace Admin\Model;
 
 use Think\Model;
 
-class GoodsModel extends Model
+class MemberModel extends Model
 {
     protected $insertFields = array('username', 'password', 'cpassword', 'chkcode', 'must_click');
-    protected $updateFields = array('id', 'username', 'password', 'cpassword');
+    protected $updateFields = array('id', 'username', 'password', 'cpassword','chkcode');
     protected $_validate = array(
         array('must_click', 'require', '必须同意注册协议！', 1, 'regex', 3),
         array('username', 'require', '用户名不能为空！', 1, 'regex', 3),
