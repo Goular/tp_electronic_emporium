@@ -464,4 +464,52 @@ class GoodsModel extends Model
             ->order('sort_num ASC')
             ->select();
     }
+
+    /**
+     * 根据商品的ID和会员级别来返回价格
+     */
+    public function getMemberPrice($goodsId)
+    {
+        //获取今天的时间和会员级别
+        $today = date('Y-m-d H:i');
+        $levleId = session('level_id');
+        //取出商品的促销价格
+        $promotePrice = $this->field('promote_price')
+            ->where(array(
+                'id' => array('eq', $goodsId),
+                'promote_price' => array('gt', 0),
+                'promote_start_date' => array('elt', $today),
+                'promote_end_date' => array('egt', $today)
+            ))->find();
+
+        //判断会员有没有登录
+        if ($levleId) {
+            $mpModel = D('member_price');
+            $mpData = $mpModel->field('price')->where(array(
+                'goods_id' => array('eq', $goodsId),
+                'level_id' => array('eq', $levleId)
+            ))->find();
+            //判断这个级别是否存在会员价格
+            if ($mpData['price']) {
+                if ($promotePrice['promote_price'])
+                    return min($promotePrice['promote_price'], $mpData['price']);
+                else
+                    return $mpData['price'];
+            } else {
+                //没有登录的话返回商品的本店价格
+                $p = $this->field('shop_price')->find($goodsId);
+                if ($promotePrice['promote_price'])
+                    return min($promotePrice['promote_price'], $p);
+                else
+                    return $p['shop_price'];
+            }
+        } else {
+            //没有登录的话返回商品的本店价格
+            $p = $this->field('shop_price')->find($goodsId);
+            if ($promotePrice['promote_price'])
+                return min($promotePrice['promote_price'], $p);
+            else
+                return $p['shop_price'];
+        }
+    }
 }

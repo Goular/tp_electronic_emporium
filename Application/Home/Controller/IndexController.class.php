@@ -81,9 +81,9 @@ class IndexController extends NavController
             ->field('a.*,b.level_name')
             ->join('LEFT JOIN __MEMBER_LEVEL__ b ON a.level_id = b.id')
             ->where(array(
-            "goods_id"=>array('eq',$id)
-        ))->order('level_id desc')
-          ->select();
+                "goods_id" => array('eq', $id)
+            ))->order('level_id desc')
+            ->select();
 
         //绑定数据到我们的页面
         $this->assign(array(
@@ -93,7 +93,7 @@ class IndexController extends NavController
             'catPath' => $catPath,
             'keXuanData' => $keXuanData,
             'weiYiData' => $weiYiData,
-            'mpData'=>$mpData
+            'mpData' => $mpData
         ));
         $this->assign(array(
             '_page_title' => '商品详情页',
@@ -126,5 +126,12 @@ class IndexController extends NavController
             'is_on_sale' => array('eq', '是'),
         ))->order("FIELD(id,$data)")->select();
         echo json_encode($gData);
+    }
+
+    public function ajaxGetMemberPrice()
+    {
+        $goodsId = I('get.goods_id');
+        $model = D('Admin/Goods');
+        echo $model->getMemberPrice($goodsId);
     }
 }
