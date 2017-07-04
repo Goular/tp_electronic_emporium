@@ -169,7 +169,8 @@
                 <ul>
                     <li><span>商品编号： </span><?php echo $info['id'];?></li>
                     <li class="market_price"><span>定价：</span><em>￥<?php echo $info['market_price'];?></em></li>
-                    <li class="shop_price"><span>本店价：</span> <strong>￥<?php echo $info['shop_price'];?></strong> <a href="">(降价通知)</a></li>
+                    <li class="shop_price"><span>本店价：</span> <strong>￥<?php echo $info['shop_price'];?></strong> <a
+                            href="">(降价通知)</a></li>
                     <li class="shop_price"><span>会员价格：</span>
                         <p>
                         <table border="1" cellpadding="5" cellspacing="5" width="30%">
@@ -181,6 +182,8 @@
                             <?php endforeach; ?>
                         </table>
                         </p>
+                    </li>
+                    <li class="shop_price"><span>购买价格:</span><strong style="font-size: 28px" id="member_price"></strong>
                     </li>
                     <li><span>上架时间：</span><?php $date = explode(" ",$info['addtime']); echo $date[0];?></li>
                     <li class="star "><span>商品评分：</span> <strong></strong><a href="">(已有21人评价)</a></li>
@@ -196,9 +199,13 @@
                                 <dd>
                                     <?php $index1 = 0; foreach($value as $key1 => $value1):?>
                                     <?php if($index1 == 0):?>
-                                    <a class="selected" href="javascript:;"><?php echo $value1['attr_value'];?> <input type="radio" name="color" value="<?php echo $value1['attr_value'];?>" checked="checked"/></a>
+                                    <a class="selected" href="javascript:;"><?php echo $value1['attr_value'];?> <input
+                                            type="radio" name="color" value="<?php echo $value1['attr_value'];?>"
+                                            checked="checked"/></a>
                                     <?php else:?>
-                                    <a href="javascript:;"><?php echo $value1['attr_value'];?> <input type="radio" name="color" value="<?php echo $value1['attr_value'];?>"/></a>
+                                    <a href="javascript:;"><?php echo $value1['attr_value'];?> <input type="radio"
+                                                                                                      name="color"
+                                                                                                      value="<?php echo $value1['attr_value'];?>"/></a>
                                     <?php endif;?>
                                     <?php $index1 += 1;?>
                                     <?php endforeach;?>
@@ -520,4 +527,15 @@
             zoomHeight: 300
         });
     })
+
+    $.ajax({
+        type: "GET",
+        url: "<?php echo U('home/index/ajaxGetMemberPrice',array('goods_id'=>$info['id']));?>",
+        dataType: "json",
+        success: function (data) {
+            $(data).each(function (k, v) {
+                $('#member_price').html("¥ " + data + ' 元');
+            });
+        }
+    });
 </script>
