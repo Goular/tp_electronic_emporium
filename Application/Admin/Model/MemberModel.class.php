@@ -40,7 +40,7 @@ class MemberModel extends Model
     {
         //从模型中获取用户名和密码
         $userName = $this->username;
-        $password = $this->passwork;
+        $password = $this->password;
         //查询用户名是否存在
         $user = $this->field('id,username,password,jifen')
             ->where(array(
@@ -61,6 +61,8 @@ class MemberModel extends Model
 
                 //暂未添加购物车的内容到数据库
 
+
+                return TRUE;
             } else {
                 $msg = '密码不正确!';
                 $this->error = $msg;
