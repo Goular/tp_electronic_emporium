@@ -80,9 +80,17 @@ class MemberController extends Controller
     public function aJaxChkLogin()
     {
         if (session('m_id')) {
+
+            $mlModel = D('member_level');
+            $data = $mlModel->field('level_name')
+                ->where(array(
+                'id'=>array('eq',session('level_id'))
+            ))->find();
+
             echo json_encode(array(
                 'login' => 1,
-                'username' => session('m_username')
+                'username' => session('m_username'),
+                'level_name'=>$data['level_name']
             ));
         } else {
             echo json_encode(array(
