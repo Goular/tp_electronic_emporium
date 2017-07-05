@@ -7,7 +7,7 @@ class CartController extends NavController
     public function add()
     {
         if (IS_POST) {
-            $cartModel = D('Cart');
+            $cartModel = D('Admin/Cart');
             if ($cartModel->create(I('post.'), 1)) {
                 if ($cartModel->add()) {
                     $this->success('添加成功!', U('lst'));
@@ -22,7 +22,7 @@ class CartController extends NavController
     //购物车列表
     public function lst()
     {
-        $cartModel = D('cart');
+        $cartModel = D('Admin/Cart');
         $data = $cartModel->cartList();
         //设置页面信息的页面
         $this->assign(array(
@@ -37,7 +37,7 @@ class CartController extends NavController
     //ajax获取购物城列表
     public function ajaxCartList()
     {
-        $cartModel = D('Cart');
+        $cartModel = D('Admin/Cart');
         $data = $cartModel->cartList();
         return json_encode($data);
     }
