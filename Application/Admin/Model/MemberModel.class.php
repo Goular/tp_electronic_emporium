@@ -60,7 +60,7 @@ class MemberModel extends Model
                 session('level_id', $levelId['id']);
 
                 //暂未添加购物车的内容到数据库
-                $cartModel = D('Home/Cart');
+                $cartModel = D('Admin/Cart');
                 $cartModel->moveDataToDB();
 
                 return TRUE;

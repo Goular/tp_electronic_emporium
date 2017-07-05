@@ -50,7 +50,7 @@
             <td class="col3">￥<span><?php echo $value['price'];?></span></td>
             <td class="col4">
                 <a href="javascript:;" class="reduce_num"></a>
-                <input type="text" name="amount" value="1" class="amount"/>
+                <input type="text" name="amount" value="<?php echo $value['goods_number'];?>" class="amount"/>
                 <a href="javascript:;" class="add_num"></a>
             </td>
             <td class="col5">￥<span><?php $tmp = $value['price']*$value['goods_number']; $sum+=$tmp;echo $tmp;?></span></td>
