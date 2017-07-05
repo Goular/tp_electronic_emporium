@@ -39,6 +39,6 @@ class CartController extends NavController
     {
         $cartModel = D('Admin/Cart');
         $data = $cartModel->cartList();
-        return json_encode($data);
+        return $this->ajaxReturn($data);
     }
 }
