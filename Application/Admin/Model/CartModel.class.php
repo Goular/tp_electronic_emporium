@@ -91,7 +91,7 @@ class CartModel extends Model
                 $_k = explode('-', $k);
                 $data[] = array(
                     'goods_id' => $_k[0],
-                    'goods_goods_id' => $_k[1],
+                    'goods_attr_id' => $_k[1],
                     'goods_number' => $v,
                 );
             }
