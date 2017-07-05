@@ -29,4 +29,56 @@ class CartModel extends Model
         // 返回库存量是否够
         return ($gn['goods_number'] >= $goodsNumber);
     }
+
+    public function add()
+    {
+        $memberId = session('m_id');
+        // 先把商品属性ID升序并转化成字符串
+        sort($this->goods_attr_id, SORT_NUMERIC);
+        $this->goods_attr_id = (string)implode(',', $this->goods_attr_id);
+        // 判断有没有登录
+        if ($memberId) {
+            $goodsNumber = $this->goods_number; // 先把表单中的库存量存到这个变量中,否则调用find之后就没了
+            // 从数据库中取出数据，并存到模型中【覆盖原数据】
+            $has = $this->field('id')->where(array(
+                'member_id' => $memberId,
+                'goods_id' => $this->goods_id,
+                'goods_attr_id' => $this->goods_attr_id,
+            ))->find();
+            // 如果购物车中已经有这个商品就在原数量上加上这次购买的数量
+            if ($has) {
+                $this->where(array(
+                    'id' => array('eq', $has['id']),
+                ))->setInc('goods_number', $goodsNumber);
+            } else
+                parent::add(array(
+                    'member_id' => $memberId,
+                    'goods_id' => $this->goods_id,
+                    'goods_attr_id' => $this->goods_attr_id,
+                    'goods_number' => $this->goods_number,
+                ));
+        } else {
+            // 从 COOKIE 中取出购物车的一维数组
+            $cart = isset($_COOKIE['cart']) ? unserialize($_COOKIE['cart']) : array();
+            // 先拼一个下标
+            $key = $this->goods_id . '-' . $this->goods_attr_id;
+            if (isset($cart[$key]))
+                $cart[$key] += $this->goods_number;
+            else
+                // 把商品加进入
+                $cart[$key] = $this->goods_number;
+            // 把一维数组存回到 COOKIE
+            setcookie('cart', serialize($cart), time() + 30 * 86400, '/');
+        }
+        return TRUE;
+    }
+
+
+    //清空购物车
+    public function clear()
+    {
+        $this->where(array(
+            'member_id' => array('eq', session('m_id'))
+        ))->delete();
+    }
 }
