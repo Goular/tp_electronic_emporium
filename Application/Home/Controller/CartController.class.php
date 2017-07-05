@@ -22,8 +22,8 @@ class CartController extends NavController
     //购物车列表
     public function lst()
     {
-        //$cartModel = D('cart');
-        //$data = $cartModel->cartList();
+        $cartModel = D('cart');
+        $data = $cartModel->cartList();
         //设置页面信息的页面
         $this->assign(array(
             'data' => $data,
