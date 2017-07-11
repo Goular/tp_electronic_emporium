@@ -137,7 +137,7 @@ class OrderModel extends Model
         fclose($this->fp);
 
         //清空购物车
-        $cartModel = D('Cart');
+        $cartModel = D('Admin/Cart');
         $cartModel->clear();
     }
 
