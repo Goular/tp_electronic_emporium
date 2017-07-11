@@ -6,7 +6,7 @@ use Think\Model;
 class OrderModel extends Model
 {
     // 下单时允许表单的字段
-    protected $insertFields = array();
+    protected $insertFields = array('shr_name','shr_tel','shr_province','shr_city','shr_area','shr_address');
     // 下单时的表单验证规则
     protected $_validate = array(
         array('shr_name', 'require', '收货人姓名不能为空！', 1, 'regex', 3),
@@ -60,12 +60,12 @@ class OrderModel extends Model
         $memberID = session('m_id');
         /********************* 下单前的检查 **************************/
         // 是否登录
-        if ($memberID) {
+        if (!$memberID) {
             $this->error = "必须先登录!";
             return FALSE;
         }
         //判断购物车是否还有商品
-        $cartModel = D('Cart');
+        $cartModel = D('Admin/Cart');
         $options['goods'] = $goods = $cartModel->cartList();
         if (!$goods) {
             $this->error = '购物车没有商品，无法下单.';
