@@ -41,7 +41,7 @@ class OrderController extends Controller
             $this->error($orderModel->getError());
         }
         //先取出购物车中所有的商品
-        $cartModel = D('cart');
+        $cartModel = D('Admin/Cart');
         $data = $cartModel->cartList();
 
         // 设置页面信息
@@ -57,10 +57,10 @@ class OrderController extends Controller
     //订单成功
     public function order_success()
     {
-        $btn = makeAliPayBtn(I('get.order_id'));
+        //$btn = makeAliPayBtn(I('get.order_id'));
         // 设置页面信息
         $this->assign(array(
-            'btn' => $btn,
+            //'btn' => $btn,
             '_page_title' => '下单成功',
             '_page_keywords' => '下单成功',
             '_page_description' => '下单成功',
