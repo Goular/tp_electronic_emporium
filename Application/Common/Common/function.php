@@ -205,3 +205,10 @@ function formatUploadFiles($arrayName)
     }
     return $files;
 }
+
+/**
+ * 从当前URL中去掉某个参数之后的URL
+ */
+function makeAliPayBtn($orderId,$btnName='去支付宝支付'){
+    return require('./alipay/alipayapi.php');
+}
