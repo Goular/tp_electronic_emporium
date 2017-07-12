@@ -183,7 +183,7 @@ $(function () {
   QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function (assert) {
     assert.expect(7)
     var dropdownHTML = '<ul class="nav">'
-        + '<li><a href="#menu1">Menu 1</a></li>'
+        + '<li><a href="#menu1">Mine 1</a></li>'
         + '<li class="dropdown" id="testmenu">'
         + '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>'
         + '<ul class="dropdown-menu">'
