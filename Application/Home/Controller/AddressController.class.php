@@ -6,12 +6,11 @@ use Think\Controller;
 //添加API的控制器
 class AddressController extends Controller
 {
-    public function lst(){
-        echo CONTROLLER_NAME.'/'.ACTION_NAME;
-        echo "<br/>";
-        echo U('home/address');
+    public function lst()
+    {
         // 设置页面信息
         $this->assign(array(
+            '_page_path' => strtolower(__ACTION__),
             '_page_title' => '收货地址管理页',
             '_page_keywords' => '收货地址管理页',
             '_page_description' => '收货地址管理页',

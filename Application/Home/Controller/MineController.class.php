@@ -19,6 +19,7 @@ class MineController extends NavController
         $data = $orderModel->search();
         //设置页面信息
         $this->assign(array(
+            '_page_path' => strtolower(__ACTION__),
             'data' => $data,
             '_page_title' => '个人中心-我的定单'
         ));
