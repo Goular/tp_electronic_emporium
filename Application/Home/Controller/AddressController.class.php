@@ -7,6 +7,9 @@ use Think\Controller;
 class AddressController extends Controller
 {
     public function lst(){
+        echo CONTROLLER_NAME.'/'.ACTION_NAME;
+        echo "<br/>";
+        echo U('home/address');
         // 设置页面信息
         $this->assign(array(
             '_page_title' => '收货地址管理页',

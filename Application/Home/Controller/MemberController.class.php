@@ -24,7 +24,7 @@ class MemberController extends Controller
             if ($model->validate($model->_login_validate)->create()) {
                 if ($model->login()) {
                     // 默认跳转地址
-                    redirect(U('/'));
+                    $returnUrl = U('/');
                     // 如果session中有一个要跳转的地址就跳过去
                     $ru = session('returnUrl');
                     if ($ru) {
@@ -84,13 +84,13 @@ class MemberController extends Controller
             $mlModel = D('member_level');
             $data = $mlModel->field('level_name')
                 ->where(array(
-                'id'=>array('eq',session('level_id'))
-            ))->find();
+                    'id' => array('eq', session('level_id'))
+                ))->find();
 
             echo json_encode(array(
                 'login' => 1,
                 'username' => session('m_username'),
-                'level_name'=>$data['level_name']
+                'level_name' => $data['level_name']
             ));
         } else {
             echo json_encode(array(
