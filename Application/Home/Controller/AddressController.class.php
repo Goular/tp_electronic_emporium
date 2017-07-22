@@ -17,4 +17,27 @@ class AddressController extends Controller
         ));
         $this->display();
     }
+
+    /**
+     * 添加地址
+     */
+    public function aJaxAdd()
+    {
+        $model = D('member_address');
+
+        $this->ajaxReturn(I('post.'));
+        exit();
+
+        if ($model->create(I('post.'))) {
+            if ($model->add()) {
+                $data = array(
+                    'data' => '',
+                    'code' => 0,
+                    'message' => '添加成功!'
+                );
+                $this->ajaxReturn($data);
+                exit;
+            }
+        }
+    }
 }

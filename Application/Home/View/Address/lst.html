@@ -28,50 +28,50 @@
                 <ul>
                     <li>
                         <label for=""><span>*</span>收 货 人：</label>
-                        <input type="text" name="" class="txt"/>
+                        <input type="text" name="receiver" class="txt"/>
                     </li>
                     <li>
                         <label for=""><span>*</span>所在地区：</label>
-                        <select name="" id="">
+                        <select name="province" id="">
                             <option value="">请选择</option>
-                            <option value="">北京</option>
-                            <option value="">上海</option>
-                            <option value="">天津</option>
-                            <option value="">重庆</option>
-                            <option value="">武汉</option>
+                            <option value="北京">北京</option>
+                            <option value="上海">上海</option>
+                            <option value="天津">天津</option>
+                            <option value="重庆">重庆</option>
+                            <option value="武汉">武汉</option>
                         </select>
 
-                        <select name="" id="">
+                        <select name="" id="city">
                             <option value="">请选择</option>
-                            <option value="">朝阳区</option>
-                            <option value="">东城区</option>
-                            <option value="">西城区</option>
-                            <option value="">海淀区</option>
-                            <option value="">昌平区</option>
+                            <option value="朝阳区">朝阳区</option>
+                            <option value="东城区">东城区</option>
+                            <option value="西城区">西城区</option>
+                            <option value="海淀区">海淀区</option>
+                            <option value="昌平区">昌平区</option>
                         </select>
 
-                        <select name="" id="">
+                        <select name="" id="district">
                             <option value="">请选择</option>
-                            <option value="">西二旗</option>
-                            <option value="">西三旗</option>
-                            <option value="">三环以内</option>
+                            <option value="西二旗">西二旗</option>
+                            <option value="西三旗">西三旗</option>
+                            <option value="三环以内">三环以内</option>
                         </select>
                     </li>
                     <li>
                         <label for=""><span>*</span>详细地址：</label>
-                        <input type="text" name="" class="txt address"/>
+                        <input type="text" name="detail" class="txt address"/>
                     </li>
                     <li>
                         <label for=""><span>*</span>手机号码：</label>
-                        <input type="text" name="" class="txt"/>
+                        <input type="text" name="mobile" class="txt"/>
                     </li>
                     <li>
                         <label for="">&nbsp;</label>
-                        <input type="checkbox" name="" class="check"/>设为默认地址
+                        <input type="checkbox" name="is_default" class="check"/>设为默认地址
                     </li>
                     <li>
                         <label for="">&nbsp;</label>
-                        <input type="submit" name="" class="btn" value="保存"/>
+                        <input type="submit" id="addAddress" name="" class="btn" value="保存"/>
                     </li>
                 </ul>
             </form>
@@ -85,5 +85,13 @@
 <include file="Layout/help"/>
 
 <script>
-
+    $('#addAddress').click(function () {
+        var data = $('form[name="address_form"]').serialize();
+        $.post('<?php echo U("address/aJaxAdd");?>', data, function (result) {
+            console.dir(result);
+        });
+    });
+    $('form[name="address_form"]').submit(function (e) {
+        e.preventDefault();
+    });
 </script>
