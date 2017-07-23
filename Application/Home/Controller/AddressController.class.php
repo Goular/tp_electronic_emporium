@@ -67,4 +67,28 @@ class AddressController extends Controller
         }
         $this->ajaxReturn($data);
     }
+
+    /**
+     * 修改内容
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * 删除内容
+     */
+    public function delete()
+    {
+
+    }
+
+    /**
+     * 设定默认地址
+     */
+    public function defaultAddress()
+    {
+
+    }
 }
