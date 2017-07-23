@@ -28,9 +28,9 @@ class AddressController extends Controller
             if ($id = $model->add()) {
                 $data = array(
                     'data' => array(
-                        'id' => $id
+                        'address' => $model->find($id)
                     ),
-                    'code' => 0,
+                    'code' => 1,
                     'message' => '添加成功!'
                 );
                 $this->ajaxReturn($data);
@@ -42,6 +42,29 @@ class AddressController extends Controller
             'code' => -1,
             'message' => $model->getError()
         );
+        $this->ajaxReturn($data);
+    }
+
+    /**
+     * 获取列表
+     */
+    public function aJaxLst()
+    {
+        $model = D('Admin/MemberAddress');
+        $data = $model->order('id')->select();
+        if (!empty($data)) {
+            $data = array(
+                'addresses' => $data,
+                'code' => 1,
+                'message' => '获取成功!'
+            );
+        } else {
+            $data = array(
+                'addresses' => array(),
+                'code' => -1,
+                'message' => '获取失败!'
+            );
+        }
         $this->ajaxReturn($data);
     }
 }

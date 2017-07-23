@@ -88,10 +88,30 @@
     $('#addAddress').click(function () {
         var data = $('form[name="address_form"]').serialize();
         $.post('<?php echo U("address/aJaxAdd");?>', data, function (result) {
-            console.dir(result);
+            if (result.code == 1) {
+                var data = result.data.address;
+                $('.address_hd').append("<dl><dt>" + data.receiver + "&nbsp;" + data.province + "&nbsp;" + data.city + "&nbsp;" + data.district + "&nbsp;" + data.detail + "&nbsp;" + data.mobile + "&nbsp;" + "</dt><dd><a href=''>修改</a><a href=''>删除</a><a href=''>设为默认地址</a></dd></dl>");
+            }
         });
     });
     $('form[name="address_form"]').submit(function (e) {
         e.preventDefault();
     });
+    function getDatas() {
+        $.ajax({
+            type: 'GET',
+            url: "<?php echo U('address/aJaxLst');?>",
+            success: function (result) {
+                if (result.code == 1) {
+                    var number = result.addresses.length;
+                    var html = "";
+                    for (var i = 0; i < number; i++) {
+                        html += "<dl><dt>" + result.addresses[i].receiver + "&nbsp;" + result.addresses[i].province + "&nbsp;" + result.addresses[i].city + "&nbsp;" + result.addresses[i].district + "&nbsp;" + result.addresses[i].detail + "&nbsp;" + result.addresses[i].mobile + "&nbsp;" + "</dt><dd><a href=''>修改</a><a href=''>删除</a><a href=''>设为默认地址</a></dd></dl>";
+                    }
+                    $('.address_hd').append(html);
+                }
+            },
+        });
+    }
+    getDatas();
 </script>
