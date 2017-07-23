@@ -23,15 +23,13 @@ class AddressController extends Controller
      */
     public function aJaxAdd()
     {
-        $model = D('member_address');
-
-        $this->ajaxReturn(I('post.'));
-        exit();
-
-        if ($model->create(I('post.'))) {
-            if ($model->add()) {
+        $model = D('Admin/MemberAddress');
+        if ($model->create(I('post.'), 1)) {
+            if ($id = $model->add()) {
                 $data = array(
-                    'data' => '',
+                    'data' => array(
+                        'id' => $id
+                    ),
                     'code' => 0,
                     'message' => '添加成功!'
                 );
@@ -39,5 +37,11 @@ class AddressController extends Controller
                 exit;
             }
         }
+        $data = array(
+            'data' => array(),
+            'code' => -1,
+            'message' => $model->getError()
+        );
+        $this->ajaxReturn($data);
     }
 }
