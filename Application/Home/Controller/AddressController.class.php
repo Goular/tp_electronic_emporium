@@ -73,7 +73,17 @@ class AddressController extends Controller
      */
     public function update()
     {
-
+        if (IS_POST) {
+            $model = D('Admin/MemberAddress');
+            if ($model->create(I('post.'), 2)) {
+                if (FALSE !== $model->update()) {
+                    $this->success('修改成功！', U('lst'));
+                    exit;
+                }
+            }
+            $error = $model->getError();
+            $this->error($error);
+        }
     }
 
     /**
@@ -81,7 +91,11 @@ class AddressController extends Controller
      */
     public function delete()
     {
-
+        $model = D('Admin/MemberAddress');
+        if (FALSE !== $model->delete(I('get.id')))
+            $this->success('删除成功！', U('lst'));
+        else
+            $this->error('删除失败！原因：' . $model->getError());
     }
 
     /**
@@ -89,6 +103,10 @@ class AddressController extends Controller
      */
     public function defaultAddress()
     {
+        $model = D('Admin/MemberAddress');
+        $data = $model->where(array(
+            'member_id' => session('')
+        ))->select();
 
     }
 }
