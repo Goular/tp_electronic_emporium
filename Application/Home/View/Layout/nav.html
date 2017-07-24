@@ -109,10 +109,10 @@
                     <div class="cat_detail none">
                         <?php foreach ($v['children'] as $k1 => $v1): ?>
                         <dl <?php if($k1==0) echo 'class="dl_1st"'; ?>>
-                        <dt><a href=""><?php echo $v1['cat_name'];?></a></dt>
+                        <dt><a href="<?php echo U('search/cat_search?cat_id='.$v1['id'],'',FALSE);?>"><?php echo $v1['cat_name'];?></a></dt>
                         <dd>
                             <?php foreach ($v1['children'] as $k2 => $v2): ?>
-                            <a href=""><?php echo $v2['cat_name'];?></a>
+                            <a href="<?php echo U('search/cat_search?cat_id='.$v2['id'],'',FALSE);?>"><?php echo $v2['cat_name'];?></a>
                             <?php endforeach; ?>
                         </dd>
                         </dl>
