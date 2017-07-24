@@ -219,12 +219,23 @@
             当前搜索条件:
             <?php
                 //品牌
-                $brand_id = I("get.brand_id");
+                $brandId = I("get.brand_id");
                 if($brandId):
             ?>
                 <span>
                     品牌:<?php echo ltrim(strstr($brandId,'-'),'-');?>
                     <a href="<?php echo filterUrl('brand_id');?>">x</a>
+                </span>
+            <?php endif;?>
+
+            <?php
+                //价格
+                $price = I("get.price");
+                if($price):
+            ?>
+            <span>
+                    价格:<?php echo $price;?>
+                <a href="<?php echo filterUrl('price');?>">x</a>
                 </span>
             <?php endif;?>
         </div>
