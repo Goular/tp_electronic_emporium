@@ -105,7 +105,7 @@
 
                 <!-- 循环输出三层分类数据 -->
                 <div class="cat <?php if($k==0) echo 'item1'; ?>">
-                    <h3><a href=""><?php echo $v['cat_name'];?></a> <b></b></h3>
+                    <h3><a href="<?php echo U('search/cat_search?cat_id='.$v['id'],'',FALSE);?>"><?php echo $v['cat_name'];?></a> <b></b></h3>
                     <div class="cat_detail none">
                         <?php foreach ($v['children'] as $k1 => $v1): ?>
                         <dl <?php if($k1==0) echo 'class="dl_1st"'; ?>>
