@@ -222,9 +222,9 @@
                 $brandId = I("get.brand_id");
                 if($brandId):
             ?>
-                <span>
+            <span>
                     品牌:<?php echo ltrim(strstr($brandId,'-'),'-');?>
-                    <a href="<?php echo filterUrl('brand_id');?>">x</a>
+                <a href="<?php echo filterUrl('brand_id');?>">x</a>
                 </span>
             <?php endif;?>
 
@@ -238,6 +238,22 @@
                 <a href="<?php echo filterUrl('price');?>">x</a>
                 </span>
             <?php endif;?>
+
+            <!--筛选属性-->
+            <?php foreach($serachFilter['gaData'] as $key => $value):
+                // 拼出属性在URL上的名
+                $attrUrlName = 'attr_'.$value[0]['attr_id'];  // attr_xx
+                // 如果URL里面已经有这个名字说明已经点击了就跳过不显示
+                if(isset($_GET[$attrUrlName]))
+                    continue;
+            ?>
+            <dl>
+                <dt><?php echo $key;?></dt>
+                <?php foreach($value as $key2 => $value2):?>
+                    <dd><a href="__SELF__/<?php echo $attrUrlName;?>/<?php echo $value2['attr_value'];?>-<?php echo $key2;?>"><?php echo $value2['attr_value'];?></a></dd>
+                <?php endforeach;?>
+            </dl>
+            <?php endforeach;?>
         </div>
 
         <!-- 商品筛选 start -->
