@@ -278,4 +278,86 @@ class CategoryModel extends Model
         }
         return $ret;
     }
+
+    /**
+     * 根据当前搜索出来的商品来计算筛选条件
+     */
+    public function getSearchConditionByCatId($catId)
+    {
+        $ret = array();//创建返回的数组
+        $goodsModel = D('Admin/Goods');
+
+        $goodsId = $goodsModel->getGoodsIdByCatId($catId);
+
+        /***************** 品牌 ********************/
+        // 根据商品ID取出品牌ID再连品牌表取出品牌名称
+        $ret['brand'] = $goodsModel->alias('a')
+            ->field('DISTINCT brand_id,b.brand_name,b.logo')
+            ->join('LEFT JOIN __BRAND__ b ON a.brand_id = b.id')
+            ->where(array(
+                'a.id' => array('in', $goodsId),
+                'a.brand_id' => array('neq', 0)
+            ))
+            ->select();
+
+        /***************** 价格区间段 *****************/
+        $sectionCount = 6;//默认价格分为6个段
+        //取出当前分类下的最大和最小的价格
+        $priceInfo = $goodsModel
+            ->field('MAX(shop_price) max_price,MIN(shop_price) min_price')
+            ->where(array(
+                'id' => array('in', $goodsId)
+            ))
+            ->find();
+        //获取最大价格和最小价格的区间的分价
+        $priceSection = $priceInfo['max_price'] - $priceInfo['min_price'];
+        //获取分类下商品的数量
+        $goodsCount = count($goodsId);
+        //只有当数量大于1的时候才进行价格的分段
+        if ($goodsCount > 1) {
+            //根据最大价格和最小价格的差值计算应该分几段
+            if ($priceSection < 100)
+                $sectionCount = 2;
+            elseif ($priceSection < 1000)
+                $sectionCount = 4;
+            elseif ($priceSection < 10000)
+                $sectionCount = 6;
+            else
+                $sectionCount = 7;
+            //根据分段的分数设定实际的分数段
+            $pricePerSection = ceil($priceSection / $sectionCount);//每段的范围
+            //存放最终的分段数据
+            $price = array();
+            //第一个价格段的开始价格
+            $firstPrice = 0;
+            //循环每个段
+            for ($i = 0; $i < $sectionCount; $i++) {
+                //每段结束的价格
+                $_tmpEnd = $firstPrice + $pricePerSection;
+                //把结束的价格取整
+                $_tmpEnd = (ceil($_tmpEnd / 100)) * 100 - 1;
+                $price[] = $firstPrice . '-' . $_tmpEnd;
+                //计算下一个价格段的开始价格
+                $firstPrice = $_tmpEnd + 1;
+            }
+            $ret['price'] = $price;
+        }
+
+        /***************** 商品属性 ********************/
+        $gaModel = D('goods_attr');
+        $gaData = $gaModel->alias('a')
+            ->field('DISTINCT a.attr_id,a.attr_value,b.attr_name')
+            ->join('LEFT JOIN __ATTRIBUTE__ b ON a.attr_id=b.id')
+            ->where(array(
+                'a.goods_id' => array('in', $goodsId),
+                'a.attr_value' => array('neq', '')
+            ))
+            ->select();
+        $_gaData = array();
+        foreach ($gaData as $key => $value)
+            $_gaData[$value['attr)name']][] = $value;
+        $ret['gaData'] = $_gaData;
+        //处理这个属性数组：把属性相同的放到一起用属性名称做为下标-》2维转3维
+        return $ret;
+    }
 }
