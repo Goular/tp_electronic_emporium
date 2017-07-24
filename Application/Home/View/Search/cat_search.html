@@ -240,20 +240,19 @@
             <?php endif;?>
 
             <!--筛选属性-->
-            <?php foreach($serachFilter['gaData'] as $key => $value):
-                // 拼出属性在URL上的名
-                $attrUrlName = 'attr_'.$value[0]['attr_id'];  // attr_xx
-                // 如果URL里面已经有这个名字说明已经点击了就跳过不显示
-                if(isset($_GET[$attrUrlName]))
-                    continue;
+            <?php
+				// 筛选属性  参数：/attr_5/android-操作系统/attr_4/2015-10-01-出厂日期
+				// 循环所有的参数
+				foreach ($_GET as $k => $v):
+            // 如果以attr_开头说明是一个属性的变量
+            if(strpos($k, 'attr_') === 0) :
+            $_attrName = strrchr($v, '-'); // 取出属性名称
             ?>
-            <dl>
-                <dt><?php echo $key;?></dt>
-                <?php foreach($value as $key2 => $value2):?>
-                    <dd><a href="__SELF__/<?php echo $attrUrlName;?>/<?php echo $value2['attr_value'];?>-<?php echo $key2;?>"><?php echo $value2['attr_value'];?></a></dd>
-                <?php endforeach;?>
-            </dl>
-            <?php endforeach;?>
+            <span>
+				<?php echo ltrim($_attrName, '-'); ?>：<?php echo str_replace($_attrName, '', $v); ?>
+                <a href="<?php echo filterUrl($k); ?>">X</a>
+			</span>
+            <?php endif;endforeach; ?>
         </div>
 
         <!-- 商品筛选 start -->
