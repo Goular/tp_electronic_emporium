@@ -15,7 +15,6 @@ class SearchController extends NavController
         $catModel = D('Admin/Category');
         $searchFilter = $catModel->getSearchConditionByCatId($cat_Id);
 
-        formatVarDump($searchFilter);
 
 
 

@@ -346,18 +346,22 @@ class CategoryModel extends Model
         /***************** 商品属性 ********************/
         $gaModel = D('goods_attr');
         $gaData = $gaModel->alias('a')
-            ->field('DISTINCT a.attr_id,a.attr_value,b.attr_name')
+            ->field('DISTINCT a.attr_id,a.attr_value,b.attr_name,b.attr_type')
             ->join('LEFT JOIN __ATTRIBUTE__ b ON a.attr_id=b.id')
             ->where(array(
                 'a.goods_id' => array('in', $goodsId),
-                'a.attr_value' => array('neq', '')
+                'a.attr_value' => array('neq', ''),
             ))
             ->select();
+        // 处理这个属性数组：把属性相同的放到一起用属性名称做为下标-》2维转3维
         $_gaData = array();
-        foreach ($gaData as $key => $value)
-            $_gaData[$value['attr)name']][] = $value;
+        foreach ($gaData as $k => $v)
+        {
+            $_gaData[$v['attr_name']][] = $v;
+        }
+        // 放到返回数组中
         $ret['gaData'] = $_gaData;
-        //处理这个属性数组：把属性相同的放到一起用属性名称做为下标-》2维转3维
+        // 返回数组
         return $ret;
     }
 }
