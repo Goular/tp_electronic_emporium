@@ -516,7 +516,7 @@ class GoodsModel extends Model
     /**
      * 获取某个分类下的某一页的商品的内容
      */
-    public function cat_search($catId, $pageSize = 60)
+    public function cat_search($catId, $pageSize = 8)
     {
         /*************** 搜索 *************************/
         // 根据分类ID搜索出这个分类下商品的ID
