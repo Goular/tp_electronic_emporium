@@ -512,4 +512,19 @@ class GoodsModel extends Model
                 return $p['shop_price'];
         }
     }
+
+    /**
+     * 获取某个分类下的某一页的商品的内容
+     */
+    public function cat_search($catId, $pageSize = 60)
+    {
+        /*************** 搜索 *************************/
+        // 根据分类ID搜索出这个分类下商品的ID
+        $goodsId = $this->getGoodsIdByCatId($catId);
+        $where = array();
+        $where['a.id'] = array('in', $goodsId);
+        //品牌
+        $brandId = I('get.brand_id');
+        formatVarDump($brandId);
+    }
 }

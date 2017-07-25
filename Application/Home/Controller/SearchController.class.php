@@ -13,7 +13,8 @@ class SearchController extends NavController
         $data = $goodsModel->cat_search($cat_Id);
 
         $catModel = D('Admin/Category');
-        $searchFilter = $catModel->getSearchConditionByCatId($cat_Id);
+        //$searchFilter = $catModel->getSearchConditionByCatId($cat_Id);
+        $searchFilter = $catModel->getSearchConditionByGoodsId($data['goods_id']);
 
         // 设置页面信息
         $this->assign(array(
@@ -25,5 +26,14 @@ class SearchController extends NavController
             '_page_description' => '分类搜索页',
         ));
         $this->display();
+    }
+
+    /**
+     * 关键字搜索，这个可能使用全文索引才能加快搜索的效率
+     */
+    public function key_search()
+    {
+        $key = I('get.key');
+        $model = D('Admin/Goods');
     }
 }
