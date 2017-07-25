@@ -289,6 +289,10 @@ class CategoryModel extends Model
 
         $goodsId = $goodsModel->getGoodsIdByCatId($catId);
 
+        if(count($goodsId) == 0){
+            return null;
+        }
+
         /***************** 品牌 ********************/
         // 根据商品ID取出品牌ID再连品牌表取出品牌名称
         $ret['brand'] = $goodsModel->alias('a')
