@@ -17,6 +17,18 @@ class CommentController extends NavController
     //AJax发表评论
     public function ajaxAdd()
     {
+        if (!session('m_id')) {
+            $ret = array(
+                'data' => '',
+                'message' => '暂未登录',
+                'code' => -2
+            );
+            $this->ajaxReturn($ret);
+            exit;
+        }
+
+        formatVarDump(I('post.'));
+
         if (IS_POST) {
             $model = D('Admin/Comment');
             if ($model->create(I('post.'), 1)) {
