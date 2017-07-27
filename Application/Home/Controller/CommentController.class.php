@@ -39,6 +39,7 @@ class CommentController extends Controller
         if (IS_POST) {
             $model = D('Admin/CommentReply');
             if ($model->create(I('post.'), 1)) {
+                formatVarDump(I('post.'));
                 if ($model->add())
                     $this->success(array(
                         'face' => session('face'),
