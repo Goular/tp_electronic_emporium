@@ -69,7 +69,7 @@ class CommentModel extends Model
      */
     public function search($goodsId, $pageSize = 5)
     {
-// 这里因为要做AJAX翻页，所以我们需要自己做翻页不能用TP自带的。自带的不是AJAX的一点击就跳转了
+        // 这里因为要做AJAX翻页，所以我们需要自己做翻页不能用TP自带的。自带的不是AJAX的一点击就跳转了
         $where['a.goods_id'] = array('eq', $goodsId);
 
         // 取出总的记录数

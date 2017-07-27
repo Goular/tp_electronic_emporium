@@ -1,82 +1,58 @@
 <?php
 namespace Home\Controller;
 
-class CommentController extends NavController
+use Think\Controller;
+
+class CommentController extends Controller
 {
-    //通过AJax来获取商品的评论
     public function ajaxGetPl()
     {
         $goodsId = I('get.goods_id');
-        if ($goodsId) {
-            $model = D('Admin/Comment');
-            $data = $model->search($goodsId, 5);
-            return $this->ajaxReturn($data);
-        }
+        $model = D('Admin/Comment');
+        $data = $model->search($goodsId, 5);
+        echo json_encode($data);
     }
 
-    //AJax发表评论
-    public function ajaxAdd()
+    // AJAX发表评论
+    public function add()
     {
-        if (!session('m_id')) {
-            $ret = array(
-                'data' => '',
-                'message' => '暂未登录',
-                'code' => -2
-            );
-            $this->ajaxReturn($ret);
-            exit;
-        }
-
-        formatVarDump(I('post.'));
-
         if (IS_POST) {
             $model = D('Admin/Comment');
             if ($model->create(I('post.'), 1)) {
-                if ($id = $model->add()) {
-                    $data = $model->find($id);
-                    $ret = array(
-                        'data' => $data,
-                        'message' => '添加成功!',
-                        'code' => 1
-                    );
-                    $this->ajaxReturn($ret);
-                    exit;
-                }
+                if ($id = $model->add())
+                    $this->success(array(
+                        'id' => $id,
+                        'face' => session('face'),
+                        'username' => session('m_username'),
+                        'addtime' => date('Y-m-d H:i:s'),
+                        'content' => I('post.content'),
+                        'star' => I('post.star'),
+                    ), '');
             }
-            $ret = array(
-                'data' => '',
-                'message' => '添加失败:' . $model->getError(),
-                'code' => -1
-            );
-            $this->ajaxReturn($ret);
-            exit;
+            $this->error($model->getError(), '');
         }
     }
 
-    //AJax回复
-    public function ajaxReply()
+    // AJAX回复
+    public function reply()
     {
         if (IS_POST) {
             $model = D('Admin/CommentReply');
             if ($model->create(I('post.'), 1)) {
-                if ($id = $model->add()) {
-                    $data = $model->find($id);
-                    $ret = array(
-                        'data' => $data,
-                        'message' => '添加成功!',
-                        'code' => 1
-                    );
-                    $this->ajaxReturn($ret);
-                    exit;
-                }
+                if ($model->add())
+                    $this->success(array(
+                        'face' => session('face'),
+                        'username' => session('m_username'),
+                        'addtime' => date('Y-m-d H:i:s'),
+                        'content' => I('post.content'),
+                    ));
             }
-            $ret = array(
-                'data' => '',
-                'message' => '添加失败:' . $model->getError(),
-                'code' => -1
-            );
-            $this->ajaxReturn($ret);
-            exit;
+            $this->error($model->getError());
         }
     }
 }
+
+
+
+
+
