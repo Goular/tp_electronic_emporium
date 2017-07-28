@@ -12,6 +12,12 @@ class SearchController extends NavController
         return $this->display();
     }
 
+    public function phpProxyTest()
+    {
+        $url =  I('get.url');
+        echo file_get_contents($url);
+    }
+
     /**
      * 分类搜索
      */
