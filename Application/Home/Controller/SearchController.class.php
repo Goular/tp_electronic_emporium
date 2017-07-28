@@ -2,6 +2,16 @@
 namespace Home\Controller;
 class SearchController extends NavController
 {
+    public function jsonp()
+    {
+        return $this->display();
+    }
+
+    public function phpProxy()
+    {
+        return $this->display();
+    }
+
     /**
      * 分类搜索
      */
@@ -38,12 +48,12 @@ class SearchController extends NavController
         require('./sphinxapi.php');
         $sph = new \SphinxClient();
         $sph->SetServer('localhost', 9312);
-        $ret = $sph->Query($key,'goods');
+        $ret = $sph->Query($key, 'goods');
         $ids = array_keys($ret['matches']);
-        if($ids){
+        if ($ids) {
             $gModel = D('Admin/Goods');
             $datas = $gModel->field('id,goods_name')
-                ->where(array('id'=>array('in',implode(',',$ids))))
+                ->where(array('id' => array('in', implode(',', $ids))))
                 ->select();
             echo "<pre>";
             var_dump($datas);
