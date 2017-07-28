@@ -55,7 +55,7 @@ class SearchController extends NavController
         require('./sphinxapi.php');
         $sph = new \SphinxClient();
         $sph->SetServer('localhost', 9312);
-        $sph->SetFilter('is_updated',array(0));
+        //$sph->SetFilter('is_updated',array(0));
         $ret = $sph->Query($key, 'goods');
         $ids = array_keys($ret['matches']);
         if ($ids) {
