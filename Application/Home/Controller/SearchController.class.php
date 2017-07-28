@@ -51,9 +51,11 @@ class SearchController extends NavController
     {
         //使用Sphinx来做全文索引，新写法
         $key = I('get.key');
+        header('Content-Type:text/html;charset=utf-8;');
         require('./sphinxapi.php');
         $sph = new \SphinxClient();
         $sph->SetServer('localhost', 9312);
+        $sph->SetFilter('is_updated',array(0));
         $ret = $sph->Query($key, 'goods');
         $ids = array_keys($ret['matches']);
         if ($ids) {
@@ -63,6 +65,11 @@ class SearchController extends NavController
                 ->select();
             echo "<pre>";
             var_dump($datas);
+            echo "</pre>";
+        }else{
+            echo "Sphinx内容为空!";
+            echo "<pre>";
+            var_dump($ret);
             echo "</pre>";
         }
 

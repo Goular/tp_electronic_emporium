@@ -51,6 +51,18 @@ class GoodsModel extends Model
     protected function _before_update(&$data, $options)
     {
         $id = $options['where']['id'];  // 要修改的商品的ID
+        //*****************Sphinx处理区域***************
+        //标记商品被修改了需要重新创建索引
+        //设置了sphinx中的这条记录is_updated属性为1
+        $data['is_updated'] = 1;
+        require('./sphinxapi.php');
+        $sph = new \SphinxClient();
+        $sph->SetServer('localhost', 9312);
+        //意思:把id=$id这件商品的is_updated属性更新成1
+        $sph->UpdateAttributes('goods', array('is_updated'), array($id => array(1)));
+
+        //*****************Sphinx处理区域***************
+
         /**************** 处理LOGO *******************/
         // 判断有没有选择图片
         if ($_FILES['logo']['error'] == 0) {
