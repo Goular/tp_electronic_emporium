@@ -33,6 +33,24 @@ class SearchController extends NavController
      */
     public function key_search()
     {
+        //使用Sphinx来做全文索引，新写法
+        $key = I('get.key');
+        require('./sphinxapi.php');
+        $sph = new \SphinxClient();
+        $sph->SetServer('localhost', 9312);
+        $ret = $sph->Query($key,'goods');
+        $ids = array_keys($ret['matches']);
+        if($ids){
+            $gModel = D('Admin/Goods');
+            $datas = $gModel->field('id,goods_name')
+                ->where(array('id'=>array('in',implode(',',$ids))))
+                ->select();
+            echo "<pre>";
+            var_dump($datas);
+            echo "</pre>";
+        }
+
+        //旧写法
         $cat_Id = I('get.cat_id');
         //取出商品和进行翻页
         $goodsModel = D('Admin/Goods');
